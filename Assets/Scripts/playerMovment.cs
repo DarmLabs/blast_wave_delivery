@@ -21,4 +21,9 @@ public class playerMovment : MonoBehaviour
         transform.Translate(0, 0, zspeed);
        
     }
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag != "Piso")
+        Debug.Log("Colision detectada");
+    }
 }
