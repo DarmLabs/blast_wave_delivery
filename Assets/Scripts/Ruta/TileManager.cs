@@ -8,7 +8,7 @@ public class TileManager : MonoBehaviour
     private Transform playerTransform;
     private float spawnZ = 0f;
     private float tileLength = 30f;
-    private int amnTilesOnScreen = 2;
+    private int amnTilesOnScreen = 4;
     private GameObject go;
     private int lastPrefabIndex = 0;
     private int randomIndex =0;
