@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Carretera.unity
+    guid: 274e9474cbf54ea488f23e8c7191eaf9
   m_configObjects: {}
