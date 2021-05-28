@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Piso
-  - Lane
   - Ruta
   - SpawnRuta
+  - Wall
   layers:
   - Default
   - TransparentFX

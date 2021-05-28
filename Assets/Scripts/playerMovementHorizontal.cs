@@ -2,36 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class playerMovementHorizontal : MonoBehaviour
 {
     public Rigidbody rb;
-    float speedx = 0.1f;
-    float jump = 10;
-    float speedz = 0.1f;
+    float speedx = 40;
+    float jump = 20;
+    float speedz = 10;
+    public FixedJoystick fixedJoystick;
+    bool isGrounded = true;
+    public Animator animator;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
         Inputs();
-        transform.Translate(0,0, speedz);
+        Vector3 direction = Vector3.right * fixedJoystick.Horizontal;
+        rb.AddForce(direction.x * speedx * Time.deltaTime,0,0,ForceMode.VelocityChange);
+        transform.Translate(0,0, speedz * Time.deltaTime);
+        if(direction.x > 0)
+        {
+            animator.SetBool("RightRotation", true);
+        }
+        else
+        {
+            animator.SetBool("RightRotation", false);
+        }
+        if(direction.x < 0)
+        {
+            animator.SetBool("LeftRotation", true);
+        }
+        else
+        {
+            animator.SetBool("LeftRotation", false);
+        }
     }
 
     void Inputs()
     {
-        if(Input.GetKey("a"))
-        {
-            transform.Translate(-speedx,0,0);
-        }
-        if(Input.GetKey("d"))
-        {
-            transform.Translate(speedx,0,0);
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(0, jump, 0, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Piso")
+        {
+            isGrounded = true;
         }
     }
 }

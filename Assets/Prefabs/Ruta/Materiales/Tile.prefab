@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 8742757959975995700}
   m_Layer: 0
   m_Name: Piso (2)
-  m_TagString: Piso
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8742757959975995702}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 29c7be2cc8a2186449f221e56361dd4c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 8742757961039707514}
   m_Layer: 0
   m_Name: Piso (1)
-  m_TagString: Piso
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +408,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8742757961039707780}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 29c7be2cc8a2186449f221e56361dd4c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
