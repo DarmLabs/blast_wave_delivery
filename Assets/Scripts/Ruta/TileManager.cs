@@ -11,7 +11,7 @@ public class TileManager : MonoBehaviour
     private int amnTilesOnScreen = 4;
     private GameObject go;
     private int lastPrefabIndex = 0;
-    private int randomIndex =0;
+    //private int randomIndex =0;
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
