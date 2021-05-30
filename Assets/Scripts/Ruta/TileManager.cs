@@ -11,13 +11,17 @@ public class TileManager : MonoBehaviour
     private int amnTilesOnScreen = 5;
     private GameObject go;
     private int lastPrefabIndex = 0;
-    //private int randomIndex =0;
+    private bool visualSet1 = true;
+    private bool visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
+    private float checkPointsCounter = 0f;    
+  
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         for (int i=0; i<amnTilesOnScreen;i++){
             SpawnTile();
-        }
+        }       
+        
     }
 
     void Update()
@@ -25,6 +29,7 @@ public class TileManager : MonoBehaviour
         if(playerTransform.position.z > (spawnZ - amnTilesOnScreen*tileLength)){
             SpawnTile();
         }
+
     }
 
     private void SpawnTile(int prefabIndex = -1)
@@ -42,10 +47,50 @@ public class TileManager : MonoBehaviour
         int randomIndex = lastPrefabIndex;
         while(randomIndex==lastPrefabIndex)
         {
-            randomIndex =Random.Range(0,tilePrefabs.Length);            
+            //randomIndex =Random.Range(0,tilePrefabs.Length);
+            if (visualSet1)
+            {
+                randomIndex = Random.Range(0,2);
+            }
+             if (visualSet2)
+            {
+                randomIndex = Random.Range(2,4);
+            }
+             if (visualSet3)
+            {
+                randomIndex = Random.Range(4,6);
+            }
+             if (visualSet4)
+            {
+                randomIndex = Random.Range(6,8);
+            }
+             if (visualSet5)
+            {
+                randomIndex = Random.Range(8,10);
+            }
+                       
         }
         lastPrefabIndex=randomIndex;
         return randomIndex;
     }
-    
+
+    private void visualChange()
+    {
+        if (checkPointsCounter==0f)
+        {
+            visualSet1=true;
+            visualSet2=false;
+            visualSet3=false;
+            visualSet4=false;
+            visualSet5=false;
+        }
+        
+    }
+
+    /*
+    private void MoveTile()
+    {
+
+    }
+    */
 }

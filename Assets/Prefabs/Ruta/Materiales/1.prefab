@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 575527933880522669, guid: a1b79eb0dc3b2c0428214fb1a7d0a8ee, type: 3}
       propertyPath: m_Name
-      value: Oficial (1) Variant Variant 1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 916340926949035287, guid: a1b79eb0dc3b2c0428214fb1a7d0a8ee, type: 3}
       propertyPath: m_RootOrder
