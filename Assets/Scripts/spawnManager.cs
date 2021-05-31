@@ -10,6 +10,7 @@ public class spawnManager : MonoBehaviour
     public GameObject prefabObstaculo;
     private int cantidadSpawners;
     Transform[] spawnersDisponibles;
+    public GameObject Moto;
     void Start()
     {
         spawnersDisponibles = gameObject.GetComponentsInChildren<Transform>();
@@ -22,7 +23,7 @@ public class spawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0,0, 10 * Time.deltaTime);
+        transform.Translate(0,0, 10 * (Time.deltaTime * Moto.GetComponent<playerMovementHorizontal>().speedMultiplier));
     }
 
     void spawnObstacle(){

@@ -12,6 +12,7 @@ public class playerMovementHorizontal : MonoBehaviour
     public FixedJoystick fixedJoystick;
     bool isGrounded = true;
     public Animator animator;
+    public float speedMultiplier;
     
     void Start()
     {
@@ -24,7 +25,7 @@ public class playerMovementHorizontal : MonoBehaviour
         Inputs();
         Vector3 direction = Vector3.right * fixedJoystick.Horizontal;
         rb.AddForce(direction.x * speedx * Time.deltaTime,0,0,ForceMode.VelocityChange);
-        transform.Translate(0,0, speedz * Time.deltaTime);
+        transform.Translate(0,0, speedz * (Time.deltaTime * speedMultiplier));
         if(direction.x > 0)
         {
             animator.SetBool("RightRotation", true);
