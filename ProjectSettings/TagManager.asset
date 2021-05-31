@@ -9,6 +9,7 @@ TagManager:
   - SpawnRuta
   - Fuel
   - Time
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
