@@ -12,7 +12,8 @@ public class TileManager : MonoBehaviour
     private GameObject go;
     private int lastPrefabIndex = 0;    
     private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
-    private int checkPointsCounter = 0;
+    private int tileCounter = 0;
+    private int checkpointCounter = 0;
        
   
     void Start()
@@ -38,11 +39,20 @@ public class TileManager : MonoBehaviour
     private void SpawnTile(int prefabIndex = -1)
     {
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+        
+        //ACA SE ACTIVA EL CHECKPOINT
+        if (tileCounter == 9)
+        {
+           go.transform.GetChild(0).gameObject.SetActive(true);
+           checkpointCounter+=1;
+           Debug.Log("Checkpoint Activo:"+checkpointCounter);
+        }
+
         go.transform.SetParent(transform);
         go.transform.position=Vector3.forward*spawnZ;
         spawnZ+=tileLength;
-        checkPointsCounter+=1;
-        Debug.Log("tiles:"+checkPointsCounter);
+        tileCounter+=1;
+        Debug.Log("tiles:"+tileCounter);
     }
 
     private int RandomPrefabIndex()
@@ -81,7 +91,7 @@ public class TileManager : MonoBehaviour
 
     private void visualChange()
     {
-        if (checkPointsCounter==0)
+        if (tileCounter==0)
         {
             visualSet1=true;
             visualSet2=false;
@@ -90,7 +100,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             Debug.Log("SET 1");
         }
-        if (checkPointsCounter==10)
+        if (tileCounter==10)
         {
             visualSet1=false;
             visualSet2=true;
@@ -99,7 +109,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             Debug.Log("SET 2");
         }
-        if (checkPointsCounter==20)
+        if (tileCounter==20)
         {
             visualSet1=false;
             visualSet2=false;
@@ -108,7 +118,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             Debug.Log("SET 3");
         }
-        if (checkPointsCounter==30)
+        if (tileCounter==30)
         {
             visualSet1=false;
             visualSet2=false;
@@ -117,7 +127,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             Debug.Log("SET 4");
         }
-        if (checkPointsCounter==40)
+        if (tileCounter==40)
         {
             visualSet1=false;
             visualSet2=false;
