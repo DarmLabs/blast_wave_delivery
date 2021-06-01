@@ -28,6 +28,7 @@ public class playerProprieties : MonoBehaviour
     Color32 activeColor = new Color32(148, 214, 255, 255);
     Color32 unactiveColor = new Color32(255, 255, 255, 255);
     Color32 lockedColor = new Color32(106, 106, 106, 255);
+    public Camera cam;
     void Start()
     {
         vehicleButtonStandard();
@@ -160,6 +161,7 @@ public class playerProprieties : MonoBehaviour
         fuelConsumption = 1;
         SButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1;
+        cam.fieldOfView = 90;
 
         if(TButton.GetComponent<Image>().color != lockedColor)
         {
@@ -176,6 +178,7 @@ public class playerProprieties : MonoBehaviour
         fuelConsumption = 1.5f;
         FButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1.5f;
+        cam.fieldOfView = 100;
 
         if(TButton.GetComponent<Image>().color != lockedColor)
         {
@@ -191,6 +194,7 @@ public class playerProprieties : MonoBehaviour
         vehicleType = "Tank";
         fuelConsumption = 0.5f;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 0.5f;
+        cam.fieldOfView = 80;
 
         TButton.GetComponent<Image>().color = activeColor;
         if(SButton.GetComponent<Image>().color != lockedColor)
