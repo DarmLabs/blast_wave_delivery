@@ -29,12 +29,15 @@ public class playerProprieties : MonoBehaviour
     Color32 unactiveColor = new Color32(255, 255, 255, 255);
     Color32 lockedColor = new Color32(106, 106, 106, 255);
     public Camera cam;
+    public Animator tunnelEffect;
+    public Text fpsDisplay;
     void Start()
     {
         vehicleButtonStandard();
     }
     void Update()
     {
+        FPSCounter();
         //Contador de tiempo y reinicia escena si llega a 0
         if(currentTime >= 0)
         {
@@ -55,6 +58,11 @@ public class playerProprieties : MonoBehaviour
         }
         DisplayTime(currentTime);
         DisplayFuel();
+    }
+    void FPSCounter()
+    {
+        float fps = 1 / Time.unscaledDeltaTime;
+        fpsDisplay.text = "" + fps;
     }
     void DisplayTime(float timeToDisplay) //Formato para el display del timer
     {
@@ -162,6 +170,7 @@ public class playerProprieties : MonoBehaviour
         SButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1;
         cam.fieldOfView = 90;
+        tunnelEffect.GetComponent<Animator>().Play("StandardEffect");
 
         if(TButton.GetComponent<Image>().color != lockedColor)
         {
@@ -179,6 +188,7 @@ public class playerProprieties : MonoBehaviour
         FButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1.5f;
         cam.fieldOfView = 100;
+        tunnelEffect.GetComponent<Animator>().Play("FastEffect");
 
         if(TButton.GetComponent<Image>().color != lockedColor)
         {
@@ -195,6 +205,7 @@ public class playerProprieties : MonoBehaviour
         fuelConsumption = 0.5f;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 0.5f;
         cam.fieldOfView = 80;
+        tunnelEffect.GetComponent<Animator>().Play("TankEffect");
 
         TButton.GetComponent<Image>().color = activeColor;
         if(SButton.GetComponent<Image>().color != lockedColor)

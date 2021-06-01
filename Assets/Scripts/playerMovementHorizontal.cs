@@ -8,7 +8,7 @@ public class playerMovementHorizontal : MonoBehaviour
     public Rigidbody rb;
     float speedx = 40;
     float jump = 20;
-    float speedz = 10;
+    public float speedz = 40;
     public FixedJoystick fixedJoystick;
     bool isGrounded = true;
     public Animator animator;
@@ -26,7 +26,7 @@ public class playerMovementHorizontal : MonoBehaviour
         Vector3 direction = Vector3.right * fixedJoystick.Horizontal;
         rb.AddForce(direction.x * speedx * Time.deltaTime,0,0,ForceMode.VelocityChange);
         transform.Translate(0,0, speedz * (Time.deltaTime * speedMultiplier));
-        if(direction.x > 0)
+        if(direction.x > 0.2)
         {
             animator.SetBool("RightRotation", true);
         }
@@ -34,7 +34,7 @@ public class playerMovementHorizontal : MonoBehaviour
         {
             animator.SetBool("RightRotation", false);
         }
-        if(direction.x < 0)
+        if(direction.x < -0.2)
         {
             animator.SetBool("LeftRotation", true);
         }

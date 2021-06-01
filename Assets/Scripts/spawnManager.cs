@@ -23,7 +23,7 @@ public class spawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0,0, 10 * (Time.deltaTime * Moto.GetComponent<playerMovementHorizontal>().speedMultiplier));
+        transform.Translate(0,0, Moto.GetComponent<playerMovementHorizontal>().speedz * (Time.deltaTime * Moto.GetComponent<playerMovementHorizontal>().speedMultiplier));
     }
 
     void spawnObstacle(){
