@@ -6,13 +6,14 @@ using UnityEngine;
 public class playerMovementHorizontal : MonoBehaviour
 {
     public Rigidbody rb;
-    float speedx = 40;
+    public float speedx = 60;
     float jump = 20;
     public float speedz = 40;
     public FixedJoystick fixedJoystick;
     bool isGrounded = true;
     public Animator animator;
     public float speedMultiplier;
+    public float HMultiplier;
     
     void Start()
     {
@@ -24,7 +25,7 @@ public class playerMovementHorizontal : MonoBehaviour
     {
         Inputs();
         Vector3 direction = Vector3.right * fixedJoystick.Horizontal;
-        rb.AddForce(direction.x * speedx * Time.deltaTime,0,0,ForceMode.VelocityChange);
+        rb.AddForce(direction.x * speedx * Time.deltaTime * HMultiplier,0,0,ForceMode.VelocityChange);
         transform.Translate(0,0, speedz * (Time.deltaTime * speedMultiplier));
         if(direction.x > 0.2)
         {
@@ -42,6 +43,14 @@ public class playerMovementHorizontal : MonoBehaviour
         {
             animator.SetBool("LeftRotation", false);
         }
+        if(transform.position.y < 8.6)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     void Inputs()
@@ -49,14 +58,6 @@ public class playerMovementHorizontal : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(0, jump, 0, ForceMode.Impulse);
-            isGrounded = false;
-        }
-    }
-    void OnCollisionEnter(Collision col)
-    {
-        if(col.gameObject.tag == "Piso")
-        {
-            isGrounded = true;
         }
     }
 }

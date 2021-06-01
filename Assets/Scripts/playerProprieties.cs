@@ -31,6 +31,7 @@ public class playerProprieties : MonoBehaviour
     public Camera cam;
     public Animator tunnelEffect;
     public Text fpsDisplay;
+    public AudioSource Sound1;
     void Start()
     {
         vehicleButtonStandard();
@@ -169,8 +170,10 @@ public class playerProprieties : MonoBehaviour
         fuelConsumption = 1;
         SButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1;
+        gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 1;
         cam.fieldOfView = 90;
         tunnelEffect.GetComponent<Animator>().Play("StandardEffect");
+        Sound1.pitch = 1f;
 
         if(TButton.GetComponent<Image>().color != lockedColor)
         {
@@ -187,8 +190,10 @@ public class playerProprieties : MonoBehaviour
         fuelConsumption = 1.5f;
         FButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1.5f;
+        gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 1;
         cam.fieldOfView = 100;
         tunnelEffect.GetComponent<Animator>().Play("FastEffect");
+        Sound1.pitch = 1.25f;
 
         if(TButton.GetComponent<Image>().color != lockedColor)
         {
@@ -203,9 +208,11 @@ public class playerProprieties : MonoBehaviour
     {
         vehicleType = "Tank";
         fuelConsumption = 0.5f;
-        gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 0.5f;
-        cam.fieldOfView = 80;
+        gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1f;
+        gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 0.5f;
+        cam.fieldOfView = 90;
         tunnelEffect.GetComponent<Animator>().Play("TankEffect");
+        Sound1.pitch = 0.75f;
 
         TButton.GetComponent<Image>().color = activeColor;
         if(SButton.GetComponent<Image>().color != lockedColor)
