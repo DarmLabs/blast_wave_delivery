@@ -22,8 +22,7 @@ public class TileManager : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         for (int i=0; i<amnTilesOnScreen;i++){
             SpawnTile();           
-        }       
-        
+        }    
     }
 
     void Update()
@@ -39,7 +38,7 @@ public class TileManager : MonoBehaviour
     private void SpawnTile(int prefabIndex = -1)
     {
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
-        
+
         //ACA SE ACTIVA EL CHECKPOINT
         if (tileCounter == 9)
         {
