@@ -10,16 +10,17 @@ public class TileManager : MonoBehaviour
     private float tileLength = 30f;
     private int amnTilesOnScreen = 5;
     private GameObject go;
-    private int lastPrefabIndex = 0;
-    private bool visualSet1 = true;
-    private bool visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
-    private float checkPointsCounter = 0f;    
+    private int lastPrefabIndex = 0;    
+    private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
+    private int checkPointsCounter = 0;
+       
   
     void Start()
     {
+        visualSet1=true;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         for (int i=0; i<amnTilesOnScreen;i++){
-            SpawnTile();
+            SpawnTile();           
         }       
         
     }
@@ -27,8 +28,10 @@ public class TileManager : MonoBehaviour
     void Update()
     {
         if(playerTransform.position.z > (spawnZ - amnTilesOnScreen*tileLength)){
-            SpawnTile();
+            SpawnTile();         
+            
         }
+        visualChange();
 
     }
 
@@ -38,6 +41,8 @@ public class TileManager : MonoBehaviour
         go.transform.SetParent(transform);
         go.transform.position=Vector3.forward*spawnZ;
         spawnZ+=tileLength;
+        checkPointsCounter+=1;
+        Debug.Log("tiles:"+checkPointsCounter);
     }
 
     private int RandomPrefabIndex()
@@ -76,15 +81,51 @@ public class TileManager : MonoBehaviour
 
     private void visualChange()
     {
-        if (checkPointsCounter==0f)
+        if (checkPointsCounter==0)
         {
             visualSet1=true;
             visualSet2=false;
             visualSet3=false;
             visualSet4=false;
             visualSet5=false;
+            Debug.Log("SET 1");
         }
-        
+        if (checkPointsCounter==10)
+        {
+            visualSet1=false;
+            visualSet2=true;
+            visualSet3=false;
+            visualSet4=false;
+            visualSet5=false;
+            Debug.Log("SET 2");
+        }
+        if (checkPointsCounter==20)
+        {
+            visualSet1=false;
+            visualSet2=false;
+            visualSet3=true;
+            visualSet4=false;
+            visualSet5=false;
+            Debug.Log("SET 3");
+        }
+        if (checkPointsCounter==30)
+        {
+            visualSet1=false;
+            visualSet2=false;
+            visualSet3=false;
+            visualSet4=true;
+            visualSet5=false;
+            Debug.Log("SET 4");
+        }
+        if (checkPointsCounter==40)
+        {
+            visualSet1=false;
+            visualSet2=false;
+            visualSet3=false;
+            visualSet4=false;
+            visualSet5=true;
+            Debug.Log("SET 5");
+        }        
     }
 
     /*
