@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4981429273557187498, guid: 2813dbbd94fac2e469d7d1604557d2bc, type: 3}
       propertyPath: m_Name
-      value: Tile2
+      value: Tile2b
       objectReference: {fileID: 0}
     - target: {fileID: 5650406904827732240, guid: 2813dbbd94fac2e469d7d1604557d2bc, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6782821227274967679, guid: 2813dbbd94fac2e469d7d1604557d2bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a311037b0ba977f4dacec2f0ad7d932a, type: 2}
+    - target: {fileID: 6782821227274967679, guid: 2813dbbd94fac2e469d7d1604557d2bc, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32de75d2416c3fb4aa848a8e78305cb7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2813dbbd94fac2e469d7d1604557d2bc, type: 3}

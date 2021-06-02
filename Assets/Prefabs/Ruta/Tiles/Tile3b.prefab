@@ -53,7 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5510441289294497630, guid: 06c9bb159c4b4e04899c06b7d525aa93, type: 3}
       propertyPath: m_Name
-      value: Tile3
+      value: Tile3b
       objectReference: {fileID: 0}
+    - target: {fileID: 6303343309878519435, guid: 06c9bb159c4b4e04899c06b7d525aa93, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb085fa9ab7bf5345ab0cee9cd4b3be7, type: 2}
+    - target: {fileID: 6303343309878519435, guid: 06c9bb159c4b4e04899c06b7d525aa93, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3ac1194e20f5e4846a4b6f55d07b76f6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c9bb159c4b4e04899c06b7d525aa93, type: 3}
