@@ -44,14 +44,14 @@ public class TileManager : MonoBehaviour
         {
            go.transform.GetChild(0).gameObject.SetActive(true);
            checkpointCounter+=1;
-           Debug.Log("Checkpoint Activo:"+checkpointCounter);
+           //Debug.Log("Checkpoint Activo:"+checkpointCounter);
         }
 
         go.transform.SetParent(transform);
         go.transform.position=Vector3.forward*spawnZ;
         spawnZ+=tileLength;
         tileCounter+=1;
-        Debug.Log("tiles:"+tileCounter);
+        //Debug.Log("tiles:"+tileCounter);
     }
 
     private int RandomPrefabIndex()
@@ -97,7 +97,7 @@ public class TileManager : MonoBehaviour
             visualSet3=false;
             visualSet4=false;
             visualSet5=false;
-            Debug.Log("SET 1");
+            //Debug.Log("SET 1");
         }
         if (tileCounter==10)
         {
@@ -106,7 +106,7 @@ public class TileManager : MonoBehaviour
             visualSet3=false;
             visualSet4=false;
             visualSet5=false;
-            Debug.Log("SET 2");
+            //Debug.Log("SET 2");
         }
         if (tileCounter==20)
         {
@@ -115,7 +115,7 @@ public class TileManager : MonoBehaviour
             visualSet3=true;
             visualSet4=false;
             visualSet5=false;
-            Debug.Log("SET 3");
+            //Debug.Log("SET 3");
         }
         if (tileCounter==30)
         {
@@ -124,7 +124,7 @@ public class TileManager : MonoBehaviour
             visualSet3=false;
             visualSet4=true;
             visualSet5=false;
-            Debug.Log("SET 4");
+            //Debug.Log("SET 4");
         }
         if (tileCounter==40)
         {
@@ -133,7 +133,7 @@ public class TileManager : MonoBehaviour
             visualSet3=false;
             visualSet4=false;
             visualSet5=true;
-            Debug.Log("SET 5");
+            //Debug.Log("SET 5");
         }        
     }
 

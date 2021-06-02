@@ -62,8 +62,9 @@ public class playerProprieties : MonoBehaviour
     }
     void FPSCounter()
     {
+        Application.targetFrameRate = 30;
         float fps = 1 / Time.unscaledDeltaTime;
-        fpsDisplay.text = "" + fps;
+        fpsDisplay.text = fps.ToString("f0");
     }
     void DisplayTime(float timeToDisplay) //Formato para el display del timer
     {
@@ -171,7 +172,7 @@ public class playerProprieties : MonoBehaviour
         SButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1;
         gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 1;
-        cam.fieldOfView = 90;
+        cam.fieldOfView = 75;
         tunnelEffect.GetComponent<Animator>().Play("StandardEffect");
         Sound1.pitch = 1f;
 
@@ -191,7 +192,7 @@ public class playerProprieties : MonoBehaviour
         FButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1.5f;
         gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 1;
-        cam.fieldOfView = 100;
+        cam.fieldOfView = 85;
         tunnelEffect.GetComponent<Animator>().Play("FastEffect");
         Sound1.pitch = 1.25f;
 
@@ -210,7 +211,7 @@ public class playerProprieties : MonoBehaviour
         fuelConsumption = 0.5f;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1f;
         gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 0.5f;
-        cam.fieldOfView = 90;
+        cam.fieldOfView = 75;
         tunnelEffect.GetComponent<Animator>().Play("TankEffect");
         Sound1.pitch = 0.75f;
 
