@@ -11,14 +11,17 @@ public class playerMovementHorizontal : MonoBehaviour
     public float speedz = 40;
     public FixedJoystick fixedJoystick;
     bool isGrounded = true;
-    public Animator animator;
+    Animator MotoAnimator;
     public float speedMultiplier;
     public float HMultiplier;
+    public GameObject JoystickHandle;
+    Animator JoystickAnimator;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
+        MotoAnimator = GetComponentInChildren<Animator>();
+        JoystickAnimator = JoystickHandle.GetComponent<Animator>();
     }
 
     void Update()
@@ -27,21 +30,25 @@ public class playerMovementHorizontal : MonoBehaviour
         Vector3 direction = Vector3.right * fixedJoystick.Horizontal;
         rb.AddForce(direction.x * speedx * Time.deltaTime * HMultiplier,0,0,ForceMode.VelocityChange);
         transform.Translate(0,0, speedz * (Time.deltaTime * speedMultiplier));
-        if(direction.x > 0.2)
+        if(direction.x > 0.5)
         {
-            animator.SetBool("RightRotation", true);
+            MotoAnimator.SetBool("RightRotation", true);
+            JoystickAnimator.SetBool("TurnRight", true);
         }
         else
         {
-            animator.SetBool("RightRotation", false);
+            MotoAnimator.SetBool("RightRotation", false);
+            JoystickAnimator.SetBool("TurnRight", false);
         }
-        if(direction.x < -0.2)
+        if(direction.x < -0.5)
         {
-            animator.SetBool("LeftRotation", true);
+            MotoAnimator.SetBool("LeftRotation", true);
+            JoystickAnimator.SetBool("TurnLeft", true);
         }
         else
         {
-            animator.SetBool("LeftRotation", false);
+            MotoAnimator.SetBool("LeftRotation", false);
+            JoystickAnimator.SetBool("TurnLeft", false);
         }
         if(transform.position.y < 8.6)
         {
