@@ -29,7 +29,7 @@ public class playerProprieties : MonoBehaviour
     Color32 unactiveColor = new Color32(255, 255, 255, 255);
     Color32 lockedColor = new Color32(106, 106, 106, 255);
     public Camera cam;
-    public Animator tunnelEffect;
+    public GameObject tunnelEffect;
     public Text fpsDisplay;
     public AudioSource Sound1;
     void Start()
