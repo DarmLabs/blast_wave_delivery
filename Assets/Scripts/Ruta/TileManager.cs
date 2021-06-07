@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
+    #region Variables
     public GameObject[] tilePrefabs;
     private Transform playerTransform;
     private float spawnZ = 0f;
@@ -14,7 +15,7 @@ public class TileManager : MonoBehaviour
     private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
     private int tileCounter = 0;
     private int checkpointCounter = 0;
-       
+    #endregion   
   
     void Start()
     {
@@ -99,7 +100,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 1");
         }
-        if (tileCounter==10)
+        if (tileCounter==40)
         {
             visualSet1=false;
             visualSet2=true;
@@ -108,7 +109,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 2");
         }
-        if (tileCounter==20)
+        if (tileCounter==60)
         {
             visualSet1=false;
             visualSet2=false;
@@ -117,7 +118,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 3");
         }
-        if (tileCounter==30)
+        if (tileCounter==80)
         {
             visualSet1=false;
             visualSet2=false;
@@ -126,7 +127,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 4");
         }
-        if (tileCounter==40)
+        if (tileCounter==100)
         {
             visualSet1=false;
             visualSet2=false;
