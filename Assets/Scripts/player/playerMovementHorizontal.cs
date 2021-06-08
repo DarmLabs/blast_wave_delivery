@@ -30,7 +30,7 @@ public class playerMovementHorizontal : MonoBehaviour
         Vector3 direction = Vector3.right * fixedJoystick.Horizontal;
         rb.AddForce(direction.x * speedx * Time.deltaTime * HMultiplier,0,0,ForceMode.VelocityChange);
         transform.Translate(0,0, speedz * (Time.deltaTime * speedMultiplier));
-        if(direction.x > 0.5)
+        if(direction.x > 0.8)
         {
             MotoAnimator.SetBool("RightRotation", true);
             JoystickAnimator.SetBool("TurnRight", true);
@@ -40,7 +40,7 @@ public class playerMovementHorizontal : MonoBehaviour
             MotoAnimator.SetBool("RightRotation", false);
             JoystickAnimator.SetBool("TurnRight", false);
         }
-        if(direction.x < -0.5)
+        if(direction.x < -0.8)
         {
             MotoAnimator.SetBool("LeftRotation", true);
             JoystickAnimator.SetBool("TurnLeft", true);
@@ -50,7 +50,7 @@ public class playerMovementHorizontal : MonoBehaviour
             MotoAnimator.SetBool("LeftRotation", false);
             JoystickAnimator.SetBool("TurnLeft", false);
         }
-        if(transform.position.y < 8.6)
+        if(transform.position.y < 9.3)
         {
             isGrounded = true;
         }

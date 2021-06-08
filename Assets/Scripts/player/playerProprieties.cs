@@ -210,7 +210,7 @@ public class playerProprieties : MonoBehaviour
         vehicleType = "Tank";
         fuelConsumption = 0.5f;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1f;
-        gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 0.5f;
+        gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 0.8f;
         cam.fieldOfView = 75;
         tunnelEffect.GetComponent<Animator>().Play("TankEffect");
         Sound1.pitch = 0.75f;

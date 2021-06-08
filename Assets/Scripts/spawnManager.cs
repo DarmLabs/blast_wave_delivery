@@ -21,8 +21,8 @@ public class spawnManager : MonoBehaviour
     {
         spawnersDisponibles = gameObject.GetComponentsInChildren<Transform>();
         cantidadSpawners = spawnersDisponibles.Length; // La primera entrada del arreglo es el objeto padre, tener en cuenta esto.
-        Debug.Log(cantidadSpawners);
-        Debug.Log("%%%%%%%%%%%%%");
+        //Debug.Log(cantidadSpawners);
+        //Debug.Log("%%%%%%%%%%%%%");
 
         InvokeRepeating("spawnObstacle", 0.0f, spawnTime); //Llama al método que spawnea los obstaculos
     }
