@@ -10,6 +10,7 @@ TagManager:
   - Fuel
   - Time
   - Checkpoint
+  - obs
   layers:
   - Default
   - TransparentFX
