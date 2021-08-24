@@ -6,36 +6,57 @@ using UnityEngine.SceneManagement;
 public class Main_Menu_Manager : MonoBehaviour
 {
     public GameObject Panel;
-    public GameObject Botones;
-    public GameObject slider;
+    public GameObject Main;
+    GameObject slider;
+    bool music;
+    bool sfx;
     public void PlayButton()
     {
         SceneManager.LoadScene("Carretera");
     }
     public void ShopButton()
     {
-        Debug.Log("a");
         if(Panel.activeSelf == false)
         {
             Panel.SetActive(true);
-            Botones.SetActive(false);
+            Main.SetActive(false);
         }
         else
         {
             Panel.SetActive(false);
-            Botones.SetActive(true);
+            Main.SetActive(true);
         }
     }
     public void ExitButton()
     {
         Application.Quit();
     }
-    void OnMouseEnter(GameObject go)
+    public void MusicButton()
     {
-        if(go.gameObject.name == "SFX" || go.gameObject.name == "SFXSlider")
+        slider = GameObject.Find("MusicSlider");
+        if(!music)
         {
-            slider = GameObject.Find("SFXSlider");
+            music = true;
             slider.GetComponent<Animator>().Play("Desliz");
+        }
+        else
+        {
+            music = false;
+            slider.GetComponent<Animator>().Play("Desliz 0");
+        }
+    }
+    public void SFXButton()
+    {
+        slider = GameObject.Find("SFXSlider");
+        if(!sfx)
+        {
+            sfx = true;
+            slider.GetComponent<Animator>().Play("Desliz");
+        }
+        else
+        {
+            sfx = false;
+            slider.GetComponent<Animator>().Play("Desliz 0");
         }
     }
 }

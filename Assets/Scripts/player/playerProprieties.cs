@@ -14,6 +14,7 @@ public class playerProprieties : MonoBehaviour
     float seconds; //Display de segundos en el texto
     public Text timerText;
     public Text fuelText;
+    public Text modeText;
     string vehicleType;
     int playerLifeStandard;
     int playerLifeFast;
@@ -59,12 +60,17 @@ public class playerProprieties : MonoBehaviour
         }
         DisplayTime(currentTime);
         DisplayFuel();
+        DisplayMode();
     }
     void FPSCounter()
     {
         Application.targetFrameRate = 30;
         float fps = 1 / Time.unscaledDeltaTime;
         fpsDisplay.text = fps.ToString("f0");
+    }
+    void DisplayMode()
+    {
+        modeText.text = vehicleType.ToString();
     }
     void DisplayTime(float timeToDisplay) //Formato para el display del timer
     {

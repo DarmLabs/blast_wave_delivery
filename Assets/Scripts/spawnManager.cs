@@ -64,9 +64,6 @@ public class spawnManager : MonoBehaviour
 
         var auxIzq = Random.Range(1, 3);
 
-        
-        Debug.Log(auxIzq);
-
         if(auxIzq == 1){
             Instantiate(prefabIzq, new Vector3(spawn1.transform.position.x, spawn1.transform.position.y, spawn1.transform.position.z), Quaternion.identity); // Instancia el obstaculo en la posicion del spawner elegido
         }else{
@@ -88,7 +85,6 @@ public class spawnManager : MonoBehaviour
         };
 
         var auxDer = Random.Range(1, 3);
-        Debug.Log(auxDer);
         if(auxDer == 1){
             Instantiate(prefabDer, new Vector3(spawn3.transform.position.x, spawn3.transform.position.y, spawn3.transform.position.z), Quaternion.identity); // Instancia el obstaculo en la posicion del spawner elegido
         }else{
