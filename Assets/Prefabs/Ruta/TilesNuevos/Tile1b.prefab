@@ -8,13 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 119293903778572952, guid: 4c039991fac108a44929955f885f8038, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f3ecb95bd96faa04584db4d7289e573a, type: 2}
+    - target: {fileID: 119293903778572952, guid: 4c039991fac108a44929955f885f8038, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 107ab6473abd2764db2963786bd25875, type: 2}
+      objectReference: {fileID: 2100000, guid: d5b906fd7ed62814bbfc74ae350d0978, type: 2}
     - target: {fileID: 119293903778572952, guid: 4c039991fac108a44929955f885f8038, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: cb085fa9ab7bf5345ab0cee9cd4b3be7, type: 2}
+      objectReference: {fileID: 2100000, guid: b52e95ccb7d8fd44da485231a4c83c08, type: 2}
     - target: {fileID: 1920553640602946381, guid: 4c039991fac108a44929955f885f8038, type: 3}
       propertyPath: m_Name
       value: Tile1b
