@@ -6,40 +6,34 @@ using UnityEngine.SceneManagement;
 
 public class playerProprieties : MonoBehaviour
 {
-    float currentFuel = 200; //Cantidad de combustible que posee la moto en el momento
+    public float currentFuel = 200; //Cantidad de combustible que posee la moto en el momento
     int maxFuel = 200; //Cantidad de combustible maximo que la moto puede tener
     float emptyFuel; //Cantidad de combustible faltante para llegar al maximo
-    float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
-    float minutes; //Display de minutos en el texto
-    float seconds; //Display de segundos en el texto
-    public Text timerText;
-    public Text fuelText;
-    public Text modeText;
-    string vehicleType;
-    public int playerLifeStandard;
-    public int playerLifeFast;
-    public int playerLifeTank;
     float fuelConsumption;
-    bool standardLocked = false;
-    bool tankLocked = false;
-    bool fastLocked = false;
-    public GameObject SButton;
-    public GameObject FButton;
-    public GameObject TButton;
+    public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
+    public string vehicleType;
+    //public int playerLifeStandard;
+    //public int playerLifeFast;
+    //public int playerLifeTank;
+    public int generalLife = 3;
+    //bool standardLocked = false;
+    //bool tankLocked = false;
+    //bool fastLocked = false;
     Color32 activeColor = new Color32(148, 214, 255, 255);
     Color32 unactiveColor = new Color32(255, 255, 255, 255);
-    Color32 lockedColor = new Color32(106, 106, 106, 255);
+    public Color32 lockedColor = new Color32(106, 106, 106, 255);
     public Camera cam;
     public GameObject tunnelEffect;
-    public Text fpsDisplay;
     public AudioSource Sound1;
+    public GameObject UI_Manager;
+    Gameplay_Manager gameplay_Manager;
     void Start()
     {
+        gameplay_Manager = UI_Manager.GetComponent<Gameplay_Manager>();
         vehicleButtonStandard();
     }
     void Update()
     {
-        FPSCounter();
         //Contador de tiempo y reinicia escena si llega a 0
         if(currentTime >= 0)
         {
@@ -58,30 +52,6 @@ public class playerProprieties : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        DisplayTime(currentTime);
-        DisplayFuel();
-        DisplayMode();
-    }
-    void FPSCounter()
-    {
-        Application.targetFrameRate = 30;
-        float fps = 1 / Time.unscaledDeltaTime;
-        fpsDisplay.text = fps.ToString("f0");
-    }
-    void DisplayMode()
-    {
-        modeText.text = vehicleType.ToString();
-    }
-    void DisplayTime(float timeToDisplay) //Formato para el display del timer
-    {
-        if(timeToDisplay < 0)
-        {
-            timeToDisplay = 0;
-        }
-        minutes = Mathf.FloorToInt(currentTime / 60);
-        seconds = Mathf.FloorToInt(currentTime % 60);
-
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
     void OnTriggerEnter(Collider other) //Trigger para la deteccion de recolectables
     {
@@ -106,7 +76,7 @@ public class playerProprieties : MonoBehaviour
         if(other.gameObject.tag == "obs")
         {
             Destroy(other.gameObject);
-            if(vehicleType == "Standard")
+            /*if(vehicleType == "Standard")
             {
                 playerLifeStandard = playerLifeStandard - 1;
             }
@@ -117,16 +87,19 @@ public class playerProprieties : MonoBehaviour
             if(vehicleType == "Tank")
             {
                 playerLifeTank = playerLifeTank - 1;
-            }
+            }*/
             vehicleLifeCondition();
         }
     }
-    void DisplayFuel()
-    {
-        fuelText.text = currentFuel.ToString("f0");
-    }
     void vehicleLifeCondition()
     {
+        generalLife = generalLife -1;
+        gameplay_Manager.LifeDiscount();
+        if(generalLife == 0)
+        {
+            gameplay_Manager.GameOver();
+        }
+        /*
         if(playerLifeStandard == 0 && playerLifeFast == 0 && playerLifeTank == 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -173,46 +146,46 @@ public class playerProprieties : MonoBehaviour
                 vehicleButtonTank();
             }
         }
-
+        */
     }
     public void vehicleButtonStandard()
     {
         vehicleType = "Standard";
         fuelConsumption = 1;
-        SButton.GetComponent<Image>().color = activeColor;
+        gameplay_Manager.SButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1;
         gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 1;
         cam.fieldOfView = 75;
         tunnelEffect.GetComponent<Animator>().Play("StandardEffect");
         Sound1.pitch = 1f;
 
-        if(TButton.GetComponent<Image>().color != lockedColor)
+        if(gameplay_Manager.TButton.GetComponent<Image>().color != lockedColor)
         {
-            TButton.GetComponent<Image>().color = unactiveColor;
+            gameplay_Manager.TButton.GetComponent<Image>().color = unactiveColor;
         }
-        if(FButton.GetComponent<Image>().color != lockedColor)
+        if(gameplay_Manager.FButton.GetComponent<Image>().color != lockedColor)
         {
-            FButton.GetComponent<Image>().color = unactiveColor;
+            gameplay_Manager.FButton.GetComponent<Image>().color = unactiveColor;
         }
     }
     public void vehicleButtonFast()
     {
         vehicleType = "Fast";
         fuelConsumption = 1.5f;
-        FButton.GetComponent<Image>().color = activeColor;
+        gameplay_Manager.FButton.GetComponent<Image>().color = activeColor;
         gameObject.GetComponent<playerMovementHorizontal>().speedMultiplier = 1.5f;
         gameObject.GetComponent<playerMovementHorizontal>().HMultiplier = 1;
         cam.fieldOfView = 85;
         tunnelEffect.GetComponent<Animator>().Play("FastEffect");
         Sound1.pitch = 1.25f;
 
-        if(TButton.GetComponent<Image>().color != lockedColor)
+        if(gameplay_Manager.TButton.GetComponent<Image>().color != lockedColor)
         {
-            TButton.GetComponent<Image>().color = unactiveColor;
+            gameplay_Manager.TButton.GetComponent<Image>().color = unactiveColor;
         }
-        if(SButton.GetComponent<Image>().color != lockedColor)
+        if(gameplay_Manager.SButton.GetComponent<Image>().color != lockedColor)
         {
-            SButton.GetComponent<Image>().color = unactiveColor;
+            gameplay_Manager.SButton.GetComponent<Image>().color = unactiveColor;
         }
     }
     public void vehicleButtonTank()
@@ -225,14 +198,14 @@ public class playerProprieties : MonoBehaviour
         tunnelEffect.GetComponent<Animator>().Play("TankEffect");
         Sound1.pitch = 0.75f;
 
-        TButton.GetComponent<Image>().color = activeColor;
-        if(SButton.GetComponent<Image>().color != lockedColor)
+        gameplay_Manager.TButton.GetComponent<Image>().color = activeColor;
+        if(gameplay_Manager.SButton.GetComponent<Image>().color != lockedColor)
         {
-            SButton.GetComponent<Image>().color = unactiveColor;
+            gameplay_Manager.SButton.GetComponent<Image>().color = unactiveColor;
         }
-        if(FButton.GetComponent<Image>().color != lockedColor)
+        if(gameplay_Manager.FButton.GetComponent<Image>().color != lockedColor)
         {
-            FButton.GetComponent<Image>().color = unactiveColor;
+            gameplay_Manager.FButton.GetComponent<Image>().color = unactiveColor;
         }
     }
 }
