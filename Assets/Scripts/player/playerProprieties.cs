@@ -16,9 +16,9 @@ public class playerProprieties : MonoBehaviour
     public Text fuelText;
     public Text modeText;
     string vehicleType;
-    int playerLifeStandard;
-    int playerLifeFast;
-    int playerLifeTank;
+    public int playerLifeStandard;
+    public int playerLifeFast;
+    public int playerLifeTank;
     float fuelConsumption;
     bool standardLocked = false;
     bool tankLocked = false;
@@ -103,8 +103,9 @@ public class playerProprieties : MonoBehaviour
             currentTime = currentTime + 20;
             Destroy(other.gameObject);
         }
-        if(other.gameObject.tag == "Obstacle")
+        if(other.gameObject.tag == "obs")
         {
+            Destroy(other.gameObject);
             if(vehicleType == "Standard")
             {
                 playerLifeStandard = playerLifeStandard - 1;
@@ -134,39 +135,42 @@ public class playerProprieties : MonoBehaviour
         {
             standardLocked = true;
             SButton.GetComponent<Button>().enabled = false;
+            SButton.GetComponent<Image>().color = lockedColor;
             if(playerLifeTank > 0)
             {
-                vehicleType = "Tank";
+                vehicleButtonTank();
             }
             else
             {
-                vehicleType = "Fast";
+                vehicleButtonFast();
             }
         }
         if(playerLifeTank == 0 && !tankLocked)
         {
             tankLocked = true;
             TButton.GetComponent<Button>().enabled = false;
+            TButton.GetComponent<Image>().color = lockedColor;
             if(playerLifeFast > 0)
             {
-                vehicleType = "Fast";
+                vehicleButtonFast();
             }
             else
             {
-                vehicleType = "Standard";
+                vehicleButtonStandard();
             }
         }
         if(playerLifeFast == 0 && !fastLocked)
         {
             fastLocked = true;
             FButton.GetComponent<Button>().enabled = false;
+            FButton.GetComponent<Image>().color = lockedColor;
             if(playerLifeStandard > 0)
             {
-                vehicleType = "Standard";
+                vehicleButtonStandard();
             }
             else
             {
-                vehicleType = "Tank";
+                vehicleButtonTank();
             }
         }
 

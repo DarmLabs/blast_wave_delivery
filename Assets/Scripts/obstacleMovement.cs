@@ -6,6 +6,12 @@ public class obstacleMovement : MonoBehaviour
 {
     new Rigidbody rigidbody;
     public float speed;
-    void Start(){rigidbody = GetComponent<Rigidbody>();}
-    void Update(){rigidbody.velocity = new Vector3 (0, 0, -speed);}
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+    void Update()
+    {
+        rigidbody.velocity = new Vector3 (0, 0, -speed);
+    }
 }
