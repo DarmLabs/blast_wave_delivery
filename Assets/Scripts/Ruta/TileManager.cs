@@ -8,7 +8,7 @@ public class TileManager : MonoBehaviour
     public GameObject[] tilePrefabs;
     private Transform playerTransform;
     private float spawnZ = 0f;
-    private float tileLength = 30f;
+    private float tileLength = 60f;
     private int amnTilesOnScreen = 5;
     private GameObject go;
     private int lastPrefabIndex = 0;    
@@ -41,7 +41,7 @@ public class TileManager : MonoBehaviour
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
 
         //ACA SE ACTIVA EL CHECKPOINT
-        if (tileCounter == 9)
+       if (tileCounter == 9)
         {
            go.transform.GetChild(0).gameObject.SetActive(true);
            checkpointCounter+=1;
