@@ -96,7 +96,11 @@ public class Gameplay_Manager : MonoBehaviour
     {
         panel.SetActive(true);
         panel.transform.GetChild(1).gameObject.SetActive(true);
-        Time.timeScale = 1;
+        Time.timeScale = 0;
+    }
+    public void LifeAdd()
+    {
+        LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.GetComponent<Image>().color = unactiveColor;
     }
     public void LifeDiscount()
     {
