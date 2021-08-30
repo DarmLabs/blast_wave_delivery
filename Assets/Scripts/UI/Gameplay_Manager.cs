@@ -12,6 +12,10 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject SButton;
     public GameObject FButton;
     public GameObject TButton;
+    public GameObject tunnelEffect;
+    Color32 activeColor = new Color32(148, 214, 255, 255);
+    Color32 unactiveColor = new Color32(255, 255, 255, 255);
+    Color32 lockedColor = new Color32(106, 106, 106, 255);
     //Link moto
     public GameObject Moto;
     playerProprieties playerProprieties;
@@ -22,12 +26,23 @@ public class Gameplay_Manager : MonoBehaviour
     public Text fuelText;
     float minutes; //Display de minutos en el texto
     float seconds; //Display de segundos en el texto
+    //Audio
+    GameObject AudioController;
+    AudioController audioController;
     
     void Start()
     {
         Time.timeScale = 1;
+        AudioController = GameObject.Find("AudioController");
+        if(AudioController != null)
+        {
+            audioController = AudioController.GetComponent<AudioController>();
+            audioController.MusicChecker();
+            audioController.LoadElements();
+        }
         ClosePauseScreen();
         playerProprieties = Moto.GetComponent<playerProprieties>();
+
     }
     void Update()
     {
@@ -85,10 +100,61 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void LifeDiscount()
     {
-        LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.GetComponent<Image>().color = playerProprieties.lockedColor;
+        LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.GetComponent<Image>().color = lockedColor;
     }
     public void ExitToMainMenu()
     {
         SceneManager.LoadScene("Main_Menu");
+    }
+    public void vehicleButtonStandard()
+    {
+        if(audioController != null)
+        {
+            audioController.musicMixer.SetFloat("MusicPitch", 1f);
+        }
+        SButton.GetComponent<Image>().color = activeColor;
+        tunnelEffect.GetComponent<Animator>().Play("StandardEffect");
+        if(TButton.GetComponent<Image>().color != lockedColor)
+        {
+            TButton.GetComponent<Image>().color = unactiveColor;
+        }
+        if(FButton.GetComponent<Image>().color != lockedColor)
+        {
+            FButton.GetComponent<Image>().color = unactiveColor;
+        }
+    }
+    public void vehicleButtonFast()
+    {
+        if(audioController != null)
+        {
+            audioController.musicMixer.SetFloat("MusicPitch", 1.25f);
+        }
+        FButton.GetComponent<Image>().color = activeColor;
+        tunnelEffect.GetComponent<Animator>().Play("FastEffect");
+        if(TButton.GetComponent<Image>().color != lockedColor)
+        {
+            TButton.GetComponent<Image>().color = unactiveColor;
+        }
+        if(SButton.GetComponent<Image>().color != lockedColor)
+        {
+            SButton.GetComponent<Image>().color = unactiveColor;
+        }
+    }
+    public void vehicleButtonTank()
+    {
+        if(audioController != null)
+        {
+            audioController.musicMixer.SetFloat("MusicPitch", 0.75f);
+        }
+        TButton.GetComponent<Image>().color = activeColor;
+        tunnelEffect.GetComponent<Animator>().Play("TankEffect");
+        if(SButton.GetComponent<Image>().color != lockedColor)
+        {
+            SButton.GetComponent<Image>().color = unactiveColor;
+        }
+        if(FButton.GetComponent<Image>().color != lockedColor)
+        {
+            FButton.GetComponent<Image>().color = unactiveColor;
+        }
     }
 }

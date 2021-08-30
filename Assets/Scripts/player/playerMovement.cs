@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class playerMovementHorizontal : MonoBehaviour
+public class playerMovement : MonoBehaviour
 {
     public Rigidbody rb;
     public float speedx = 60;

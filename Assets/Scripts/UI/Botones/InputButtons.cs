@@ -13,22 +13,22 @@ public class InputButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if(gameObject.name == "Right")
         {
-            player.GetComponent<playerMovementHorizontal>().goingRight = true;
+            player.GetComponent<playerMovement>().goingRight = true;
         }
         if(gameObject.name == "Left")
         {
-            player.GetComponent<playerMovementHorizontal>().goingLeft = true;
+            player.GetComponent<playerMovement>().goingLeft = true;
         }
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         if(gameObject.name == "Right")
         {
-            player.GetComponent<playerMovementHorizontal>().goingRight = false;
+            player.GetComponent<playerMovement>().goingRight = false;
         }
         if(gameObject.name == "Left")
         {
-            player.GetComponent<playerMovementHorizontal>().goingLeft = false;
+            player.GetComponent<playerMovement>().goingLeft = false;
         }
     }
 }
