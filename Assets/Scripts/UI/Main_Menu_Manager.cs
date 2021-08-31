@@ -2,28 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class Main_Menu_Manager : MonoBehaviour
 {
-    public GameObject Panel;
+    public GameObject shopScreen;
+    public GameObject modeScreen;
+    string modeName;
     public GameObject Main;
     GameObject slider;
     bool music;
     bool sfx;
+    
     public void PlayButton()
     {
-        SceneManager.LoadScene("Carretera");
-    }
-    public void ShopButton()
-    {
-        if(Panel.activeSelf == false)
+        if(modeScreen.activeSelf == false)
         {
-            Panel.SetActive(true);
+            modeScreen.SetActive(true);
             Main.SetActive(false);
         }
         else
         {
-            Panel.SetActive(false);
+            modeScreen.SetActive(false);
+            Main.SetActive(true);
+        }
+    }
+    public void LoadMode()
+    {
+        modeName = EventSystem.current.currentSelectedGameObject.name;
+        SceneManager.LoadScene(modeName);
+    }
+    public void ShopButton()
+    {
+        if(shopScreen.activeSelf == false)
+        {
+            shopScreen.SetActive(true);
+            Main.SetActive(false);
+        }
+        else
+        {
+            shopScreen.SetActive(false);
             Main.SetActive(true);
         }
     }

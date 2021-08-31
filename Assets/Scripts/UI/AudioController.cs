@@ -51,7 +51,7 @@ public class AudioController : MonoBehaviour
         {
             transform.Find("Music/MusicMenu1").GetComponent<AudioSource>().Play();
         }
-        if(SceneManager.GetActiveScene().name == "Carretera")
+        if(SceneManager.GetActiveScene().name == "ModoEndless")
         {
             transform.Find("Music/MusicGameplay1").GetComponent<AudioSource>().Play();
         }
