@@ -12,7 +12,7 @@ public class TileManager : MonoBehaviour
     private int amnTilesOnScreen = 5;
     private GameObject go;
     private int lastPrefabIndex = 0;    
-    private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
+    private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false;//, visualSet5 = false; 
     private int tileCounter = 0;
     private int checkpointCounter = 0;
     #endregion   
@@ -43,9 +43,9 @@ public class TileManager : MonoBehaviour
         //ACA SE ACTIVA EL CHECKPOINT
        if (tileCounter == 9)
         {
-           go.transform.GetChild(0).gameObject.SetActive(true);
+           //go.transform.GetChild(0).gameObject.SetActive(true);
            checkpointCounter+=1;
-           //Debug.Log("Checkpoint Activo:"+checkpointCounter);
+           Debug.Log("Checkpoint Activo:"+checkpointCounter);
         }
 
         go.transform.SetParent(transform);
@@ -65,24 +65,25 @@ public class TileManager : MonoBehaviour
             //randomIndex =Random.Range(0,tilePrefabs.Length);
             if (visualSet1)
             {
-                randomIndex = Random.Range(0,2);
+                randomIndex = Random.Range(0,4);
             }
              if (visualSet2)
             {
-                randomIndex = Random.Range(2,4);
+                randomIndex = Random.Range(5,9);
             }
              if (visualSet3)
             {
-                randomIndex = Random.Range(4,6);
+                randomIndex = Random.Range(10,14);
             }
              if (visualSet4)
             {
-                randomIndex = Random.Range(6,8);
+                //randomIndex = Random.Range(6,8);
+                randomIndex = 15;
             }
-             if (visualSet5)
-            {
-                randomIndex = Random.Range(8,10);
-            }
+          //   if (visualSet5)
+           // {
+          //      randomIndex = Random.Range(8,10);
+          //  }
                        
         }
         lastPrefabIndex=randomIndex;
@@ -97,7 +98,7 @@ public class TileManager : MonoBehaviour
             visualSet2=false;
             visualSet3=false;
             visualSet4=false;
-            visualSet5=false;
+            //visualSet5=false;
             //Debug.Log("SET 1");
         }
         if (tileCounter==40)
@@ -106,7 +107,7 @@ public class TileManager : MonoBehaviour
             visualSet2=true;
             visualSet3=false;
             visualSet4=false;
-            visualSet5=false;
+            //visualSet5=false;
             //Debug.Log("SET 2");
         }
         if (tileCounter==60)
@@ -115,7 +116,7 @@ public class TileManager : MonoBehaviour
             visualSet2=false;
             visualSet3=true;
             visualSet4=false;
-            visualSet5=false;
+            //visualSet5=false;
             //Debug.Log("SET 3");
         }
         if (tileCounter==80)
@@ -124,10 +125,10 @@ public class TileManager : MonoBehaviour
             visualSet2=false;
             visualSet3=false;
             visualSet4=true;
-            visualSet5=false;
+            //visualSet5=false;
             //Debug.Log("SET 4");
         }
-        if (tileCounter==100)
+       /* if (tileCounter==100)
         {
             visualSet1=false;
             visualSet2=false;
@@ -135,7 +136,7 @@ public class TileManager : MonoBehaviour
             visualSet4=false;
             visualSet5=true;
             //Debug.Log("SET 5");
-        }        
+        }  */      
     }
 
     /*
