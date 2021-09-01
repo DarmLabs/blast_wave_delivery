@@ -101,7 +101,7 @@ public class TileManager : MonoBehaviour
             //visualSet5=false;
             //Debug.Log("SET 1");
         }
-        if (tileCounter==40)
+        if (tileCounter==15)
         {
             visualSet1=false;
             visualSet2=true;
@@ -110,7 +110,7 @@ public class TileManager : MonoBehaviour
             //visualSet5=false;
             //Debug.Log("SET 2");
         }
-        if (tileCounter==60)
+        if (tileCounter==30)
         {
             visualSet1=false;
             visualSet2=false;
@@ -119,7 +119,7 @@ public class TileManager : MonoBehaviour
             //visualSet5=false;
             //Debug.Log("SET 3");
         }
-        if (tileCounter==80)
+        if (tileCounter==45)
         {
             visualSet1=false;
             visualSet2=false;
