@@ -9,7 +9,7 @@ public class TileManager : MonoBehaviour
     private Transform playerTransform;
     private float spawnZ = 0f;
     private float tileLength = 60f;
-    private int amnTilesOnScreen = 5;
+    private int amnTilesOnScreen = 8;
     private GameObject go;
     private int lastPrefabIndex = 0;    
     private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false;//, visualSet5 = false; 
@@ -77,9 +77,9 @@ public class TileManager : MonoBehaviour
             }
              if (visualSet4)
             {
-                //randomIndex = Random.Range(6,8);
-                randomIndex = 15;
+                randomIndex = Random.Range(15,19);
             }
+                
           //   if (visualSet5)
            // {
           //      randomIndex = Random.Range(8,10);
