@@ -32,7 +32,7 @@ public class playerProprieties : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gameplay_Manager.GameOver();
         }
         //Contador de combustible y reinicia escena si llega a 0
         if(currentFuel >= 0)
@@ -41,7 +41,7 @@ public class playerProprieties : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gameplay_Manager.GameOver();
         }
     }
     void OnTriggerEnter(Collider other) //Trigger para la deteccion de recolectables
@@ -72,6 +72,7 @@ public class playerProprieties : MonoBehaviour
         if(other.gameObject.tag == "Pizza")
         {
             currentPizzas = currentPizzas + 1;
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "Checkpoint")
         {

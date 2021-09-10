@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class spawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject spawn1;
     public GameObject spawn2;
     public GameObject spawn3;
@@ -26,8 +25,17 @@ public class spawnManager : MonoBehaviour
     // private int cantidadSpawners;
     // Transform[] spawnersDisponibles;
     public GameObject Moto;
+
+    //Variables Recolectables
+    public GameObject [] spawnsRec;
+    int Spawner;
+    int cantPizzas;
+    int loop;
+    public GameObject pizzaPrefab;
     void Start()
     {
+        spawnsRec = GameObject.FindGameObjectsWithTag("recSpawner");
+        selectSpawner();
         // spawn1 = GameObject.Find("s1");
         // spawn2 = GameObject.Find("s2");
         // spawn3 = GameObject.Find("s3");
@@ -47,8 +55,6 @@ public class spawnManager : MonoBehaviour
     {
         transform.Translate(0,0, Moto.GetComponent<playerMovement>().speedz * (Time.deltaTime * Moto.GetComponent<playerMovement>().speedMultiplier));
     }
-
-
     void spawnIzq(){
         var auxI = Random.Range(1, 3);
 
@@ -120,4 +126,29 @@ public class spawnManager : MonoBehaviour
 
     //     Instantiate(prefabObstaculo, new Vector3(spawnLocation.x,spawnLocation.y,spawnLocation.z), Quaternion.identity); // Instancia el obstaculo en la posicion del spawner elegido
     // }
+    void selectSpawner()
+    {
+        Spawner = Random.Range(0,5);
+        cantPizzas = Random.Range(3,8);
+        spawnPizza();
+    }
+    void spawnPizza()
+    {
+        Instantiate(pizzaPrefab, spawnsRec[Spawner].transform.position, Quaternion.identity);
+        StartCoroutine(timeBetweenPizzas(0.3f));
+    }
+    IEnumerator timeBetweenPizzas(float secs)
+    {
+        yield return new WaitForSeconds(secs);
+        if(loop > cantPizzas)
+        {
+            spawnPizza();
+            loop = loop +1;
+        }
+        else
+        {
+            loop = 0;
+            selectSpawner();
+        }
+    }
 }
