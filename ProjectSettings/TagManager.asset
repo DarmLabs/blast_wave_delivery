@@ -11,6 +11,8 @@ TagManager:
   - Time
   - Checkpoint
   - obs
+  - Pizza
+  - recSpawner
   layers:
   - Default
   - TransparentFX

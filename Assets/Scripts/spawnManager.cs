@@ -28,9 +28,9 @@ public class spawnManager : MonoBehaviour
 
     //Variables Recolectables
     public GameObject [] spawnsRec;
-    int Spawner;
-    int cantPizzas;
-    int loop;
+    public int Spawner;
+    public int cantPizzas;
+    public int loop;
     public GameObject pizzaPrefab;
     void Start()
     {
@@ -129,18 +129,18 @@ public class spawnManager : MonoBehaviour
     void selectSpawner()
     {
         Spawner = Random.Range(0,5);
-        cantPizzas = Random.Range(3,8);
+        cantPizzas = Random.Range(3,6);
         spawnPizza();
     }
     void spawnPizza()
     {
         Instantiate(pizzaPrefab, spawnsRec[Spawner].transform.position, Quaternion.identity);
-        StartCoroutine(timeBetweenPizzas(0.3f));
+        StartCoroutine(timeBetweenPizzas(0.2f));
     }
     IEnumerator timeBetweenPizzas(float secs)
     {
         yield return new WaitForSeconds(secs);
-        if(loop > cantPizzas)
+        if(loop < cantPizzas)
         {
             spawnPizza();
             loop = loop +1;
@@ -150,5 +150,10 @@ public class spawnManager : MonoBehaviour
             loop = 0;
             selectSpawner();
         }
+    }
+    IEnumerator timeBetweenRows(float secs)
+    {
+        yield return new WaitForSeconds(secs);
+        selectSpawner();
     }
 }

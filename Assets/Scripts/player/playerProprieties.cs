@@ -15,12 +15,15 @@ public class playerProprieties : MonoBehaviour
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
     public string vehicleType;
     public int generalLife = 3;
+    public bool inmune;
     public Camera cam;
     public GameObject UI_Manager;
     Gameplay_Manager gameplay_Manager;
+    Animator MotoAnimator;
     void Start()
     {
         gameplay_Manager = UI_Manager.GetComponent<Gameplay_Manager>();
+        MotoAnimator = GetComponentInChildren<Animator>();
         vehicleStandard();
     }
     void Update()
@@ -42,6 +45,14 @@ public class playerProprieties : MonoBehaviour
         else
         {
             gameplay_Manager.GameOver();
+        }
+        if(inmune)
+        {
+            MotoAnimator.SetBool("inmune", true);
+        }
+        else
+        {
+            MotoAnimator.SetBool("inmune", false);
         }
     }
     void OnTriggerEnter(Collider other) //Trigger para la deteccion de recolectables
@@ -67,7 +78,10 @@ public class playerProprieties : MonoBehaviour
         if(other.gameObject.tag == "obs")
         {
             Destroy(other.gameObject);
-            vehicleLifeCondition();
+            if(!inmune)
+            {
+                vehicleLifeCondition();
+            }
         }
         if(other.gameObject.tag == "Pizza")
         {
@@ -86,10 +100,18 @@ public class playerProprieties : MonoBehaviour
     {
         generalLife = generalLife -1;
         gameplay_Manager.LifeDiscount();
+        inmune = true;
+        StartCoroutine(inmuneTime(2));
         if(generalLife == 0)
         {
             gameplay_Manager.GameOver();
         }
+    }
+    IEnumerator inmuneTime(int secs)
+    {
+        Debug.Log("?");
+        yield return new WaitForSeconds(secs);
+        inmune = false;
     }
     public void vehicleStandard()
     {
