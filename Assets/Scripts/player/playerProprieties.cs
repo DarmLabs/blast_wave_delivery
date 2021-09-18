@@ -8,8 +8,8 @@ public class playerProprieties : MonoBehaviour
 {
     public float currentFuel = 200; //Cantidad de combustible que posee la moto en el momento
     int maxFuel = 200; //Cantidad de combustible maximo que la moto puede tener
-    int currentPizzas;
-    int generalPizzas;
+    public int currentPizzas;
+    public int generalPizzas;
     float emptyFuel; //Cantidad de combustible faltante para llegar al maximo
     float fuelConsumption;
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
@@ -109,7 +109,6 @@ public class playerProprieties : MonoBehaviour
     }
     IEnumerator inmuneTime(int secs)
     {
-        Debug.Log("?");
         yield return new WaitForSeconds(secs);
         inmune = false;
     }
