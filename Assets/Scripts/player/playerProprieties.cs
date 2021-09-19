@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class playerProprieties : MonoBehaviour
 {
-    public float currentFuel = 200; //Cantidad de combustible que posee la moto en el momento
-    int maxFuel = 200; //Cantidad de combustible maximo que la moto puede tener
+    public float currentFuel = 300; //Cantidad de combustible que posee la moto en el momento
+    int maxFuel = 300; //Cantidad de combustible maximo que la moto puede tener
     public int currentPizzas;
     public int generalPizzas;
     float emptyFuel; //Cantidad de combustible faltante para llegar al maximo
@@ -59,6 +59,8 @@ public class playerProprieties : MonoBehaviour
     {
         if(other.gameObject.tag == "Fuel") //Detecto si es fuel
         {
+            currentFuel = 300;
+            /*
             emptyFuel = maxFuel - currentFuel; //Obtengo cuanta fuel falta para llenar el tanque
             if(emptyFuel < 20) //Si el fuel que falta para llenar el tanque en menor a 20
             {
@@ -67,7 +69,7 @@ public class playerProprieties : MonoBehaviour
             else
             {
                 currentFuel = currentFuel + 20; //Aplico 20 de fuel
-            }
+            }*/
             Destroy(other.gameObject); //Destruyo el recolectable
         }
         if(other.gameObject.tag == "Time") //Detecto si es tiempo
@@ -115,7 +117,7 @@ public class playerProprieties : MonoBehaviour
     public void vehicleStandard()
     {
         vehicleType = "Standard";
-        fuelConsumption = 1;
+        fuelConsumption = 2;
         gameObject.GetComponent<playerMovement>().speedMultiplier = 1;
         gameObject.GetComponent<playerMovement>().HMultiplier = 1;
         cam.fieldOfView = 75;
@@ -124,7 +126,7 @@ public class playerProprieties : MonoBehaviour
     public void vehicleFast()
     {
         vehicleType = "Fast";
-        fuelConsumption = 1.5f;
+        fuelConsumption = 6f;
         gameObject.GetComponent<playerMovement>().speedMultiplier = 1.5f;
         gameObject.GetComponent<playerMovement>().HMultiplier = 1;
         cam.fieldOfView = 85;
@@ -133,7 +135,7 @@ public class playerProprieties : MonoBehaviour
     public void vehicleTank()
     {
         vehicleType = "Tank";
-        fuelConsumption = 0.5f;
+        fuelConsumption = 1.5f;
         gameObject.GetComponent<playerMovement>().speedMultiplier = 1f;
         gameObject.GetComponent<playerMovement>().HMultiplier = 0.8f;
         cam.fieldOfView = 75;

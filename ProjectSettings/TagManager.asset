@@ -12,7 +12,8 @@ TagManager:
   - Checkpoint
   - obs
   - Pizza
-  - recSpawner
+  - coinSpawner
+  - fuelSpawner
   layers:
   - Default
   - TransparentFX

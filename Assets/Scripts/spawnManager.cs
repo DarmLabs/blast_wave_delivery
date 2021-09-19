@@ -27,15 +27,25 @@ public class spawnManager : MonoBehaviour
     public GameObject Moto;
 
     //Variables Recolectables
-    public GameObject [] spawnsRec;
-    public int Spawner;
-    public int cantPizzas;
-    public int loop;
+        //Pizzas
+    public GameObject [] spawnsP;
+    public int SpawnerP;
+    int cantPizzas;
+    int loop;
     public GameObject pizzaPrefab;
+        //Combustible
+    public GameObject [] spawnsF;
+    public int SpawnerF;
+    int waitingTime;
+    public GameObject fuelPrefab;
+    bool spawnFactive = false;
     void Start()
     {
-        spawnsRec = GameObject.FindGameObjectsWithTag("recSpawner");
-        selectSpawner();
+        //for Coins
+        spawnsP = GameObject.FindGameObjectsWithTag("coinSpawner");
+        selectPSpawner();
+        //for Fuel
+        spawnsF = GameObject.FindGameObjectsWithTag("fuelSpawner");
         // spawn1 = GameObject.Find("s1");
         // spawn2 = GameObject.Find("s2");
         // spawn3 = GameObject.Find("s3");
@@ -54,6 +64,7 @@ public class spawnManager : MonoBehaviour
     void Update()
     {
         transform.Translate(0,0, Moto.GetComponent<playerMovement>().speedz * (Time.deltaTime * Moto.GetComponent<playerMovement>().speedMultiplier));
+        selectFSpawner();
     }
     void spawnIzq(){
         var auxI = Random.Range(1, 3);
@@ -126,15 +137,16 @@ public class spawnManager : MonoBehaviour
 
     //     Instantiate(prefabObstaculo, new Vector3(spawnLocation.x,spawnLocation.y,spawnLocation.z), Quaternion.identity); // Instancia el obstaculo en la posicion del spawner elegido
     // }
-    void selectSpawner()
+    //Spawns Pizzas
+    void selectPSpawner()
     {
-        Spawner = Random.Range(0,5);
+        SpawnerP = Random.Range(0, spawnsP.Length);
         cantPizzas = Random.Range(3,6);
-        spawnPizza();
+        spawnCoin();
     }
-    void spawnPizza()
+    void spawnCoin()
     {
-        Instantiate(pizzaPrefab, spawnsRec[Spawner].transform.position, Quaternion.identity);
+        Instantiate(pizzaPrefab, spawnsP[SpawnerP].transform.position, Quaternion.identity);
         StartCoroutine(timeBetweenPizzas(0.2f));
     }
     IEnumerator timeBetweenPizzas(float secs)
@@ -142,18 +154,37 @@ public class spawnManager : MonoBehaviour
         yield return new WaitForSeconds(secs);
         if(loop < cantPizzas)
         {
-            spawnPizza();
+            spawnCoin();
             loop = loop +1;
         }
         else
         {
             loop = 0;
-            selectSpawner();
+            selectPSpawner();
         }
     }
     IEnumerator timeBetweenRows(float secs)
     {
         yield return new WaitForSeconds(secs);
-        selectSpawner();
+        selectPSpawner();
+    }
+    //Spawn Fuel
+    void selectFSpawner()
+    {
+        if(Moto.GetComponent<playerProprieties>().currentFuel < 200 && !spawnFactive)
+        {
+            Debug.Log("seleccionoSpawner");
+            spawnFactive = true;
+            SpawnerF = Random.Range(0, spawnsF.Length+1);
+            waitingTime = Random.Range(10,15);
+            StartCoroutine(timeBetweenSpawn(waitingTime));
+        }
+    }
+    IEnumerator timeBetweenSpawn(int secs)
+    {
+        yield return new WaitForSeconds(secs);
+        Debug.Log("spawneo");
+        Instantiate(fuelPrefab, spawnsF[SpawnerF].transform.position, Quaternion.identity);
+        spawnFactive = false;
     }
 }
