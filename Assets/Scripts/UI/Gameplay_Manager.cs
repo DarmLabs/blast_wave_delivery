@@ -27,6 +27,7 @@ public class Gameplay_Manager : MonoBehaviour
     public Text timerText;
     public Text fuelText;
     public Text coins;
+    public Text safeCoins;
     float minutes; //Display de minutos en el texto
     float seconds; //Display de segundos en el texto
     //Audio
@@ -104,6 +105,7 @@ public class Gameplay_Manager : MonoBehaviour
     {
         panel.SetActive(true);
         panel.transform.GetChild(1).gameObject.SetActive(true);
+        safeCoins.text = "Monedas Aseguradas: " + playerProprieties.generalPizzas;
         Time.timeScale = 0;
     }
     public void LifeAdd()

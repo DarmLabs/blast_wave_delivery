@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class playerProprieties : MonoBehaviour
 {
     public float currentFuel = 300; //Cantidad de combustible que posee la moto en el momento
-    int maxFuel = 300; //Cantidad de combustible maximo que la moto puede tener
+    //int maxFuel = 300; //Cantidad de combustible maximo que la moto puede tener
     public int currentPizzas;
     public int generalPizzas;
     float emptyFuel; //Cantidad de combustible faltante para llegar al maximo
