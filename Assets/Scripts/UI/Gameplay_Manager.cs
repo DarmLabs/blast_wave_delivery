@@ -110,7 +110,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void LifeAdd()
     {
-        LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.GetComponent<Image>().color = unactiveColor;
+        LifeCont.transform.GetChild(playerProprieties.generalLife-1).gameObject.GetComponent<Image>().color = unactiveColor;
     }
     public void LifeDiscount()
     {

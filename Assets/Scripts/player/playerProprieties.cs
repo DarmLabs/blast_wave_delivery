@@ -94,8 +94,11 @@ public class playerProprieties : MonoBehaviour
         {
             generalPizzas = generalPizzas + currentPizzas;
             currentPizzas = 0;
-            generalLife = generalLife + 1;
-            gameplay_Manager.LifeAdd();
+            if(generalLife != 3)
+            {
+                generalLife = generalLife + 1;
+                gameplay_Manager.LifeAdd();
+            }
         }
     }
     void vehicleLifeCondition()

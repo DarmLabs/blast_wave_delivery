@@ -68,7 +68,6 @@ public class spawnManager : MonoBehaviour
     {
         if(Moto.GetComponent<playerProprieties>().currentFuel < 200 && !spawnFactive)
         {
-            Debug.Log("seleccionoSpawner");
             spawnFactive = true;
             SpawnerF = Random.Range(0, 2);
             waitingTime = Random.Range(10,15);
@@ -78,7 +77,6 @@ public class spawnManager : MonoBehaviour
     IEnumerator timeBetweenSpawn(int secs)
     {
         yield return new WaitForSeconds(secs);
-        Debug.Log("spawneo");
         Instantiate(fuelPrefab, spawnsF[SpawnerF].transform.position, Quaternion.identity);
         spawnFactive = false;
     }
