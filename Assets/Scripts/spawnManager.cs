@@ -66,7 +66,7 @@ public class spawnManager : MonoBehaviour
         transform.Translate(0,0, Moto.GetComponent<playerMovement>().speedz * (Time.deltaTime * Moto.GetComponent<playerMovement>().speedMultiplier));
         selectFSpawner();
     }
-    void spawnIzq(){
+   /* void spawnIzq(){
         var auxI = Random.Range(1, 3);
 
         if(auxI == 1){
@@ -86,9 +86,9 @@ public class spawnManager : MonoBehaviour
         }else{
             Instantiate(prefabIzq, new Vector3(spawn2.transform.position.x, spawn2.transform.position.y, spawn2.transform.position.z), Quaternion.identity); // Instancia el obstaculo en la posicion del spawner elegido
         }
-    }
+    }*/
 
-    void spawnDer(){
+    /*void spawnDer(){
         var auxD = Random.Range(1, 3);
 
         if(auxD == 1){
@@ -107,7 +107,7 @@ public class spawnManager : MonoBehaviour
         }else{
             Instantiate(prefabDer, new Vector3(spawn4.transform.position.x, spawn4.transform.position.y, spawn4.transform.position.z), Quaternion.identity); // Instancia el obstaculo en la posicion del spawner elegido
         }
-    }
+    }*/
 
     // void spawnObstacle(){
     //     var spawnSeleccionado = Random.Range(1, cantidadSpawners); // Selecciono aleatoreamente el spawner
