@@ -14,6 +14,7 @@ public class TileManager : MonoBehaviour
     private int lastPrefabIndex = 0;    
     private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false;//, visualSet5 = false; 
     private int tileCounter = 0;
+    private int contadorHastaCheck = 0;
     private int checkpointCounter = 0;
     #endregion   
   
@@ -41,17 +42,20 @@ public class TileManager : MonoBehaviour
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
 
         //ACA SE ACTIVA EL CHECKPOINT
-       if (tileCounter == 9)
+        if (contadorHastaCheck == Random.Range(9,14))
         {
            go.transform.GetChild(1).gameObject.SetActive(true);
            checkpointCounter+=1;
-           Debug.Log("Checkpoint Activo:"+checkpointCounter);
+           contadorHastaCheck=0;
+           Debug.Log("Checkpoint Activo:"+contadorHastaCheck+"tiles:"+tileCounter);
         }
+        
 
         go.transform.SetParent(transform);
         go.transform.position=Vector3.forward*spawnZ;
         spawnZ+=tileLength;
         tileCounter+=1;
+        contadorHastaCheck +=1;
         //Debug.Log("tiles:"+tileCounter);
     }
 
