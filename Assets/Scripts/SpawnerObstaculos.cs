@@ -6,8 +6,8 @@ public class SpawnerObstaculos : MonoBehaviour
 {
     public GameObject[] Obstaculos;
     public Transform[] spawnPoints;
-    private int indexObstaculos = 5;
-    private int indexPosicion = 5;
+    private int indexObstaculos = 6;
+    private int indexPosicion = 6;
     public float timeSpawn = 0.4f;
 
     
