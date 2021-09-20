@@ -43,7 +43,7 @@ public class TileManager : MonoBehaviour
         //ACA SE ACTIVA EL CHECKPOINT
        if (tileCounter == 9)
         {
-           go.transform.GetChild(0).gameObject.SetActive(true);
+           go.transform.GetChild(1).gameObject.SetActive(true);
            checkpointCounter+=1;
            Debug.Log("Checkpoint Activo:"+checkpointCounter);
         }
