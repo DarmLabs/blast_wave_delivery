@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7077590956885300297
 Transform:
@@ -97,6 +97,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Check_3 1
       objectReference: {fileID: 0}
+    - target: {fileID: 355952994797838613, guid: e7592bd6a292eb94fa7af8ed105c9483, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3692676428858814644, guid: e7592bd6a292eb94fa7af8ed105c9483, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -158,6 +162,10 @@ PrefabInstance:
     - target: {fileID: 2658419275767169650, guid: d6e503467238b484182bff7f16b194be, type: 3}
       propertyPath: m_Name
       value: CollidersTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658419275767169650, guid: d6e503467238b484182bff7f16b194be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4330156786452692812, guid: d6e503467238b484182bff7f16b194be, type: 3}
       propertyPath: m_RootOrder
