@@ -29,14 +29,14 @@ public class playerProprieties : MonoBehaviour
     void Update()
     {
         //Contador de tiempo y reinicia escena si llega a 0
-        if(currentTime >= 0)
+        /*if(currentTime >= 0)
         {
             currentTime -= Time.deltaTime;
         }
         else
         {
             gameplay_Manager.GameOver();
-        }
+        }*/
         //Contador de combustible y reinicia escena si llega a 0
         if(currentFuel >= 0)
         {
