@@ -1,0 +1,1 @@
+Estos tres botones corresponden a cada modo de la moto, el primero es el modo Rapido, el cual aumenta tu velocidad pero consume mucho combustible. El modo estandar el cual tiene una velocidad normal y consumo normal. Por ultimo el modo tanque el cual reduce tu consumo, velocidad y solo pierdes media vida al chocarte.

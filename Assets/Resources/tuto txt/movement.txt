@@ -1,0 +1,2 @@
+Genial! Empezemos por lo basico, para moverte a los lados usa las las flechas de direccion, la moto se mueve hacia adelante por defecto.
+"Siguiente - Boton"
