@@ -1764,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &375149338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,10 +1777,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72496e0ea4c47314f9dc175183a64117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObstaculosVan: []
-  ObstaculosVienen: []
-  spawnPointsVan: []
-  spawnPointsVienen: []
+  ObstaculosVan:
+  - {fileID: 1534698095}
+  - {fileID: 564762741}
+  - {fileID: 1190494960}
+  ObstaculosVienen:
+  - {fileID: 974680274}
+  - {fileID: 1437301617}
+  - {fileID: 766899053}
+  spawnPointsVan:
+  - {fileID: 1961501806}
+  - {fileID: 1249580992}
+  - {fileID: 1395548857}
+  spawnPointsVienen:
+  - {fileID: 629750268}
+  - {fileID: 1777178613}
+  - {fileID: 586395424}
   timeSpawn: 1
 --- !u!4 &375149339
 Transform:
@@ -1933,7 +1945,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421441691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72496e0ea4c47314f9dc175183a64117, type: 3}
   m_Name: 
