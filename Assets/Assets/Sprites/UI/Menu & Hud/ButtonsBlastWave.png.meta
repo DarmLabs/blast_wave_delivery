@@ -1,0 +1,768 @@
+fileFormatVersion: 2
+guid: 1c6a53aa87d3d2c4da984760184434bc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1697184113259469361
+    second: ButtonsBlastWave_0
+  - first:
+      213: 7398167741295851633
+    second: ButtonsBlastWave_1
+  - first:
+      213: -7439225390528410815
+    second: ButtonsBlastWave_2
+  - first:
+      213: 3275959197372503610
+    second: ButtonsBlastWave_3
+  - first:
+      213: 1642527060348291626
+    second: ButtonsBlastWave_4
+  - first:
+      213: 2673833979317802907
+    second: ButtonsBlastWave_5
+  - first:
+      213: -5958718428915702900
+    second: ButtonsBlastWave_6
+  - first:
+      213: -6034828049785417504
+    second: ButtonsBlastWave_7
+  - first:
+      213: -7512133623347886251
+    second: ButtonsBlastWave_8
+  - first:
+      213: 7251280355806927226
+    second: ButtonsBlastWave_9
+  - first:
+      213: -1649700935882714899
+    second: ButtonsBlastWave_10
+  - first:
+      213: 8663133470080222494
+    second: ButtonsBlastWave_11
+  - first:
+      213: 8133920141339482716
+    second: ButtonsBlastWave_12
+  - first:
+      213: -8595982572349618533
+    second: ButtonsBlastWave_13
+  - first:
+      213: -4462433119126838779
+    second: ButtonsBlastWave_14
+  - first:
+      213: 5632128705589309681
+    second: ButtonsBlastWave_15
+  - first:
+      213: 8073680054020105962
+    second: ButtonsBlastWave_16
+  - first:
+      213: -7966665621271846563
+    second: ButtonsBlastWave_17
+  - first:
+      213: 8379517472037530295
+    second: ButtonsBlastWave_18
+  - first:
+      213: -3671081935298184286
+    second: ButtonsBlastWave_19
+  - first:
+      213: -3476791172333802378
+    second: ButtonsBlastWave_20
+  - first:
+      213: -8896785881879522773
+    second: ButtonsBlastWave_21
+  - first:
+      213: -6589766706633081381
+    second: ButtonsBlastWave_22
+  - first:
+      213: -1884001634040961100
+    second: ButtonsBlastWave_23
+  - first:
+      213: 8091574502980564622
+    second: ButtonsBlastWave_24
+  - first:
+      213: 4014611431920798996
+    second: ButtonsBlastWave_25
+  - first:
+      213: -8573835917307195024
+    second: ButtonsBlastWave_26
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ButtonsBlastWave_0
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 1884
+        width: 386
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc5abb28a046278e0800000000000000
+      internalID: -1697184113259469361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_1
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 1873
+        width: 409
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17871b01d529ba660800000000000000
+      internalID: 7398167741295851633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_2
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 1890
+        width: 386
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14bcc790cef82c890800000000000000
+      internalID: -7439225390528410815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_3
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 1878
+        width: 408
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36df02888b867d20800000000000000
+      internalID: 3275959197372503610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_4
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 1403
+        width: 386
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2ac60ea8ad6bc610800000000000000
+      internalID: 1642527060348291626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_5
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 1391
+        width: 409
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b975b9d66dd5b1520800000000000000
+      internalID: 2673833979317802907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_6
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 1408
+        width: 386
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c83e7e7d8216e4da0800000000000000
+      internalID: -5958718428915702900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_7
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 1396
+        width: 408
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e01af3dcdbff3ca0800000000000000
+      internalID: -6034828049785417504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_8
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 617
+        width: 832
+        height: 643
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 557c413454a8fb790800000000000000
+      internalID: -7512133623347886251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_9
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 1087
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a79d3ae8019b1a460800000000000000
+      internalID: 7251280355806927226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_10
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 1072
+        width: 156
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0d4134db51b19e0800000000000000
+      internalID: -1649700935882714899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_11
+      rect:
+        serializedVersion: 2
+        x: 1662
+        y: 1069
+        width: 188
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15cde5edf1a93870800000000000000
+      internalID: 8663133470080222494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_12
+      rect:
+        serializedVersion: 2
+        x: 1927
+        y: 1069
+        width: 188
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a5fefe54d71e070800000000000000
+      internalID: 8133920141339482716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_13
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 867
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9607a7d46fe4b880800000000000000
+      internalID: -8595982572349618533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_14
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 845
+        width: 156
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 502a18c98b04212c0800000000000000
+      internalID: -4462433119126838779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_15
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 909
+        width: 690
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f07ee9a737592e40800000000000000
+      internalID: 5632128705589309681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_16
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 796
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae66602ab397b0070800000000000000
+      internalID: 8073680054020105962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_17
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 782
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5166cf93d7b07190800000000000000
+      internalID: -7966665621271846563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_18
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 672
+        width: 123
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bae9f58eb60a4470800000000000000
+      internalID: 8379517472037530295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_19
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 638
+        width: 156
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abb2391e62bd0dc0800000000000000
+      internalID: -3671081935298184286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_20
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 114
+        width: 572
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c64de79d4ffbfc0800000000000000
+      internalID: -3476791172333802378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_21
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 451
+        width: 123
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b225cdba064488480800000000000000
+      internalID: -8896785881879522773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_22
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 411
+        width: 156
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd707a28127c84a0800000000000000
+      internalID: -6589766706633081381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_23
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 132
+        width: 230
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b7abb6ee7eaad5e0800000000000000
+      internalID: -1884001634040961100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_24
+      rect:
+        serializedVersion: 2
+        x: 1625
+        y: 361
+        width: 535
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86b3c3b32c0b4070800000000000000
+      internalID: 8091574502980564622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_25
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 175
+        width: 146
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d8cd6b3d3c6b730800000000000000
+      internalID: 4014611431920798996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButtonsBlastWave_26
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 204
+        width: 535
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0715b6ac8ad930980800000000000000
+      internalID: -8573835917307195024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 27572cbb8fcf1fb4fa0e4c3f4fa23df0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
