@@ -13,6 +13,7 @@ public class Main_Menu_Manager : MonoBehaviour
     public GameObject musicSection;
     public GameObject modeScreen;
     GameObject previousTextMode;
+    bool firstTime = true;
     public GameObject endlessTexts;
     public GameObject endlessButton;
     public GameObject chillTexts;
@@ -25,7 +26,7 @@ public class Main_Menu_Manager : MonoBehaviour
     bool sfx;
     void Start()
     {
-        //selectMode();
+        selectMode();
     }
 
     public void setOffFirstScreen()
@@ -54,7 +55,7 @@ public class Main_Menu_Manager : MonoBehaviour
         }
         if(buttonPressed == "LeftArrow" && selectedMode != 0)
         {
-            selectedMode = selectedMode + 1;
+            selectedMode = selectedMode - 1;
         }
         selectMode();
     }
@@ -62,7 +63,11 @@ public class Main_Menu_Manager : MonoBehaviour
     {
         if(selectedMode == 0)
         {
-            previousTextMode.SetActive(false);
+            if(firstTime == false)
+            {
+                previousTextMode.SetActive(false);
+            }
+            firstTime = false;
             endlessTexts.SetActive(true);
             endlessButton.transform.SetSiblingIndex(1);
             previousTextMode = endlessTexts;
