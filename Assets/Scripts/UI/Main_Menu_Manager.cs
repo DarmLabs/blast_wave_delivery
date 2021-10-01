@@ -25,7 +25,7 @@ public class Main_Menu_Manager : MonoBehaviour
     bool sfx;
     void Start()
     {
-        selectMode();
+        //selectMode();
     }
 
     public void setOffFirstScreen()
