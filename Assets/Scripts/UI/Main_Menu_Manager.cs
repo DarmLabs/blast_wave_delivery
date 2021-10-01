@@ -6,15 +6,23 @@ using UnityEngine.EventSystems;
 
 public class Main_Menu_Manager : MonoBehaviour
 {
+    public GameObject firstScreen;
     public GameObject shopScreen;
+    public GameObject motoSection;
+    public GameObject pjSection;
+    public GameObject musicSection;
     public GameObject modeScreen;
-    string modeName;
+    string buttonPressed;
     public GameObject Main;
     GameObject slider;
     bool music;
     bool sfx;
-    
-    public void PlayButton()
+
+    public void setOffFirstScreen()
+    {
+        firstScreen.SetActive(false);
+    }
+    public void ModesButton()
     {
         if(modeScreen.activeSelf == false)
         {
@@ -29,8 +37,8 @@ public class Main_Menu_Manager : MonoBehaviour
     }
     public void LoadMode()
     {
-        modeName = EventSystem.current.currentSelectedGameObject.name;
-        SceneManager.LoadScene(modeName);
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        SceneManager.LoadScene(buttonPressed);
     }
     public void ShopButton()
     {
@@ -43,6 +51,26 @@ public class Main_Menu_Manager : MonoBehaviour
         {
             shopScreen.SetActive(false);
             Main.SetActive(true);
+        }
+    }
+    public void ShopSections()
+    {
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        if(buttonPressed == "Moto")
+        {
+            motoSection.transform.SetSiblingIndex(2);
+            pjSection.transform.SetSiblingIndex(1);
+            musicSection.transform.SetSiblingIndex(0);
+        }
+        if(buttonPressed == "Pj")
+        {
+            pjSection.transform.SetSiblingIndex(2);
+        }
+        if(buttonPressed == "Musica")
+        {
+            musicSection.transform.SetSiblingIndex(2);
+            pjSection.transform.SetSiblingIndex(1);
+            motoSection.transform.SetSiblingIndex(0);
         }
     }
     public void ExitButton()
