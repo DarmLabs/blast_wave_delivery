@@ -12,11 +12,21 @@ public class Main_Menu_Manager : MonoBehaviour
     public GameObject pjSection;
     public GameObject musicSection;
     public GameObject modeScreen;
+    GameObject previousTextMode;
+    public GameObject endlessTexts;
+    public GameObject endlessButton;
+    public GameObject chillTexts;
+    public GameObject chillButton;
     string buttonPressed;
+    int selectedMode;
     public GameObject Main;
     GameObject slider;
     bool music;
     bool sfx;
+    void Start()
+    {
+        selectMode();
+    }
 
     public void setOffFirstScreen()
     {
@@ -33,6 +43,36 @@ public class Main_Menu_Manager : MonoBehaviour
         {
             modeScreen.SetActive(false);
             Main.SetActive(true);
+        }
+    }
+    public void navigateMode()
+    {
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        if(buttonPressed == "RightArrow" && selectedMode != 1)
+        {
+            selectedMode = selectedMode + 1;
+        }
+        if(buttonPressed == "LeftArrow" && selectedMode != 0)
+        {
+            selectedMode = selectedMode + 1;
+        }
+        selectMode();
+    }
+    public void selectMode()
+    {
+        if(selectedMode == 0)
+        {
+            previousTextMode.SetActive(false);
+            endlessTexts.SetActive(true);
+            endlessButton.transform.SetSiblingIndex(1);
+            previousTextMode = endlessTexts;
+        }
+        if(selectedMode == 1)
+        {
+            previousTextMode.SetActive(false);
+            chillTexts.SetActive(true);
+            chillButton.transform.SetSiblingIndex(1);
+            previousTextMode = chillTexts;
         }
     }
     public void LoadMode()
