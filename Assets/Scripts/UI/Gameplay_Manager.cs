@@ -25,9 +25,9 @@ public class Gameplay_Manager : MonoBehaviour
     public Text fpsDisplay;
     public Text modeText;
     public Text timerText;
-    public Text fuelText;
+    public Text [] fuelTexts;
     public Text coins;
-    public Text safeCoins;
+    public Text [] safeCoinsTexts;
     float minutes; //Display de minutos en el texto
     float seconds; //Display de segundos en el texto
     //Audio
@@ -79,11 +79,18 @@ public class Gameplay_Manager : MonoBehaviour
     }
     void DisplayFuel()
     {
-        fuelText.text = playerProprieties.currentFuel.ToString("f0");
+        foreach (var fuelText in fuelTexts)
+        {
+            fuelText.text = playerProprieties.currentFuel.ToString("f0");
+        }
     }
     void DisplayCoins()
     {
         coins.text = playerProprieties.currentPizzas.ToString() + " / " + playerProprieties.generalPizzas.ToString();
+        foreach (var safeCoinsText in safeCoinsTexts)
+        {
+            safeCoinsText.text = playerProprieties.generalPizzas.ToString("f0");
+        }
     }
     public void OpenPauseScreen()
     {
@@ -105,7 +112,6 @@ public class Gameplay_Manager : MonoBehaviour
     {
         panel.SetActive(true);
         panel.transform.GetChild(1).gameObject.SetActive(true);
-        safeCoins.text = "Monedas Aseguradas: " + playerProprieties.generalPizzas;
         Time.timeScale = 0;
     }
     public void LifeAdd()

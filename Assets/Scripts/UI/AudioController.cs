@@ -22,6 +22,26 @@ public class AudioController : MonoBehaviour
         MusicChecker();
         LoadElements();
     }
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if(scene.buildIndex == 0)
+        {
+            LoadElements();
+            MusicChecker();
+        }
+        if(scene.buildIndex == 1)
+        {
+            LoadElements();
+            MusicChecker();
+        }
+    }
     public void LoadElements()
     {
         musicSlider = GameObject.Find("MusicSlider");
