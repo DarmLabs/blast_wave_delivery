@@ -12,6 +12,7 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject SButton;
     public GameObject FButton;
     public GameObject TButton;
+    public GameObject GOresumeButton;
     bool cooldown;
     bool firstTime = true;
     public GameObject tunnelEffect;
@@ -27,7 +28,7 @@ public class Gameplay_Manager : MonoBehaviour
     public Text timerText;
     public Text [] fuelTexts;
     public Text coins;
-    public Text [] safeCoinsTexts;
+    public Text safeCoinsText;
     float minutes; //Display de minutos en el texto
     float seconds; //Display de segundos en el texto
     //Audio
@@ -87,10 +88,10 @@ public class Gameplay_Manager : MonoBehaviour
     void DisplayCoins()
     {
         coins.text = playerProprieties.currentPizzas.ToString() + " / " + playerProprieties.generalPizzas.ToString();
-        foreach (var safeCoinsText in safeCoinsTexts)
-        {
+        //foreach (var safeCoinsText in safeCoinsTexts)
+        //{
             safeCoinsText.text = playerProprieties.generalPizzas.ToString("f0");
-        }
+        //}
     }
     public void OpenPauseScreen()
     {
@@ -113,6 +114,20 @@ public class Gameplay_Manager : MonoBehaviour
         panel.SetActive(true);
         panel.transform.GetChild(1).gameObject.SetActive(true);
         Time.timeScale = 0;
+        if(playerProprieties.generalPizzas <= 50)
+        {
+            GOresumeButton.GetComponent<Button>().enabled = false;
+            GOresumeButton.GetComponent<Image>().color = lockedColor;
+        }
+    }
+    public void ResumeGameOver()
+    {
+        playerProprieties.generalPizzas = playerProprieties.generalPizzas - 50;
+        playerProprieties.generalLife = 1;
+        LifeAdd();
+        panel.SetActive(false);
+        panel.transform.GetChild(1).gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
     public void LifeAdd()
     {
