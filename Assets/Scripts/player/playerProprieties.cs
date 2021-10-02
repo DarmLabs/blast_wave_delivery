@@ -94,23 +94,23 @@ public class playerProprieties : MonoBehaviour
         {
             generalPizzas = generalPizzas + currentPizzas;
             currentPizzas = 0;
-            if(generalLife != 3)
+            if(generalLife != 2)
             {
                 generalLife = generalLife + 1;
-                gameplay_Manager.LifeAdd();
+                gameplay_Manager.LifeChange();
             }
         }
     }
     void vehicleLifeCondition()
     {
         generalLife = generalLife -1;
-        gameplay_Manager.LifeDiscount();
         inmune = true;
         StartCoroutine(inmuneTime(2));
-        if(generalLife == 0)
+        if(generalLife == -1)
         {
             gameplay_Manager.GameOver();
         }
+        gameplay_Manager.LifeChange();
     }
     IEnumerator inmuneTime(int secs)
     {

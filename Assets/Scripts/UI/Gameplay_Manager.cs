@@ -9,6 +9,7 @@ public class Gameplay_Manager : MonoBehaviour
     //UI
     public GameObject panel;
     public GameObject LifeCont;
+    public GameObject previousLife;
     public GameObject SButton;
     public GameObject FButton;
     public GameObject TButton;
@@ -27,8 +28,9 @@ public class Gameplay_Manager : MonoBehaviour
     public Text modeText;
     public Text timerText;
     public Text [] fuelTexts;
+    public Slider fuelSlider;
     public Text coins;
-    public Text safeCoinsText;
+    public Text [] safeCoinsTexts;
     float minutes; //Display de minutos en el texto
     float seconds; //Display de segundos en el texto
     //Audio
@@ -47,7 +49,7 @@ public class Gameplay_Manager : MonoBehaviour
         }
         ClosePauseScreen();
         playerProprieties = Moto.GetComponent<playerProprieties>();
-
+        previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
     }
     void Update()
     {
@@ -84,14 +86,15 @@ public class Gameplay_Manager : MonoBehaviour
         {
             fuelText.text = playerProprieties.currentFuel.ToString("f0");
         }
+        fuelSlider.value = playerProprieties.currentFuel;
     }
     void DisplayCoins()
     {
-        coins.text = playerProprieties.currentPizzas.ToString() + " / " + playerProprieties.generalPizzas.ToString();
-        //foreach (var safeCoinsText in safeCoinsTexts)
-        //{
+        coins.text = playerProprieties.currentPizzas.ToString();
+        foreach (var safeCoinsText in safeCoinsTexts)
+        {
             safeCoinsText.text = playerProprieties.generalPizzas.ToString("f0");
-        //}
+        }
     }
     public void OpenPauseScreen()
     {
@@ -123,19 +126,17 @@ public class Gameplay_Manager : MonoBehaviour
     public void ResumeGameOver()
     {
         playerProprieties.generalPizzas = playerProprieties.generalPizzas - 50;
-        playerProprieties.generalLife = 1;
-        LifeAdd();
+        playerProprieties.generalLife = 0;
+        LifeChange();
         panel.SetActive(false);
         panel.transform.GetChild(1).gameObject.SetActive(false);
         Time.timeScale = 1;
     }
-    public void LifeAdd()
-    {
-        LifeCont.transform.GetChild(playerProprieties.generalLife-1).gameObject.GetComponent<Image>().color = unactiveColor;
-    }
-    public void LifeDiscount()
-    {
-        LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.GetComponent<Image>().color = lockedColor;
+    public void LifeChange()
+    {   
+        LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.SetActive(true);
+        previousLife.SetActive(false);
+        previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
     }
     public void ExitToMainMenu()
     {
