@@ -26,6 +26,7 @@ public class Main_Menu_Manager : MonoBehaviour
     bool sfx;
     void Start()
     {
+        Time.timeScale = 1;
         selectMode();
     }
 

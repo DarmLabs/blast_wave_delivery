@@ -55,7 +55,6 @@ public class Gameplay_Manager : MonoBehaviour
     
     void Start()
     {
-        Time.timeScale = 0;
         AudioController = GameObject.Find("AudioController");
         if(AudioController != null)
         {
@@ -63,6 +62,10 @@ public class Gameplay_Manager : MonoBehaviour
             audioController.MusicChecker();
             audioController.LoadElements();
         }
+        ClosePauseScreen();
+        panel.SetActive(true);
+        MainButtons.SetActive(false);
+        Time.timeScale = 0;
         playerProprieties = Moto.GetComponent<playerProprieties>();
         previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
     }
@@ -122,6 +125,7 @@ public class Gameplay_Manager : MonoBehaviour
         MainButtons.SetActive(false);
         panel.SetActive(true);
         panel.transform.GetChild(0).gameObject.SetActive(true);
+        MainButtons.SetActive(false);
         Time.timeScale = 0;
     }
     public void ClosePauseScreen()
@@ -129,6 +133,7 @@ public class Gameplay_Manager : MonoBehaviour
         MainButtons.SetActive(true);
         panel.SetActive(false);
         panel.transform.GetChild(0).gameObject.SetActive(false);
+        MainButtons.SetActive(true);
         Time.timeScale = 1;
     }
     public void Restart()
@@ -140,6 +145,7 @@ public class Gameplay_Manager : MonoBehaviour
         MainButtons.SetActive(false);
         panel.SetActive(true);
         panel.transform.GetChild(1).gameObject.SetActive(true);
+        MainButtons.SetActive(false);
         Time.timeScale = 0;
         if(playerProprieties.generalPizzas <= 50)
         {
@@ -155,6 +161,7 @@ public class Gameplay_Manager : MonoBehaviour
         LifeChange();
         panel.SetActive(false);
         panel.transform.GetChild(1).gameObject.SetActive(false);
+        MainButtons.SetActive(true);
         Time.timeScale = 1;
     }
     public void StartGame()
