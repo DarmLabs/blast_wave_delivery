@@ -33,15 +33,6 @@ public class playerProprieties : MonoBehaviour
     }
     void Update()
     {
-        //Contador de tiempo y reinicia escena si llega a 0
-        /*if(currentTime >= 0)
-        {
-            currentTime -= Time.deltaTime;
-        }
-        else
-        {
-            gameplay_Manager.GameOver();
-        }*/
         //Contador de combustible y reinicia escena si llega a 0
         if(currentFuel >= 0)
         {
@@ -65,16 +56,6 @@ public class playerProprieties : MonoBehaviour
         if(other.gameObject.tag == "Fuel") //Detecto si es fuel
         {
             currentFuel = 300;
-            /*
-            emptyFuel = maxFuel - currentFuel; //Obtengo cuanta fuel falta para llenar el tanque
-            if(emptyFuel < 20) //Si el fuel que falta para llenar el tanque en menor a 20
-            {
-                currentFuel = currentFuel + emptyFuel; //Aplico la cantidad que falta para llenar el tanque para que no sobrepase el maximo
-            }
-            else
-            {
-                currentFuel = currentFuel + 20; //Aplico 20 de fuel
-            }*/
             Destroy(other.gameObject); //Destruyo el recolectable
         }
         if(other.gameObject.tag == "Time") //Detecto si es tiempo
@@ -132,6 +113,7 @@ public class playerProprieties : MonoBehaviour
         if(generalLife == -1)
         {
             gameplay_Manager.GameOver();
+            generalLife = 0;
         }
         gameplay_Manager.LifeChange();
     }
@@ -140,33 +122,6 @@ public class playerProprieties : MonoBehaviour
         yield return new WaitForSeconds(secs);
         inmune = false;
     }
-    /*public void vehicleStandard()
-    {
-        vehicleType = "Standard";
-        fuelConsumption = 2;
-        gameObject.GetComponent<playerMovement>().speedMultiplier = 1;
-        gameObject.GetComponent<playerMovement>().HMultiplier = 1;
-        cam.fieldOfView = 75;
-        gameplay_Manager.vehicleButtonStandard();
-    }
-    public void vehicleFast()
-    {
-        vehicleType = "Fast";
-        fuelConsumption = 6f;
-        gameObject.GetComponent<playerMovement>().speedMultiplier = 1.5f;
-        gameObject.GetComponent<playerMovement>().HMultiplier = 1;
-        cam.fieldOfView = 85;
-        gameplay_Manager.vehicleButtonFast();
-    }
-    public void vehicleTank()
-    {
-        vehicleType = "Tank";
-        fuelConsumption = 1.5f;
-        gameObject.GetComponent<playerMovement>().speedMultiplier = 1f;
-        gameObject.GetComponent<playerMovement>().HMultiplier = 0.8f;
-        cam.fieldOfView = 75;
-        gameplay_Manager.vehicleButtonTank();
-    }*/
     public void modeFast()
     {
         destructiveMode = true;

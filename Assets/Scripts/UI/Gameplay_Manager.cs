@@ -173,13 +173,13 @@ public class Gameplay_Manager : MonoBehaviour
         modeButton1.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
         modeButton1.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
         modeButton1.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-        modeButton1.GetComponent<RectTransform>().anchoredPosition = new Vector2(200, 150);
+        modeButton1.GetComponent<RectTransform>().anchoredPosition = new Vector2(200, 175);
 
         modeButton2 = GameObject.Find(modeSelected2);
         modeButton2.GetComponent<RectTransform>().anchorMin = new Vector2(1, 0);
         modeButton2.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
         modeButton2.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-        modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 150);
+        modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 175);
         Time.timeScale = 1;
     }
     public void ModeSelector()
@@ -188,13 +188,13 @@ public class Gameplay_Manager : MonoBehaviour
         if(modeSelected1 == "")
         {
             modeSelected1 = EventSystem.current.currentSelectedGameObject.name;
-            selectedButton.GetComponent<Image>().color = activeColor;
+            selectedButton.GetComponent<Image>().color = unactiveColor;
             return;
         }
         if(modeSelected2 == "" && modeSelected1!=selectedButton.name)
         {
             modeSelected2 = selectedButton.name;
-            selectedButton.GetComponent<Image>().color = activeColor;
+            selectedButton.GetComponent<Image>().color = unactiveColor;
             if(modeSelected1 != "" && modeSelected2 != "")
             {
                 startButton.GetComponent<Button>().enabled = true;
