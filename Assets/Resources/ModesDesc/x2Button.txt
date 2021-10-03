@@ -1,0 +1,1 @@
+Multiplica x2 las monedas recolectadas, puede activarse junto con otras habilidades, tambien concede un x2 a las monedas conseguidas al destruir autos. Dura 15 segundos.

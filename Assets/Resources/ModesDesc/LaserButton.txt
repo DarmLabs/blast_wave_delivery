@@ -1,0 +1,1 @@
+Lanzas un laser hacia delante destruyendo todos los autos en su camino durante 5 segundos.

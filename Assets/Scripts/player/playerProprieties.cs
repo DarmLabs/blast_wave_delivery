@@ -15,7 +15,12 @@ public class playerProprieties : MonoBehaviour
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
     public string vehicleType;
     public int generalLife = 3;
-    public bool inmune;
+    bool inmune;
+    bool destructiveMode;
+    public bool x2Mode;
+    public bool magneticMode;
+    public BoxCollider laserColl;
+    public LineRenderer laser;
     public Camera cam;
     public GameObject UI_Manager;
     Gameplay_Manager gameplay_Manager;
@@ -24,7 +29,7 @@ public class playerProprieties : MonoBehaviour
     {
         gameplay_Manager = UI_Manager.GetComponent<Gameplay_Manager>();
         MotoAnimator = GetComponentInChildren<Animator>();
-        vehicleStandard();
+        modeStandard();
     }
     void Update()
     {
@@ -46,7 +51,7 @@ public class playerProprieties : MonoBehaviour
         {
             gameplay_Manager.GameOver();
         }
-        if(inmune)
+        if(inmune && !destructiveMode && !laser.enabled)
         {
             MotoAnimator.SetBool("inmune", true);
         }
@@ -80,6 +85,17 @@ public class playerProprieties : MonoBehaviour
         if(other.gameObject.tag == "obs")
         {
             Destroy(other.gameObject);
+            if(destructiveMode)
+            {
+                if(x2Mode)
+                {
+                    currentPizzas = currentPizzas + 20;
+                }
+                else
+                {
+                    currentPizzas = currentPizzas + 10;
+                }
+            }
             if(!inmune)
             {
                 vehicleLifeCondition();
@@ -87,7 +103,14 @@ public class playerProprieties : MonoBehaviour
         }
         if(other.gameObject.tag == "Pizza")
         {
-            currentPizzas = currentPizzas + 1;
+            if(x2Mode)
+            {
+                currentPizzas = currentPizzas + 2;
+            }
+            else
+            {
+                currentPizzas = currentPizzas + 1;
+            }
             Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "Checkpoint")
@@ -117,7 +140,7 @@ public class playerProprieties : MonoBehaviour
         yield return new WaitForSeconds(secs);
         inmune = false;
     }
-    public void vehicleStandard()
+    /*public void vehicleStandard()
     {
         vehicleType = "Standard";
         fuelConsumption = 2;
@@ -143,5 +166,76 @@ public class playerProprieties : MonoBehaviour
         gameObject.GetComponent<playerMovement>().HMultiplier = 0.8f;
         cam.fieldOfView = 75;
         gameplay_Manager.vehicleButtonTank();
+    }*/
+    public void modeFast()
+    {
+        destructiveMode = true;
+        inmune = true;
+        currentFuel = currentFuel -10;
+        gameObject.GetComponent<playerMovement>().speedMultiplier = 5;
+        gameObject.GetComponent<playerMovement>().HMultiplier = 0.2f;
+        cam.fieldOfView = 90;
+        gameplay_Manager.FastButton();
+        StartCoroutine(clearModes(5));
+    }
+    public void modeTank()
+    {
+        destructiveMode = true;
+        inmune = true;
+        currentFuel = currentFuel -10;
+        gameObject.GetComponent<playerMovement>().HMultiplier = 0.8f;
+        gameplay_Manager.TankButton();
+        StartCoroutine(clearModes(5));
+    }
+    public void modex2()
+    {
+        x2Mode = true;
+        currentFuel = currentFuel -10;
+        gameplay_Manager.x2Button();
+        StartCoroutine(clearModes(15));
+    }
+    public void modeMagnetic()
+    {
+        magneticMode = true;
+        currentFuel = currentFuel -10;
+        gameplay_Manager.MagneticButton();
+        StartCoroutine(clearModes(5));
+    }
+    public void modeLaser()
+    {
+        laserColl.enabled = true;
+        laser.enabled = true;
+        inmune = true;
+        gameplay_Manager.LaserButton();
+        StartCoroutine(clearModes(5));
+    }
+    public void modeStopTime()
+    {
+        Time.timeScale = .5f;
+        cam.fieldOfView = 70;
+        currentFuel = currentFuel -10;
+        gameObject.GetComponent<playerMovement>().HMultiplier = 1.75f;
+        gameplay_Manager.StopTimeButton();
+        StartCoroutine(clearModes(5));
+    }
+    public void modeStandard()
+    {
+        gameObject.GetComponent<playerMovement>().speedMultiplier = 1;
+        gameObject.GetComponent<playerMovement>().HMultiplier = 1;
+        fuelConsumption = 2;
+        cam.fieldOfView = 75;
+        destructiveMode = false;
+        inmune =false;
+        x2Mode = false;
+        laserColl.enabled = false;
+        laser.enabled = false;
+        magneticMode = false;
+    }
+    IEnumerator clearModes(int secs)
+    {
+        yield return new WaitForSeconds(secs);
+        gameplay_Manager.clearMode();
+        modeStandard();
+        Time.timeScale = 1;
     }
 }

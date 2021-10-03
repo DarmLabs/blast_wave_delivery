@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7651200262110483836}
   - component: {fileID: 1742296120536226888}
+  - component: {fileID: 9060353408258385798}
   m_Layer: 0
   m_Name: Moneda
   m_TagString: Pizza
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9060353408258385798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234067781196875637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107768c40ebb7134d820328ad1c46c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Moto: {fileID: 7421213970873795243, guid: adae29534d6cf0e42a7fa05c9c6f7702, type: 3}
 --- !u!1001 &2455940822012453458
 PrefabInstance:
   m_ObjectHideFlags: 0
