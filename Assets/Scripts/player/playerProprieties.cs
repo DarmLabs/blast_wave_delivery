@@ -10,10 +10,8 @@ public class playerProprieties : MonoBehaviour
     //int maxFuel = 300; //Cantidad de combustible maximo que la moto puede tener
     public int currentPizzas;
     public int generalPizzas;
-    float emptyFuel; //Cantidad de combustible faltante para llegar al maximo
     float fuelConsumption;
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
-    public string vehicleType;
     public int generalLife = 3;
     bool inmune;
     bool destructiveMode;

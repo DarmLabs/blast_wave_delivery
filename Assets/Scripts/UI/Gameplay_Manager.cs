@@ -26,11 +26,16 @@ public class Gameplay_Manager : MonoBehaviour
     GameObject selectedButton;
     public GameObject startButton;
     public GameObject description;
-    public Vector3 offset = new Vector3(100,0,0);
     public string _name;
     Color32 activeColor = new Color32(148, 214, 255, 255);
     Color32 unactiveColor = new Color32(255, 255, 255, 255);
     Color32 lockedColor = new Color32(106, 106, 106, 255);
+    [Space(10)]
+    //Tuto
+    public GameObject TutoScreen;
+    public Text TutoText;
+    int TutoScreenIndex;
+    bool tutoIsActive = true;
     [Space (10)]
     //Link moto
     public GameObject Moto;
@@ -38,7 +43,6 @@ public class Gameplay_Manager : MonoBehaviour
     [Space (10)]
     //Displays
     public Text fpsDisplay;
-    public Text modeText;
     public Text timerText;
     public Text [] fuelTexts;
     public Slider fuelSlider;
@@ -63,7 +67,15 @@ public class Gameplay_Manager : MonoBehaviour
             audioController.LoadElements();
         }
         ClosePauseScreen();
-        panel.SetActive(true);
+        if(tutoIsActive)
+        {
+            panel.SetActive(false);
+            PrintTuto();
+        }
+        else
+        {
+            panel.SetActive(true);
+        }
         MainButtons.SetActive(false);
         Time.timeScale = 0;
         playerProprieties = Moto.GetComponent<playerProprieties>();
@@ -120,12 +132,24 @@ public class Gameplay_Manager : MonoBehaviour
             description.GetComponent<Text>().text = file.text;
         }
     }
+    public void PrintTuto()
+    {
+        TutoScreenIndex = TutoScreenIndex + 1;
+        TextAsset file = Resources.Load<TextAsset>("TutoTexts/"+TutoScreenIndex);
+        if(file!= null)
+        {
+            TutoText.GetComponent<Text>().text = file.text;
+        }
+        if(TutoScreenIndex == 3)
+        {
+            TutoScreen.SetActive(false);
+        }
+    }
     public void OpenPauseScreen()
     {
         MainButtons.SetActive(false);
         panel.SetActive(true);
         panel.transform.GetChild(0).gameObject.SetActive(true);
-        MainButtons.SetActive(false);
         Time.timeScale = 0;
     }
     public void ClosePauseScreen()
@@ -133,7 +157,6 @@ public class Gameplay_Manager : MonoBehaviour
         MainButtons.SetActive(true);
         panel.SetActive(false);
         panel.transform.GetChild(0).gameObject.SetActive(false);
-        MainButtons.SetActive(true);
         Time.timeScale = 1;
     }
     public void Restart()
@@ -145,7 +168,6 @@ public class Gameplay_Manager : MonoBehaviour
         MainButtons.SetActive(false);
         panel.SetActive(true);
         panel.transform.GetChild(1).gameObject.SetActive(true);
-        MainButtons.SetActive(false);
         Time.timeScale = 0;
         if(playerProprieties.generalPizzas <= 50)
         {
@@ -161,8 +183,14 @@ public class Gameplay_Manager : MonoBehaviour
         LifeChange();
         panel.SetActive(false);
         panel.transform.GetChild(1).gameObject.SetActive(false);
-        MainButtons.SetActive(true);
         Time.timeScale = 1;
+    }
+    public void SkipTutorial()
+    {
+        TutoScreen.SetActive(false);
+        panel.SetActive(true);
+        modesSelector.SetActive(true);
+        tutoIsActive = false;
     }
     public void StartGame()
     {
@@ -180,7 +208,14 @@ public class Gameplay_Manager : MonoBehaviour
         modeButton2.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
         modeButton2.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
         modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 175);
-        Time.timeScale = 1;
+        if(tutoIsActive)
+        {
+            TutoScreen.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
     public void ModeSelector()
     {
