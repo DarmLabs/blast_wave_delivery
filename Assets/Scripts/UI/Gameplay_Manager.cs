@@ -147,15 +147,13 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void OpenPauseScreen()
     {
-        MainButtons.SetActive(false);
-        panel.SetActive(true);
+        overUsedPanelon();
         panel.transform.GetChild(0).gameObject.SetActive(true);
         Time.timeScale = 0;
     }
     public void ClosePauseScreen()
     {
-        MainButtons.SetActive(true);
-        panel.SetActive(false);
+        overUsedPaneloff();
         panel.transform.GetChild(0).gameObject.SetActive(false);
         Time.timeScale = 1;
     }
@@ -165,8 +163,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void GameOver()
     {
-        MainButtons.SetActive(false);
-        panel.SetActive(true);
+        overUsedPanelon();
         panel.transform.GetChild(1).gameObject.SetActive(true);
         Time.timeScale = 0;
         if(playerProprieties.generalPizzas <= 50)
@@ -177,11 +174,10 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ResumeGameOver()
     {
-        MainButtons.SetActive(true);
+        overUsedPaneloff();
         playerProprieties.generalPizzas = playerProprieties.generalPizzas - 50;
         playerProprieties.generalLife = 0;
         LifeChange();
-        panel.SetActive(false);
         panel.transform.GetChild(1).gameObject.SetActive(false);
         Time.timeScale = 1;
     }
@@ -194,8 +190,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void StartGame()
     {
-        MainButtons.SetActive(true);
-        panel.SetActive(false);
+        overUsedPaneloff();
         modesSelector.SetActive(false);
         modeButton1 = GameObject.Find(modeSelected1);
         modeButton1.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
@@ -418,5 +413,16 @@ public class Gameplay_Manager : MonoBehaviour
         button2Text.text = "";
         modeButton2.GetComponent<Button>().interactable = true;
         Button2inCool = false;
+    }
+    //UI Auxiliares
+    void overUsedPaneloff()
+    {
+        panel.SetActive(false);
+        MainButtons.SetActive(true);
+    }
+    void overUsedPanelon()
+    {
+        panel.SetActive(true);
+        MainButtons.SetActive(false);
     }
 }
