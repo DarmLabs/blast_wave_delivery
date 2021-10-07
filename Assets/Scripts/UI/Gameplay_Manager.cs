@@ -32,7 +32,9 @@ public class Gameplay_Manager : MonoBehaviour
     Color32 lockedColor = new Color32(106, 106, 106, 255);
     [Space(10)]
     //Tuto
-    public GameObject TutoScreen;
+    public GameObject TutoPanel;
+    GameObject TutoScreen;
+    GameObject Blast;
     public Text TutoText;
     int TutoScreenIndex;
     bool tutoIsActive = true;
@@ -66,6 +68,8 @@ public class Gameplay_Manager : MonoBehaviour
             audioController.MusicChecker();
             audioController.LoadElements();
         }
+        TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
+        Blast = TutoScreen.transform.GetChild(0).gameObject;
         ClosePauseScreen();
         if(tutoIsActive)
         {
@@ -140,9 +144,37 @@ public class Gameplay_Manager : MonoBehaviour
         {
             TutoText.GetComponent<Text>().text = file.text;
         }
+        if(TutoScreenIndex == 2)
+        {
+            TutoScreen.transform.GetChild(2).gameObject.SetActive(false);
+            TutoText.GetComponent<RectTransform>().sizeDelta = new Vector2(1025,300);
+            TutoText.GetComponent<RectTransform>().anchoredPosition = new Vector2(92,0);
+        }
         if(TutoScreenIndex == 3)
         {
-            TutoScreen.SetActive(false);
+            TutoPanel.SetActive(false);
+            TutoScreen.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            panel.SetActive(true);
+        }
+        if(TutoScreenIndex == 4)
+        {
+            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(1230,-330);
+            TutoText.GetComponent<RectTransform>().sizeDelta = new Vector2(1225,300);
+            TutoText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+        }
+        if(TutoScreenIndex == 5)
+        {
+            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(795,-330);
+        }
+        if(TutoScreenIndex == 7)
+        {
+            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(65,280);
+        }
+        if(TutoScreenIndex == 8)
+        {
+            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(153,0);
+            TutoText.GetComponent<RectTransform>().sizeDelta = new Vector2(1025,225);
+            TutoText.GetComponent<RectTransform>().anchoredPosition = new Vector2(92,0);
         }
     }
     public void OpenPauseScreen()
@@ -183,7 +215,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void SkipTutorial()
     {
-        TutoScreen.SetActive(false);
+        TutoPanel.SetActive(false);
         panel.SetActive(true);
         modesSelector.SetActive(true);
         tutoIsActive = false;
@@ -205,7 +237,7 @@ public class Gameplay_Manager : MonoBehaviour
         modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 175);
         if(tutoIsActive)
         {
-            TutoScreen.SetActive(true);
+            TutoPanel.SetActive(true);
         }
         else
         {

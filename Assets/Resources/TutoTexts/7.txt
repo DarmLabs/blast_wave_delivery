@@ -1,0 +1,1 @@
+Aquí arriba tenemos las monedas, el contador superior muestra las monedas recolectadas y el inferior muestra las monedas aseguradas. Las monedas aseguradas son las monedas que obtendrás si pierdes todas tus vidas o te quedas sin combustible. Para asegurar las monedas recolectadas deberás pasar por puntos de control.
