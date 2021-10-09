@@ -35,9 +35,8 @@ public class Gameplay_Manager : MonoBehaviour
     //Tuto
     public GameObject TutoPanel;
     GameObject TutoScreen;
-    GameObject Blast;
-    public Text TutoText;
     int TutoScreenIndex;
+    public GameObject [] TutoScreens;
     [Space (10)]
     //Link moto
     public GameObject Moto;
@@ -77,7 +76,6 @@ public class Gameplay_Manager : MonoBehaviour
         if(saveScript.tutoActive)
         {
             panel.SetActive(false);
-            PrintTuto();
         }
         else
         {
@@ -92,7 +90,6 @@ public class Gameplay_Manager : MonoBehaviour
             audioController.LoadElements();
         }
         TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
-        Blast = TutoScreen.transform.GetChild(0).gameObject;
         ClosePauseScreen();
         MainButtons.SetActive(false);
         Time.timeScale = 0;
@@ -114,10 +111,6 @@ public class Gameplay_Manager : MonoBehaviour
         float fps = 1 / Time.unscaledDeltaTime;
         fpsDisplay.text = fps.ToString("f0");
     }
-    /*void DisplayMode()
-    {
-        modeText.text = playerProprieties.vehicleType.ToString();
-    }*/
     void DisplayTime(float timeToDisplay) //Formato para el display del timer
     {
         if(timeToDisplay < 0)
@@ -153,45 +146,28 @@ public class Gameplay_Manager : MonoBehaviour
             description.GetComponent<Text>().text = file.text;
         }
     }
-    public void PrintTuto()
+    public void ShowTuto()
     {
         TutoScreenIndex = TutoScreenIndex + 1;
-        TextAsset file = Resources.Load<TextAsset>("TutoTexts/"+TutoScreenIndex);
-        if(file!= null)
+        foreach (var screen in TutoScreens)
         {
-            TutoText.GetComponent<Text>().text = file.text;
+            screen.SetActive(false);
+        }
+        if(TutoScreenIndex == 1)
+        {
+            TutoScreens[1].SetActive(true);
         }
         if(TutoScreenIndex == 2)
         {
-            TutoScreen.transform.GetChild(2).gameObject.SetActive(false);
-            TutoText.GetComponent<RectTransform>().sizeDelta = new Vector2(1025,300);
-            TutoText.GetComponent<RectTransform>().anchoredPosition = new Vector2(92,0);
+            TutoScreens[2].SetActive(true);
         }
         if(TutoScreenIndex == 3)
         {
-            TutoPanel.SetActive(false);
-            TutoScreen.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-            panel.SetActive(true);
+            TutoScreens[3].SetActive(true);
         }
         if(TutoScreenIndex == 4)
         {
-            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(1230,-330);
-            TutoText.GetComponent<RectTransform>().sizeDelta = new Vector2(1225,300);
-            TutoText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
-        }
-        if(TutoScreenIndex == 5)
-        {
-            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(795,-330);
-        }
-        if(TutoScreenIndex == 7)
-        {
-            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(65,280);
-        }
-        if(TutoScreenIndex == 8)
-        {
-            Blast.GetComponent<RectTransform>().anchoredPosition = new Vector2(153,0);
-            TutoText.GetComponent<RectTransform>().sizeDelta = new Vector2(1025,225);
-            TutoText.GetComponent<RectTransform>().anchoredPosition = new Vector2(92,0);
+            TutoScreens[4].SetActive(true);
         }
     }
     #endregion

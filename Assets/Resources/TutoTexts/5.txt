@@ -1,4 +1,0 @@
-Aquí abajo está el contador de vidas tienes 3 vidas, cada color significa las vidas que te quedan.
-Celeste - 3
-Amarillo - 2
-Rojo - 1
