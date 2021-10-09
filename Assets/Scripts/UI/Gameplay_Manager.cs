@@ -69,17 +69,6 @@ public class Gameplay_Manager : MonoBehaviour
         if(SaveScript != null)
         {
             saveScript = SaveScript.GetComponent<globalVariables>();
-        }
-        AudioController = GameObject.Find("AudioController");
-        if(AudioController != null)
-        {
-            audioController = AudioController.GetComponent<AudioController>();
-            audioController.MusicChecker();
-            audioController.LoadElements();
-        }
-        TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
-        Blast = TutoScreen.transform.GetChild(0).gameObject;
-        ClosePauseScreen();
         if(!saveScript.firstTimePassed)
         {
             saveScript.tutoActive = true;
@@ -94,6 +83,17 @@ public class Gameplay_Manager : MonoBehaviour
         {
             panel.SetActive(true);
         }
+        }
+        AudioController = GameObject.Find("AudioController");
+        if(AudioController != null)
+        {
+            audioController = AudioController.GetComponent<AudioController>();
+            audioController.MusicChecker();
+            audioController.LoadElements();
+        }
+        TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
+        Blast = TutoScreen.transform.GetChild(0).gameObject;
+        ClosePauseScreen();
         MainButtons.SetActive(false);
         Time.timeScale = 0;
         playerProprieties = Moto.GetComponent<playerProprieties>();
@@ -271,13 +271,17 @@ public class Gameplay_Manager : MonoBehaviour
         selectedButton = EventSystem.current.currentSelectedGameObject;
         if(modeSelected1 == "")
         {
-            modeSelected1 = EventSystem.current.currentSelectedGameObject.name;
+            modeSelected1 = selectedButton.name;
+            _name = modeSelected1;
+            PrintDescription();
             selectedButton.GetComponent<Image>().color = unactiveColor;
             return;
         }
         if(modeSelected2 == "" && modeSelected1!=selectedButton.name)
         {
             modeSelected2 = selectedButton.name;
+            _name = modeSelected2;
+            PrintDescription();
             selectedButton.GetComponent<Image>().color = unactiveColor;
             if(modeSelected1 != "" && modeSelected2 != "")
             {
@@ -294,12 +298,14 @@ public class Gameplay_Manager : MonoBehaviour
         if(selectedButton.name == modeSelected1)
         {
             modeSelected1 = "";
-            selectedButton.GetComponent<Image>().color = unactiveColor;
+            selectedButton.GetComponent<Image>().color = lockedColor;
+            description.GetComponent<Text>().text = "";
         }
         if(selectedButton.name == modeSelected2)
         {
             modeSelected2 = "";
-            selectedButton.GetComponent<Image>().color = unactiveColor;
+            selectedButton.GetComponent<Image>().color = lockedColor;
+            description.GetComponent<Text>().text = "";
         }
     }
     public void LifeChange()

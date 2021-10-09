@@ -530,7 +530,6 @@ GameObject:
   - component: {fileID: 116123298}
   - component: {fileID: 116123297}
   - component: {fileID: 116123296}
-  - component: {fileID: 116123299}
   m_Layer: 5
   m_Name: x2Button
   m_TagString: Untagged
@@ -651,19 +650,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116123294}
   m_CullTransparentMesh: 1
---- !u!114 &116123299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116123294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f30388f88eaf3344b64656f3384bf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_Manager: {fileID: 1104803806}
 --- !u!1 &121749425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2482,6 @@ GameObject:
   - component: {fileID: 381521465}
   - component: {fileID: 381521464}
   - component: {fileID: 381521463}
-  - component: {fileID: 381521466}
   m_Layer: 5
   m_Name: MagneticButton
   m_TagString: Untagged
@@ -2617,19 +2602,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381521461}
   m_CullTransparentMesh: 1
---- !u!114 &381521466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 381521461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f30388f88eaf3344b64656f3384bf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_Manager: {fileID: 1104803806}
 --- !u!1 &384612262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4006,7 +3978,6 @@ GameObject:
   - component: {fileID: 620706748}
   - component: {fileID: 620706747}
   - component: {fileID: 620706746}
-  - component: {fileID: 620706749}
   m_Layer: 5
   m_Name: TankButton
   m_TagString: Untagged
@@ -4127,19 +4098,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620706744}
   m_CullTransparentMesh: 1
---- !u!114 &620706749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620706744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f30388f88eaf3344b64656f3384bf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_Manager: {fileID: 1104803806}
 --- !u!1 &628605620
 GameObject:
   m_ObjectHideFlags: 0
@@ -7232,7 +7190,6 @@ GameObject:
   - component: {fileID: 1059212932}
   - component: {fileID: 1059212931}
   - component: {fileID: 1059212930}
-  - component: {fileID: 1059212933}
   m_Layer: 5
   m_Name: StopTimeButton
   m_TagString: Untagged
@@ -7353,19 +7310,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059212928}
   m_CullTransparentMesh: 1
---- !u!114 &1059212933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059212928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f30388f88eaf3344b64656f3384bf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_Manager: {fileID: 1104803806}
 --- !u!1001 &1063119104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9287,7 +9231,6 @@ GameObject:
   - component: {fileID: 1360840057}
   - component: {fileID: 1360840056}
   - component: {fileID: 1360840055}
-  - component: {fileID: 1360840058}
   m_Layer: 5
   m_Name: LaserButton
   m_TagString: Untagged
@@ -9408,19 +9351,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360840053}
   m_CullTransparentMesh: 1
---- !u!114 &1360840058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360840053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f30388f88eaf3344b64656f3384bf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_Manager: {fileID: 1104803806}
 --- !u!1 &1378419885
 GameObject:
   m_ObjectHideFlags: 0
@@ -10677,7 +10607,6 @@ GameObject:
   - component: {fileID: 1778329301}
   - component: {fileID: 1778329300}
   - component: {fileID: 1778329299}
-  - component: {fileID: 1778329302}
   m_Layer: 5
   m_Name: FastButton
   m_TagString: Untagged
@@ -10798,19 +10727,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778329297}
   m_CullTransparentMesh: 1
---- !u!114 &1778329302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1778329297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f30388f88eaf3344b64656f3384bf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_Manager: {fileID: 1104803806}
 --- !u!1001 &1794074579
 PrefabInstance:
   m_ObjectHideFlags: 0
