@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class Gameplay_Manager : MonoBehaviour
 {
+    #region Variables
     //UI
     //Main
     public GameObject MainButtons;
@@ -37,7 +38,6 @@ public class Gameplay_Manager : MonoBehaviour
     GameObject Blast;
     public Text TutoText;
     int TutoScreenIndex;
-    bool tutoIsActive = true;
     [Space (10)]
     //Link moto
     public GameObject Moto;
@@ -58,9 +58,18 @@ public class Gameplay_Manager : MonoBehaviour
     //Audio
     GameObject AudioController;
     AudioController audioController;
-    
+    //Save
+    GameObject SaveScript;
+    globalVariables saveScript;
+    #endregion
+    #region Callbacks
     void Start()
     {
+        SaveScript = GameObject.Find("SaveManager");
+        if(SaveScript != null)
+        {
+            saveScript = SaveScript.GetComponent<globalVariables>();
+        }
         AudioController = GameObject.Find("AudioController");
         if(AudioController != null)
         {
@@ -71,7 +80,12 @@ public class Gameplay_Manager : MonoBehaviour
         TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
         Blast = TutoScreen.transform.GetChild(0).gameObject;
         ClosePauseScreen();
-        if(tutoIsActive)
+        if(!saveScript.firstTimePassed)
+        {
+            saveScript.tutoActive = true;
+            saveScript.firstTimePassed = true;
+        }
+        if(saveScript.tutoActive)
         {
             panel.SetActive(false);
             PrintTuto();
@@ -91,6 +105,9 @@ public class Gameplay_Manager : MonoBehaviour
         DisplayFuel();
         DisplayCoins();
     }
+    #endregion  
+    #region Displays
+
     void FPSCounter()
     {
         Application.targetFrameRate = 30;
@@ -177,6 +194,8 @@ public class Gameplay_Manager : MonoBehaviour
             TutoText.GetComponent<RectTransform>().anchoredPosition = new Vector2(92,0);
         }
     }
+    #endregion
+    #region UIelements
     public void OpenPauseScreen()
     {
         overUsedPanelon();
@@ -191,6 +210,8 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void Restart()
     {
+        saveScript.monedas = saveScript.monedas + playerProprieties.currentPizzas;
+        saveScript.SavePlayer();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GameOver()
@@ -218,7 +239,8 @@ public class Gameplay_Manager : MonoBehaviour
         TutoPanel.SetActive(false);
         panel.SetActive(true);
         modesSelector.SetActive(true);
-        tutoIsActive = false;
+        saveScript.tutoActive = false;
+        saveScript.SavePlayer();
     }
     public void StartGame()
     {
@@ -235,7 +257,7 @@ public class Gameplay_Manager : MonoBehaviour
         modeButton2.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
         modeButton2.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
         modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 175);
-        if(tutoIsActive)
+        if(saveScript.tutoActive)
         {
             TutoPanel.SetActive(true);
         }
@@ -288,9 +310,12 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ExitToMainMenu()
     {
+        saveScript.monedas = saveScript.monedas + playerProprieties.currentPizzas;
+        saveScript.SavePlayer();
         SceneManager.LoadScene("Main_Menu");
     }
-    //MODOS
+    #endregion
+    #region Modos
     public void FastButton()
     {
         if(audioController != null)
@@ -377,7 +402,8 @@ public class Gameplay_Manager : MonoBehaviour
             auxilarModule2();
         }
     }
-    //METODOS AUXILIARES DE LOS MODOS
+    #endregion
+    #region AuxilarMethods
     void auxilarModule1()
     {
         Button1inCool = true;
@@ -457,4 +483,5 @@ public class Gameplay_Manager : MonoBehaviour
         panel.SetActive(true);
         MainButtons.SetActive(false);
     }
+    #endregion
 }
