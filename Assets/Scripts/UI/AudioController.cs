@@ -10,7 +10,8 @@ public class AudioController : MonoBehaviour
     public GameObject musicSlider;
     public AudioMixer musicMixer;
     float musicValue = 1;
-    AudioSource [] allMusicSources;
+    public AudioSource [] allMusicSources;
+    public AudioSource [] allSFXSources;
     public GameObject sfxSlider;
     public AudioMixer sfxMixer;
     float sfxValue = 1;
@@ -19,6 +20,7 @@ public class AudioController : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         allMusicSources = transform.Find("Music").GetComponentsInChildren<AudioSource>();
+        allSFXSources = transform.Find("SFX").GetComponentsInChildren<AudioSource>();
         MusicChecker();
         LoadElements();
     }
@@ -65,15 +67,22 @@ public class AudioController : MonoBehaviour
     {
         foreach (var source in allMusicSources)
         {
-            source.GetComponent<AudioSource>().Stop();
+            if(source != null)
+            {
+                source.GetComponent<AudioSource>().Stop();
+            }
         }
         if(SceneManager.GetActiveScene().name == "Main_Menu")
         {
-            transform.Find("Music/MusicMenu1").GetComponent<AudioSource>().Play();
+            allMusicSources[0].GetComponent<AudioSource>().Play();
         }
         if(SceneManager.GetActiveScene().name == "ModoEndless")
         {
-            transform.Find("Music/MusicGameplay1").GetComponent<AudioSource>().Play();
+            allMusicSources[1].GetComponent<AudioSource>().Play();
         }
+    }
+    public void PlayCoinSFX()
+    {
+        allSFXSources[0].GetComponent<AudioSource>().Play();
     }
 }

@@ -12,7 +12,7 @@ public class TileManager : MonoBehaviour
     private int amnTilesOnScreen = 10;
     private GameObject go;
     private int lastPrefabIndex = 0;    
-    private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false;//, visualSet5 = false; 
+    private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
     private int tileCounter = 0;
     private int contadorHastaCheck = 0;
     private int checkpointCounter = 0;
@@ -82,12 +82,11 @@ public class TileManager : MonoBehaviour
              if (visualSet4)
             {
                 randomIndex = Random.Range(15,19);
+            }                
+            if (visualSet5)
+            {
+                randomIndex = Random.Range(20,24);
             }
-                
-          //   if (visualSet5)
-           // {
-          //      randomIndex = Random.Range(8,10);
-          //  }
                        
         }
         lastPrefabIndex=randomIndex;
@@ -102,7 +101,7 @@ public class TileManager : MonoBehaviour
             visualSet2=false;
             visualSet3=false;
             visualSet4=false;
-            //visualSet5=false;
+            visualSet5=false;
             //Debug.Log("SET 1");
         }
         if (tileCounter==15)
@@ -111,7 +110,7 @@ public class TileManager : MonoBehaviour
             visualSet2=true;
             visualSet3=false;
             visualSet4=false;
-            //visualSet5=false;
+            visualSet5=false;
             //Debug.Log("SET 2");
         }
         if (tileCounter==30)
@@ -120,7 +119,7 @@ public class TileManager : MonoBehaviour
             visualSet2=false;
             visualSet3=true;
             visualSet4=false;
-            //visualSet5=false;
+            visualSet5=false;
             //Debug.Log("SET 3");
         }
         if (tileCounter==45)
@@ -129,10 +128,10 @@ public class TileManager : MonoBehaviour
             visualSet2=false;
             visualSet3=false;
             visualSet4=true;
-            //visualSet5=false;
+            visualSet5=false;
             //Debug.Log("SET 4");
         }
-       /* if (tileCounter==100)
+        if (tileCounter==100)
         {
             visualSet1=false;
             visualSet2=false;
@@ -140,7 +139,7 @@ public class TileManager : MonoBehaviour
             visualSet4=false;
             visualSet5=true;
             //Debug.Log("SET 5");
-        }  */      
+        }        
     }
 
     /*
