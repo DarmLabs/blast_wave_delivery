@@ -15522,7 +15522,7 @@ MonoBehaviour:
   x2Mode: 0
   magneticMode: 0
   laserColl: {fileID: 2021161462}
-  laser: {fileID: 0}
+  laser: {fileID: 1239231898}
   cam: {fileID: 1120091919}
   UI_Manager: {fileID: 1104803806}
 --- !u!54 &2021161461
