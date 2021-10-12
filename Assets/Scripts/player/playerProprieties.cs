@@ -82,7 +82,10 @@ public class playerProprieties : MonoBehaviour
         }
         if(other.gameObject.tag == "Pizza")
         {
-            gameplay_Manager.audioController.PlayCoinSFX();
+            if(gameplay_Manager.audioController != null)
+            {
+                gameplay_Manager.audioController.PlayCoinSFX();
+            }
             if(x2Mode)
             {
                 currentPizzas = currentPizzas + 2;

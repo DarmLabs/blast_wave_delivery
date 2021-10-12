@@ -10,7 +10,7 @@ public class coinMagnet : MonoBehaviour
     Vector3 radio;
     void Start()
     {
-        Moto = GameObject.Find("ParentMoto");
+        Moto = GameObject.FindGameObjectWithTag("Player");
         playerProprieties = Moto.GetComponent<playerProprieties>();
         radio = new Vector3(10,0,10);
     }

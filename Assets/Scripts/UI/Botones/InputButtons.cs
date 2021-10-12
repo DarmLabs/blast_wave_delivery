@@ -7,7 +7,7 @@ public class InputButtons : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     GameObject player;
     void Start()
     {
-        player = GameObject.Find("ParentMoto");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     public void OnPointerDown(PointerEventData eventData)
     {
