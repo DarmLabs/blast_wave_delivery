@@ -1833,7 +1833,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 974289959306062834, guid: 3904d2d5d055319478b81118cfb15827, type: 3}
       propertyPath: m_Name
-      value: Personaje_Ofi
+      value: Personaje_Oficial
       objectReference: {fileID: 0}
     - target: {fileID: 3293271407163071738, guid: 3904d2d5d055319478b81118cfb15827, type: 3}
       propertyPath: m_Name
@@ -1841,7 +1841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4123353948155724629, guid: 3904d2d5d055319478b81118cfb15827, type: 3}
       propertyPath: m_Name
-      value: Moto_Ofi
+      value: Moto_Oficial
       objectReference: {fileID: 0}
     - target: {fileID: 6794911990373328687, guid: 3904d2d5d055319478b81118cfb15827, type: 3}
       propertyPath: m_LocalPosition.x
