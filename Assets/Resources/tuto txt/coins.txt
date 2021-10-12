@@ -1,1 +1,0 @@
-Las monedas te sirven para comprar objetos en la tienda, aparecen en la carretera y al juntarlas deberas pasar por un punto  de control para asegurarlas, ya que si pierdes la partida y las monedas que no estan aseguradas se perderan. Aqui podras ver tus monedas aseguradas y las que no.

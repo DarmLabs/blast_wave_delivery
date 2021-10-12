@@ -1,1 +1,0 @@
-Los puntos de control sirven para asegurar las monedas recolectadas y a su vez te recuperan una vida hasta un maximo de 3.

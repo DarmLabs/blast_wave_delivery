@@ -1,0 +1,684 @@
+fileFormatVersion: 2
+guid: b1ab27aeef329964fb5a9dcb7d54259d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2237921990090683621
+    second: HUDBlastWave_0
+  - first:
+      213: 7003150412600924618
+    second: HUDBlastWave_1
+  - first:
+      213: 3622022890245896277
+    second: HUDBlastWave_2
+  - first:
+      213: 5032167969629732340
+    second: HUDBlastWave_3
+  - first:
+      213: 3463003018929423084
+    second: HUDBlastWave_4
+  - first:
+      213: -4440506055317057636
+    second: HUDBlastWave_5
+  - first:
+      213: -1327206235197630830
+    second: HUDBlastWave_6
+  - first:
+      213: -8318359103793732976
+    second: HUDBlastWave_7
+  - first:
+      213: 8935293872768717170
+    second: HUDBlastWave_8
+  - first:
+      213: -7774944729790402659
+    second: HUDBlastWave_9
+  - first:
+      213: 2427918718815025504
+    second: HUDBlastWave_10
+  - first:
+      213: 587544556439168053
+    second: HUDBlastWave_11
+  - first:
+      213: -5411838580737521239
+    second: HUDBlastWave_12
+  - first:
+      213: 7967987818057050127
+    second: HUDBlastWave_13
+  - first:
+      213: -8567361330521742132
+    second: HUDBlastWave_14
+  - first:
+      213: 6899188461114082192
+    second: HUDBlastWave_15
+  - first:
+      213: -3403914010920220832
+    second: HUDBlastWave_16
+  - first:
+      213: -4878246471487954692
+    second: HUDBlastWave_17
+  - first:
+      213: 8587836749457030515
+    second: HUDBlastWave_18
+  - first:
+      213: -1582494607680747909
+    second: HUDBlastWave_19
+  - first:
+      213: 5258640113139124151
+    second: HUDBlastWave_20
+  - first:
+      213: 458016082182961876
+    second: HUDBlastWave_21
+  - first:
+      213: 8039159110266306901
+    second: HUDBlastWave_22
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HUDBlastWave_0
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 1355
+        width: 203
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e4f3666132be0f10800000000000000
+      internalID: 2237921990090683621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_1
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 1355
+        width: 203
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac955bb2230303160800000000000000
+      internalID: 7003150412600924618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_2
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 1355
+        width: 203
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 558b07dd0a2044230800000000000000
+      internalID: 3622022890245896277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_3
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 1355
+        width: 203
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fdf0e75b1ad5d540800000000000000
+      internalID: 5032167969629732340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_4
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1355
+        width: 203
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce2c46fd5ee0f0030800000000000000
+      internalID: 3463003018929423084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_5
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 1355
+        width: 203
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f0bddf4472062c0800000000000000
+      internalID: -4440506055317057636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1116
+        width: 1920
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2969c5ff5f0d49de0800000000000000
+      internalID: -1327206235197630830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_7
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1003
+        width: 309
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 092ec38b7704f8c80800000000000000
+      internalID: -8318359103793732976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_8
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 887
+        width: 309
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2719a12af6a800c70800000000000000
+      internalID: 8935293872768717170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_9
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 876
+        width: 625
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f2c8036f8d91490800000000000000
+      internalID: -7774944729790402659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_10
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 771
+        width: 309
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069bd7a0633b1b120800000000000000
+      internalID: 2427918718815025504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_11
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 743
+        width: 625
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 534654049a0672800800000000000000
+      internalID: 587544556439168053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_12
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 678
+        width: 277
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9c265eb7945e4b0800000000000000
+      internalID: -5411838580737521239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_13
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 603
+        width: 625
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f082eed44baf39e60800000000000000
+      internalID: 7967987818057050127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_14
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 572
+        width: 277
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc465dff24e9a1980800000000000000
+      internalID: -8567361330521742132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_15
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 466
+        width: 277
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093cd271a57debf50800000000000000
+      internalID: 6899188461114082192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_16
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 283
+        width: 1921
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0670025ed3ed2c0d0800000000000000
+      internalID: -3403914010920220832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_17
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 21
+        width: 202
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf068242eacfc4cb0800000000000000
+      internalID: -4878246471487954692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_18
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 21
+        width: 202
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d7e68f5002e2770800000000000000
+      internalID: 8587836749457030515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_19
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 21
+        width: 202
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76c73ae989d90ae0800000000000000
+      internalID: -1582494607680747909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_20
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 21
+        width: 202
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7074942517af840800000000000000
+      internalID: 5258640113139124151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_21
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 21
+        width: 202
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4da7ee733333b5600800000000000000
+      internalID: 458016082182961876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUDBlastWave_22
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 19
+        width: 202
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551c4441e94d09f60800000000000000
+      internalID: 8039159110266306901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a3e86a20ecc77f548899867c4fe4e87f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
