@@ -64,7 +64,7 @@ public class spawnManager : MonoBehaviour
         {
             indiceReferencia = Random.Range(0,5);
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[indiceReferencia].position,transform.rotation);
-            //Instantiate(Camion,spawnsCamion[indiceReferencia].position,transform.rotation);
+            Instantiate(Camion,spawnsCamion[indiceReferencia].position,transform.rotation);
             Debug.Log("INSTANCIO UNA PIZZA");
             Debug.Log("indiceReferencia   "+indiceReferencia);            
             CajaExistente = true;
