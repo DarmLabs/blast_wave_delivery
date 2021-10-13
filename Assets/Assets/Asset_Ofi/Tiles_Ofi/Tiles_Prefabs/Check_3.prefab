@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3823959996684712906
 Transform:
   m_ObjectHideFlags: 0
@@ -60,8 +60,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cd78e97fa832f948a0de6c121f8e359, type: 2}
-  - {fileID: 2100000, guid: ae32a92f540697943b87bf7d3499fc5a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,5 +94,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 29.997322, y: 8.41214, z: 1.8738023}
+  m_Size: {x: 60, y: 8.41214, z: 1.8738023}
   m_Center: {x: 0.5601368, y: -2.3743973, z: -0.0000012516975}
