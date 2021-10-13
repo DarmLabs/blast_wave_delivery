@@ -10,7 +10,8 @@ public class spawnManager : MonoBehaviour
     //Variables Recolectables
         //La verdadera pizza
     public GameObject cajaPizzaPrefab;     
-    public Transform[] spawnsParaCaja;        
+    public Transform[] spawnsParaCaja; 
+    public bool CajaExistente = false;       
         //Pizzas
     public GameObject [] spawnsP;
     public int SpawnerP;
@@ -25,6 +26,7 @@ public class spawnManager : MonoBehaviour
     bool spawnFactive = false;
     void Start()
     {
+        CajaExistente = false;
         playerProprieties = Moto.GetComponent<playerProprieties>();
         //for Coins
         spawnsP = GameObject.FindGameObjectsWithTag("coinSpawner");
@@ -53,10 +55,11 @@ public class spawnManager : MonoBehaviour
     
     void spawnCajaPizza()
     {
-        if (playerProprieties.currentPizzas == 25)
+        if (playerProprieties.currentPizzas == 25 && !CajaExistente)
         {
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[Random.Range(0,5)].position,transform.rotation);
             Debug.Log("INSTANCIO UNA PUTA PIZZA");
+            CajaExistente = true;
         }
         Debug.Log("se esta ejecutando"+"  "+playerProprieties.currentPizzas);       
     }
