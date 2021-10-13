@@ -23,6 +23,7 @@ public class playerProprieties : MonoBehaviour
     public GameObject UI_Manager;
     Gameplay_Manager gameplay_Manager;
     Animator MotoAnimator;
+    public GameObject spawnManager;
     void Start()
     {
         gameplay_Manager = UI_Manager.GetComponent<Gameplay_Manager>();
@@ -107,6 +108,11 @@ public class playerProprieties : MonoBehaviour
                 generalLife = generalLife + 1;
                 gameplay_Manager.LifeChange();
             }
+        }
+        if(other.gameObject.tag == "Caja")
+        {
+            spawnManager.GetComponent<spawnManager>().CajaExistente = false;
+            Destroy(other.gameObject);
         }
     }
     void vehicleLifeCondition()

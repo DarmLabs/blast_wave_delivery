@@ -55,13 +55,13 @@ public class spawnManager : MonoBehaviour
     
     void spawnCajaPizza()
     {
-        if (playerProprieties.currentPizzas == 25 && !CajaExistente)
+        if (playerProprieties.currentCoin == 25 && !CajaExistente)
         {
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[Random.Range(0,5)].position,transform.rotation);
             Debug.Log("INSTANCIO UNA PUTA PIZZA");
             CajaExistente = true;
         }
-        Debug.Log("se esta ejecutando"+"  "+playerProprieties.currentPizzas);       
+        Debug.Log("se esta ejecutando"+"  "+playerProprieties.currentCoin);       
     }
 
     IEnumerator timeBetweenPizzas(float secs)
