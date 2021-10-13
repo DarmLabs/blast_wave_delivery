@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9060353408258385798}
   m_Layer: 0
   m_Name: Moneda
-  m_TagString: Pizza
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

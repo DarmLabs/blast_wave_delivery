@@ -1016,7 +1016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151588024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25, y: 0.8, z: 300}
+  m_LocalPosition: {x: -20, y: 2.6, z: 300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 384612263}
@@ -3235,7 +3235,7 @@ MonoBehaviour:
   pizzaPrefab: {fileID: 8234067781196875637, guid: e4ee083faa5ad2a4499c61a02446bb83, type: 3}
   spawnsF: []
   SpawnerF: 0
-  fuelPrefab: {fileID: 100780083307874975, guid: aa85b7ed5f525224bbcd3342a30219ad, type: 3}
+  fuelPrefab: {fileID: 9161712239761938270, guid: e77273945298cc5429c62a44a21b746f, type: 3}
 --- !u!4 &421441693
 Transform:
   m_ObjectHideFlags: 0
@@ -15107,7 +15107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962611071}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25, y: 0.8, z: 300}
+  m_LocalPosition: {x: 20, y: 2.6, z: 300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 384612263}
@@ -15515,8 +15515,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFuel: 300
-  currentPizzas: 0
-  generalPizzas: 0
+  currentCoin: 0
+  generalCoin: 0
   currentTime: 90
   generalLife: 2
   x2Mode: 0

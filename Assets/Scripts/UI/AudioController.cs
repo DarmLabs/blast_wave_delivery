@@ -16,7 +16,7 @@ public class AudioController : MonoBehaviour
     public AudioMixer sfxMixer;
     float sfxValue = 1;
 
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
         allMusicSources = transform.Find("Music").GetComponentsInChildren<AudioSource>();

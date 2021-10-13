@@ -137,10 +137,10 @@ public class Gameplay_Manager : MonoBehaviour
     }
     void DisplayCoins()
     {
-        coins.text = playerProprieties.currentPizzas.ToString();
+        coins.text = playerProprieties.currentCoin.ToString();
         foreach (var safeCoinsText in safeCoinsTexts)
         {
-            safeCoinsText.text = playerProprieties.generalPizzas.ToString("f0");
+            safeCoinsText.text = playerProprieties.generalCoin.ToString("f0");
         }
     }
     public void PrintDescription()
@@ -160,44 +160,48 @@ public class Gameplay_Manager : MonoBehaviour
         }
         if(TutoScreenIndex == 1)
         {
-            TutoScreens[1].SetActive(true);
+            TutoScreens[0].SetActive(true);
         }
         if(TutoScreenIndex == 2)
         {
-            TutoScreens[2].SetActive(true);
+            TutoScreens[1].SetActive(true);
         }
         if(TutoScreenIndex == 3)
         {
-            TutoScreens[3].SetActive(true);
+            TutoScreens[2].SetActive(true);
         }
         if(TutoScreenIndex == 4)
         {
-            TutoScreens[4].SetActive(true);
+            TutoScreens[3].SetActive(true);
         }
         if(TutoScreenIndex == 5)
         {
-            TutoScreens[5].SetActive(true);
+            TutoScreens[4].SetActive(true);
         }
         if(TutoScreenIndex == 6)
         {
-            TutoScreens[6].SetActive(true);
+            TutoScreens[5].SetActive(true);
         }
         if(TutoScreenIndex == 7)
         {
-            TutoScreens[7].SetActive(true);
+            TutoScreens[6].SetActive(true);
         }
         if(TutoScreenIndex == 8)
         {
-            TutoScreens[8].SetActive(true);
+            TutoScreens[7].SetActive(true);
         }
         if(TutoScreenIndex == 9)
         {
-            TutoScreens[9].SetActive(true);
+            TutoScreens[8].SetActive(true);
         }
         if(TutoScreenIndex == 10)
         {
+            TutoScreens[9].SetActive(true);
+        }
+        if(TutoScreenIndex == 11)
+        {
             TutoScreenIndex = 1;
-            TutoScreens[1].SetActive(true);
+            TutoScreens[0].SetActive(true);
         }
     }
     #endregion
@@ -218,7 +222,7 @@ public class Gameplay_Manager : MonoBehaviour
     {
         if(saveScript != null)
         {
-            saveScript.monedas = saveScript.monedas + playerProprieties.currentPizzas;
+            saveScript.monedas = saveScript.monedas + playerProprieties.currentCoin;
             saveScript.SavePlayer();
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -228,7 +232,7 @@ public class Gameplay_Manager : MonoBehaviour
         overUsedPanelon();
         panel.transform.GetChild(1).gameObject.SetActive(true);
         Time.timeScale = 0;
-        if(playerProprieties.generalPizzas <= 50)
+        if(playerProprieties.generalCoin <= 50)
         {
             GOresumeButton.GetComponent<Button>().enabled = false;
             GOresumeButton.GetComponent<Image>().color = lockedColor;
@@ -237,7 +241,7 @@ public class Gameplay_Manager : MonoBehaviour
     public void ResumeGameOver()
     {
         overUsedPaneloff();
-        playerProprieties.generalPizzas = playerProprieties.generalPizzas - 50;
+        playerProprieties.generalCoin = playerProprieties.generalCoin - 50;
         playerProprieties.generalLife = 0;
         LifeChange();
         panel.transform.GetChild(1).gameObject.SetActive(false);
@@ -269,17 +273,7 @@ public class Gameplay_Manager : MonoBehaviour
         modeButton2.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
         modeButton2.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
         modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 175);
-        if(saveScript != null)
-        {
-            if(saveScript.tutoActive)
-            {
-                TutoPanel.SetActive(true);
-            }
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        Time.timeScale = 1;
     }
     public void ModeSelector()
     {
@@ -333,7 +327,7 @@ public class Gameplay_Manager : MonoBehaviour
     {
         if(saveScript != null)
         {
-            saveScript.monedas = saveScript.monedas + playerProprieties.currentPizzas;
+            saveScript.monedas = saveScript.monedas + playerProprieties.currentCoin;
             saveScript.SavePlayer();
         }
         SceneManager.LoadScene("Main_Menu");

@@ -8,8 +8,8 @@ public class playerProprieties : MonoBehaviour
 {
     public float currentFuel = 300; //Cantidad de combustible que posee la moto en el momento
     //int maxFuel = 300; //Cantidad de combustible maximo que la moto puede tener
-    public int currentPizzas;
-    public int generalPizzas;
+    public int currentCoin;
+    public int generalCoin;
     float fuelConsumption;
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
     public int generalLife = 3;
@@ -66,21 +66,23 @@ public class playerProprieties : MonoBehaviour
             Destroy(other.gameObject);
             if(destructiveMode)
             {
+                Debug.Log("f");
                 if(x2Mode)
                 {
-                    currentPizzas = currentPizzas + 20;
+                    currentCoin = currentCoin + 20;
                 }
                 else
                 {
-                    currentPizzas = currentPizzas + 10;
+                    currentCoin = currentCoin + 10;
                 }
             }
             if(!inmune)
             {
+                Debug.Log("a");
                 vehicleLifeCondition();
             }
         }
-        if(other.gameObject.tag == "Pizza")
+        if(other.gameObject.tag == "Coin")
         {
             if(gameplay_Manager.audioController != null)
             {
@@ -88,18 +90,18 @@ public class playerProprieties : MonoBehaviour
             }
             if(x2Mode)
             {
-                currentPizzas = currentPizzas + 2;
+                currentCoin = currentCoin + 2;
             }
             else
             {
-                currentPizzas = currentPizzas + 1;
+                currentCoin = currentCoin + 1;
             }
             Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "Checkpoint")
         {
-            generalPizzas = generalPizzas + currentPizzas;
-            currentPizzas = 0;
+            generalCoin = generalCoin + currentCoin;
+            currentCoin = 0;
             if(generalLife != 2)
             {
                 generalLife = generalLife + 1;

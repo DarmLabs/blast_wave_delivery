@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2024717075553166701}
+  - component: {fileID: 9209148368903316990}
   m_Layer: 0
   m_Name: Nafta
-  m_TagString: Untagged
+  m_TagString: Fuel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9209148368903316990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680667154903728087}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.7164078, y: 6.1858864, z: 4.6545715}
+  m_Center: {x: -3.4572487, y: 0.49389458, z: 9.321457}
 --- !u!1 &7905165193736528821
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +57,7 @@ GameObject:
   - component: {fileID: 5048620371739316311}
   - component: {fileID: 2491623395489452695}
   - component: {fileID: 8769185014333844028}
+  - component: {fileID: 2121345732808274668}
   m_Layer: 0
   m_Name: Cylinder.001
   m_TagString: Untagged
@@ -114,6 +129,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2121345732808274668
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905165193736528821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d4714c2345527e4e92628c44d7bdffc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8025166880923452259
 GameObject:
   m_ObjectHideFlags: 0
