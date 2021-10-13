@@ -9991,12 +9991,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239231896}
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 1.15, z: 1.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.18212628, y: -0.041619193, z: -0.2667576}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1301872142247088572}
-  m_RootOrder: 1
+  m_Father: {fileID: 9168224412802362532}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &1239231898
 LineRenderer:
@@ -14957,6 +14957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rueda_Efec (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 249a6e5bad5588b43bc4d0be8ac501d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 249a6e5bad5588b43bc4d0be8ac501d5, type: 3}
 --- !u!1 &1957763196 stripped
@@ -16881,7 +16885,6 @@ Transform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 1120091905}
-  - {fileID: 1239231897}
   - {fileID: 9168224412802362532}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -17176,7 +17179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6577004260647426813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6766478, z: -0.6204477}
+  m_LocalPosition: {x: 2.78, y: 0.6766478, z: -0.6204477}
   m_LocalScale: {x: 1.0093955, y: 1.0093955, z: 1.0093955}
   m_Children: []
   m_Father: {fileID: 9168224412802362532}
@@ -18203,8 +18206,9 @@ Transform:
   - {fileID: 4392545578335670644}
   - {fileID: 1824093516540164626}
   - {fileID: 1957763198}
+  - {fileID: 1239231897}
   m_Father: {fileID: 1301872142247088572}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9204127438018281206
 GameObject:
