@@ -14,6 +14,7 @@ TagManager:
   - Pizza
   - coinSpawner
   - fuelSpawner
+  - Caja
   layers:
   - Default
   - TransparentFX

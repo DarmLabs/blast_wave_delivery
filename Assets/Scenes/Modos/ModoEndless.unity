@@ -3230,6 +3230,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Moto: {fileID: 1827051309198281478}
+  cajaPizzaPrefab: {fileID: 7943829200712580803, guid: 4e90c37f5611e5b4986249a9ffeabd19, type: 3}
+  spawnsParaCaja:
+  - {fileID: 1914467874}
+  - {fileID: 1914467873}
+  - {fileID: 1914467872}
+  - {fileID: 1178777259}
+  - {fileID: 1178777258}
+  - {fileID: 1178777257}
   spawnsP: []
   SpawnerP: 0
   pizzaPrefab: {fileID: 8234067781196875637, guid: e4ee083faa5ad2a4499c61a02446bb83, type: 3}
