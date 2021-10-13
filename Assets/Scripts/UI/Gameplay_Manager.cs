@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class Gameplay_Manager : MonoBehaviour
 {
-    #region Variables
+    #region Variables    
     //UI
     //Main
     public GameObject MainButtons;
@@ -63,7 +63,7 @@ public class Gameplay_Manager : MonoBehaviour
     #endregion
     #region Callbacks
     void Start()
-    {
+    {        
         AudioController = GameObject.Find("AudioController");
         if(AudioController != null)
         {

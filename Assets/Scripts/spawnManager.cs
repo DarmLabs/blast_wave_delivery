@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class spawnManager : MonoBehaviour
-{
+{   
+    //Link moto   
     public GameObject Moto;
-
+    playerProprieties playerProprieties;
     //Variables Recolectables
+        //La verdadera pizza
+    public GameObject cajaPizzaPrefab;     
+    public Transform[] spawnsParaCaja;        
         //Pizzas
     public GameObject [] spawnsP;
     public int SpawnerP;
@@ -21,6 +25,7 @@ public class spawnManager : MonoBehaviour
     bool spawnFactive = false;
     void Start()
     {
+        playerProprieties = Moto.GetComponent<playerProprieties>();
         //for Coins
         spawnsP = GameObject.FindGameObjectsWithTag("coinSpawner");
         selectPSpawner();
@@ -31,6 +36,7 @@ public class spawnManager : MonoBehaviour
     {
         transform.Translate(0,0, Moto.GetComponent<playerMovement>().speedz * (Time.deltaTime * Moto.GetComponent<playerMovement>().speedMultiplier));
         selectFSpawner();
+        spawnCajaPizza();
     }
     //Spawns Pizzas
     void selectPSpawner()
@@ -44,6 +50,17 @@ public class spawnManager : MonoBehaviour
         Instantiate(pizzaPrefab, spawnsP[SpawnerP].transform.position, Quaternion.identity);
         StartCoroutine(timeBetweenPizzas(0.2f));
     }
+    
+    void spawnCajaPizza()
+    {
+        if (playerProprieties.currentPizzas == 25)
+        {
+            Instantiate(cajaPizzaPrefab,spawnsParaCaja[Random.Range(0,5)].position,transform.rotation);
+            Debug.Log("INSTANCIO UNA PUTA PIZZA");
+        }
+        Debug.Log("se esta ejecutando"+"  "+playerProprieties.currentPizzas);       
+    }
+
     IEnumerator timeBetweenPizzas(float secs)
     {
         yield return new WaitForSeconds(secs);
