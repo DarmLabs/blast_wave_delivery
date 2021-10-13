@@ -3231,8 +3231,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Moto: {fileID: 1827051309198281478}
   cajaPizzaPrefab: {fileID: 3699066085396819976, guid: 78545533db4a1a54fa3a2f70edbcc542, type: 3}
-  spawnsParaCaja: []
+  spawnsParaCaja:
+  - {fileID: 1914467874}
+  - {fileID: 1914467873}
+  - {fileID: 1914467872}
+  - {fileID: 1178777259}
+  - {fileID: 1178777258}
+  - {fileID: 1178777257}
   CajaExistente: 0
+  CajaRecolectada: 0
+  indiceReferencia: 0
   spawnsP: []
   SpawnerP: 0
   pizzaPrefab: {fileID: 8234067781196875637, guid: e4ee083faa5ad2a4499c61a02446bb83, type: 3}
@@ -9317,7 +9325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366069227461302405, guid: eff5371fb86a0104fbba4b998f654214, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3366069227461302405, guid: eff5371fb86a0104fbba4b998f654214, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10602,6 +10610,7 @@ MonoBehaviour:
   - {fileID: 916907973260711680, guid: 8dad8109050cd394bbdd969ee83a49cc, type: 3}
   - {fileID: 916907973260711680, guid: 8dad8109050cd394bbdd969ee83a49cc, type: 3}
   - {fileID: 916907973260711680, guid: 8dad8109050cd394bbdd969ee83a49cc, type: 3}
+  Moto: {fileID: 1827051309198281478}
 --- !u!4 &1283577391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4309414395616579973, guid: b580f0b6b0070cc4788f0b32fbe82fb2, type: 3}
@@ -14712,7 +14721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2900883939894284774, guid: 1e47d9e3353e7a340aa2d6d652cdc9a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2900883939894284774, guid: 1e47d9e3353e7a340aa2d6d652cdc9a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15526,13 +15535,14 @@ MonoBehaviour:
   generalCoin: 0
   currentTime: 90
   generalLife: 2
+  CajaRecolectada: 0
   x2Mode: 0
   magneticMode: 0
   laserColl: {fileID: 2021161462}
   laser: {fileID: 1239231898}
   cam: {fileID: 1120091919}
   UI_Manager: {fileID: 1104803806}
-  spawnManager: {fileID: 0}
+  spawnManager: {fileID: 421441691}
 --- !u!54 &2021161461
 Rigidbody:
   m_ObjectHideFlags: 0
