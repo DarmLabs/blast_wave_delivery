@@ -68,7 +68,6 @@ public class playerProprieties : MonoBehaviour
             Destroy(other.gameObject);
             if(destructiveMode)
             {
-                Debug.Log("f");
                 if(x2Mode)
                 {
                     currentCoin = currentCoin + 20;
@@ -80,7 +79,6 @@ public class playerProprieties : MonoBehaviour
             }
             if(!inmune)
             {
-                Debug.Log("a");
                 vehicleLifeCondition();
             }
         }
