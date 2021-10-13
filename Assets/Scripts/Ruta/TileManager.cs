@@ -46,7 +46,7 @@ public class TileManager : MonoBehaviour
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
 
         //ACA SE ACTIVA EL CHECKPOINT
-        if (playerProprieties.currentCoin >= 25 && contadorHastaCheck == 10 && playerProprieties.CajaRecolectada)
+        if (playerProprieties.currentCoin >= 25 && contadorHastaCheck >= 10 && playerProprieties.CajaRecolectada)
         {
            go.transform.GetChild(1).gameObject.SetActive(true);
            checkpointCounter+=1;
