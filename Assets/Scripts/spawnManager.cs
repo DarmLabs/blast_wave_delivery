@@ -13,7 +13,10 @@ public class spawnManager : MonoBehaviour
     public Transform[] spawnsParaCaja; 
     public bool CajaExistente = false;
     public bool CajaRecolectada = false; 
-    public int indiceReferencia = 0;      
+    public int indiceReferencia = 0;  
+    //Camión
+    public GameObject Camion;
+    public Transform[] spawnsCamion;    
         //Pizzas
     public GameObject [] spawnsP;
     public int SpawnerP;
@@ -61,6 +64,7 @@ public class spawnManager : MonoBehaviour
         {
             indiceReferencia = Random.Range(0,5);
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[indiceReferencia].position,transform.rotation);
+            Instantiate(Camion,spawnsCamion[indiceReferencia].position,transform.rotation);
             Debug.Log("INSTANCIO UNA PUTA PIZZA");
             Debug.Log("indiceReferencia   "+indiceReferencia);            
             CajaExistente = true;
