@@ -104,7 +104,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 1");
         }
-        if (tileCounter==15)
+        if (tileCounter==50)
         {
             visualSet1=false;
             visualSet2=true;
@@ -113,7 +113,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 2");
         }
-        if (tileCounter==30)
+        if (tileCounter==100)
         {
             visualSet1=false;
             visualSet2=false;
@@ -122,7 +122,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 3");
         }
-        if (tileCounter==45)
+        if (tileCounter==150)
         {
             visualSet1=false;
             visualSet2=false;
@@ -131,7 +131,7 @@ public class TileManager : MonoBehaviour
             visualSet5=false;
             //Debug.Log("SET 4");
         }
-        if (tileCounter==100)
+        if (tileCounter==200)
         {
             visualSet1=false;
             visualSet2=false;

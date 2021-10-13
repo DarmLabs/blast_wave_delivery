@@ -64,7 +64,7 @@ public class spawnManager : MonoBehaviour
             Debug.Log("indiceReferencia   "+indiceReferencia);            
             CajaExistente = true;
         }
-        Debug.Log("se esta ejecutando"+"  "+playerProprieties.currentCoin);       
+        //Debug.Log("se esta ejecutando"+"  "+playerProprieties.currentCoin);       
     }
 
     IEnumerator timeBetweenPizzas(float secs)
