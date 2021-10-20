@@ -16,6 +16,7 @@ public class TileManager : MonoBehaviour
     private int tileCounter = 0;
     private int contadorHastaCheck = 0;
     private int checkpointCounter = 0;
+    public static bool checkActivo = false;
 
     public GameObject Moto;
     playerProprieties playerProprieties;
@@ -23,6 +24,7 @@ public class TileManager : MonoBehaviour
   
     void Start()
     {
+        checkActivo = false;
         playerProprieties = Moto.GetComponent<playerProprieties>();
         visualSet1=true;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -45,13 +47,14 @@ public class TileManager : MonoBehaviour
     {
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
 
-        //ACA SE ACTIVA EL CHECKPOINT
-        if (playerProprieties.currentCoin >= 25 && contadorHastaCheck >= 10 && playerProprieties.CajaRecolectada)
+        //ACA SE ACTIVA EL CHECKPOINT  
+        if (playerProprieties.currentCoin >= 25 && contadorHastaCheck >= 10 && playerProprieties.CajaRecolectada && !checkActivo)
         {
            go.transform.GetChild(1).gameObject.SetActive(true);
            checkpointCounter+=1;
            contadorHastaCheck=0;
            playerProprieties.CajaRecolectada=false;
+           checkActivo = true;
            Debug.Log("Checkpoint Activo:"+contadorHastaCheck+"tiles:"+tileCounter);
         }
         
