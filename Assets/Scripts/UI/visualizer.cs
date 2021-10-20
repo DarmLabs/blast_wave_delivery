@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class visualizer : MonoBehaviour
 {
-    public float minHeight = 50f;
-    public float maxHeight = 300f;
+    public float minWidth = 30f;
+    public float maxWidth = 300f;
     public float sensitivity = 0.25f;
     objectVisualizer [] objectVisualizers;
     public float [] audioSpectrum;
@@ -31,7 +31,7 @@ public class visualizer : MonoBehaviour
         {
             Vector2 newSize = objectVisualizers[i].GetComponent<RectTransform>().rect.size;
 
-            newSize.y = Mathf.Lerp(newSize.y, minHeight + (audioSpectrum[i] * (maxHeight - minHeight)), sensitivity);
+            newSize.x = Mathf.Lerp(newSize.x, minWidth + (audioSpectrum[i] * (maxWidth - minWidth)), sensitivity);
             objectVisualizers [i].GetComponent<RectTransform> ().sizeDelta = newSize;
         }
     }
