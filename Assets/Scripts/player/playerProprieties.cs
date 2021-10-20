@@ -107,7 +107,6 @@ public class playerProprieties : MonoBehaviour
                 generalLife = generalLife + 1;
                 gameplay_Manager.LifeChange();
             }
-            TileManager.checkActivo = false;
         }
         if(other.gameObject.tag == "Caja")
         {

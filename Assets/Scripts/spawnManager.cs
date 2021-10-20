@@ -11,7 +11,7 @@ public class spawnManager : MonoBehaviour
         //La verdadera pizza
     public GameObject cajaPizzaPrefab;     
     public Transform[] spawnsParaCaja; 
-    public bool CajaExistente = false;    
+    public bool CajaExistente = false;
     public bool CajaRecolectada = false; 
     public int indiceReferencia = 0;  
     //Camión
@@ -60,7 +60,7 @@ public class spawnManager : MonoBehaviour
     
     void spawnCajaPizza()
     {
-        if (playerProprieties.currentCoin >= 25 && CajaExistente == false && TileManager.checkActivo == false)
+        if (playerProprieties.currentCoin >= 25 && CajaExistente == false)
         {
             indiceReferencia = Random.Range(0,5);
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[indiceReferencia].position,transform.rotation);
