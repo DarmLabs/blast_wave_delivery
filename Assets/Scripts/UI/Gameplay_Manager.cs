@@ -278,7 +278,7 @@ public class Gameplay_Manager : MonoBehaviour
     public void ModeSelector()
     {
         selectedButton = EventSystem.current.currentSelectedGameObject;
-        if(modeSelected1 == "")
+        if(modeSelected1 == "" && modeSelected2!=selectedButton.name)
         {
             modeSelected1 = selectedButton.name;
             _name = modeSelected1;
@@ -297,22 +297,21 @@ public class Gameplay_Manager : MonoBehaviour
                 startButton.GetComponent<Button>().enabled = true;
                 startButton.GetComponent<Image>().color = unactiveColor;     
             }
-            else
-            {
-                startButton.GetComponent<Button>().enabled = false;
-                startButton.GetComponent<Image>().color = lockedColor;
-            }
             return;
         }
         if(selectedButton.name == modeSelected1)
         {
             modeSelected1 = "";
+            startButton.GetComponent<Button>().enabled = false;
+            startButton.GetComponent<Image>().color = lockedColor;
             selectedButton.GetComponent<Image>().color = lockedColor;
             description.GetComponent<Text>().text = "";
         }
         if(selectedButton.name == modeSelected2)
         {
             modeSelected2 = "";
+            startButton.GetComponent<Button>().enabled = false;
+            startButton.GetComponent<Image>().color = lockedColor;
             selectedButton.GetComponent<Image>().color = lockedColor;
             description.GetComponent<Text>().text = "";
         }
