@@ -31,7 +31,7 @@ public class visualizer : MonoBehaviour
         {
             Vector2 newSize = objectVisualizers[i].GetComponent<RectTransform>().rect.size;
 
-            newSize.y = Mathf.Lerp(newSize.x, minWidth + (audioSpectrum[i] * (maxWidth - minWidth)), sensitivity);
+            newSize.x = Mathf.Lerp(newSize.x, minWidth + (audioSpectrum[i] * (maxWidth - minWidth)), sensitivity);
             objectVisualizers [i].GetComponent<RectTransform> ().sizeDelta = newSize;
         }
     }
