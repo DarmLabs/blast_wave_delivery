@@ -12,7 +12,7 @@ public class TileManager : MonoBehaviour
     private int amnTilesOnScreen = 10;
     private GameObject go;
     private int lastPrefabIndex = 0;    
-    private bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
+    public static bool visualSet1=false, visualSet2=false, visualSet3=false, visualSet4=false, visualSet5 = false; 
     private int tileCounter = 0;
     private int contadorHastaCheck = 0;
     private int checkpointCounter = 0;
@@ -24,6 +24,9 @@ public class TileManager : MonoBehaviour
   
     void Start()
     {
+        visualSet1=false;
+        visualSet2=false; visualSet3=false;
+        visualSet4=false; visualSet5=false;
         checkActivo = false;
         playerProprieties = Moto.GetComponent<playerProprieties>();
         visualSet1=true;
