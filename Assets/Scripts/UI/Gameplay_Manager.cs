@@ -224,6 +224,7 @@ public class Gameplay_Manager : MonoBehaviour
         {
             saveScript.monedas = saveScript.monedas + playerProprieties.currentCoin;
             saveScript.SavePlayer();
+            saveScript.LoadPlayer();
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -256,6 +257,7 @@ public class Gameplay_Manager : MonoBehaviour
         {
             saveScript.tutoActive = false;
             saveScript.SavePlayer();
+            saveScript.LoadPlayer();
         }
     }
     public void StartGame()
@@ -328,6 +330,7 @@ public class Gameplay_Manager : MonoBehaviour
         {
             saveScript.monedas = saveScript.monedas + playerProprieties.currentCoin;
             saveScript.SavePlayer();
+            saveScript.LoadPlayer();
         }
         SceneManager.LoadScene("Main_Menu");
     }
