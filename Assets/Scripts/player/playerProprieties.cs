@@ -18,8 +18,7 @@ public class playerProprieties : MonoBehaviour
     bool destructiveMode;
     public bool x2Mode;
     public bool magneticMode;
-    public BoxCollider laserColl;
-    public LineRenderer laser;
+    public GameObject laser;
     public Camera cam;
     public GameObject UI_Manager;
     Gameplay_Manager gameplay_Manager;
@@ -42,7 +41,7 @@ public class playerProprieties : MonoBehaviour
         {
             gameplay_Manager.GameOver();
         }
-        if(inmune && !destructiveMode && !laser.enabled)
+        if(inmune && !destructiveMode && !laser.activeSelf)
         {
             MotoAnimator.SetBool("inmune", true);
         }
@@ -169,8 +168,7 @@ public class playerProprieties : MonoBehaviour
     }
     public void modeLaser()
     {
-        laserColl.enabled = true;
-        laser.enabled = true;
+        laser.SetActive(true);
         inmune = true;
         gameplay_Manager.LaserButton();
         StartCoroutine(clearModes(5));
@@ -193,8 +191,7 @@ public class playerProprieties : MonoBehaviour
         destructiveMode = false;
         inmune =false;
         x2Mode = false;
-        laserColl.enabled = false;
-        laser.enabled = false;
+        laser.SetActive(false);
         magneticMode = false;
     }
     IEnumerator clearModes(int secs)
