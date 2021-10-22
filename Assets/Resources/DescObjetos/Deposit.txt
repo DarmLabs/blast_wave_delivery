@@ -1,0 +1,1 @@
+Al activarse rellena el tanque de combustible, se rompe al activarse.

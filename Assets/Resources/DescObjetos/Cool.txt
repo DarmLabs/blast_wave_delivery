@@ -1,0 +1,1 @@
+Al activarse elimina los tiempos de enfriamiento activos, se rompe al activarse.

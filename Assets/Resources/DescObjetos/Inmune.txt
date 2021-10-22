@@ -1,0 +1,1 @@
+Al activarse concede un periodo de inmunidad, se rompe al activarse.
