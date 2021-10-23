@@ -10266,13 +10266,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1239231897}
   - component: {fileID: 1239231898}
+  - component: {fileID: 1239231899}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1239231897
 Transform:
   m_ObjectHideFlags: 0
@@ -10294,7 +10295,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239231896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10306,7 +10307,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83035273f2cc4b4438f574467864d1c7, type: 2}
+  - {fileID: 2100000, guid: 4639ca07661bd7d49998779efd093985, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10394,6 +10395,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!65 &1239231899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239231896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 97.754074}
+  m_Center: {x: 0, y: 1.04, z: 51.17109}
 --- !u!1 &1240200030
 GameObject:
   m_ObjectHideFlags: 0
@@ -16381,8 +16395,7 @@ MonoBehaviour:
   CajaRecolectada: 0
   x2Mode: 0
   magneticMode: 0
-  laserColl: {fileID: 2021161462}
-  laser: {fileID: 1239231898}
+  laser: {fileID: 1239231896}
   cam: {fileID: 1120091919}
   UI_Manager: {fileID: 1104803806}
   spawnManager: {fileID: 421441691}
@@ -16402,19 +16415,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &2021161462
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827051309198281478}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.7829273, y: 0.5145904, z: 97.99986}
-  m_Center: {x: -1.0960965, y: 1.009976, z: 52.347576}
 --- !u!65 &2021161463
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17867,7 +17867,6 @@ GameObject:
   - component: {fileID: 1301872142247088572}
   - component: {fileID: 2021161461}
   - component: {fileID: 2021161463}
-  - component: {fileID: 2021161462}
   - component: {fileID: 2021161449}
   - component: {fileID: 2021161448}
   m_Layer: 0

@@ -26,6 +26,11 @@ public class Main_Menu_Manager : MonoBehaviour
     GameObject slider;
     bool music;
     bool sfx;
+    //Tienda
+    public Text descriptionPot;
+    public GameObject buyButtonPot;
+    public Text descriptionObj;
+    public GameObject buyButtonObj;    
     void Start()
     {
         OnLoadGame();   
@@ -123,7 +128,7 @@ public class Main_Menu_Manager : MonoBehaviour
             pjSection.transform.SetSiblingIndex(1);
             musicSection.transform.SetSiblingIndex(0);
         }
-        if(buttonPressed == "Pj")
+        if(buttonPressed == "Cosmetics")
         {
             pjSection.transform.SetSiblingIndex(2);
         }
@@ -165,5 +170,37 @@ public class Main_Menu_Manager : MonoBehaviour
             sfx = false;
             slider.GetComponent<Animator>().Play("Desliz 0");
         }
+    }
+
+    //Tienda
+
+    public void Potenciadores()
+    {
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        TextAsset file = Resources.Load<TextAsset>("ModesDesc/"+buttonPressed+"Button");
+        if(file != null)
+        {
+            descriptionPot.GetComponent<Text>().text = file.text;
+        }
+        buyButtonPot.SetActive(true);
+    }
+    public void Objetos()
+    {
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        TextAsset file = Resources.Load<TextAsset>("DescObjetos/"+buttonPressed);
+        if(file != null)
+        {
+            descriptionObj.GetComponent<Text>().text = file.text;
+        }
+        buyButtonObj.SetActive(true);
+    }
+    public void Cosmeticos()
+    {
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        ConfirmationScreen();
+    }
+    public void ConfirmationScreen()
+    {
+        
     }
 }

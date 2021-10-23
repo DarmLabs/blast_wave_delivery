@@ -274,6 +274,11 @@ public class Gameplay_Manager : MonoBehaviour
             _name = modeSelected1;
             PrintDescription();
             selectedButton.GetComponent<Image>().color = unactiveColor;
+            if(modeSelected1 != "" && modeSelected2 != "")
+            {
+                startButton.GetComponent<Button>().enabled = true;
+                startButton.GetComponent<Image>().color = unactiveColor;     
+            }
             return;
         }
         if(modeSelected2 == "" && modeSelected1!=selectedButton.name)
