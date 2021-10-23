@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9351,9 +9351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d637ed707906620439d31badd53f72a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoActive: 0
-  monedas: 0
-  firstTimePassed: 0
 --- !u!1 &1377978456
 GameObject:
   m_ObjectHideFlags: 0
@@ -11876,6 +11873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c119cca06a2b38a43af6a3bd850f33db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  universalCoins: {fileID: 1370151759}
   firstScreen: {fileID: 567105949}
   shopScreen: {fileID: 81334544}
   motoSection: {fileID: 1568384671}
