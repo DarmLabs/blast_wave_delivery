@@ -417,8 +417,10 @@ public class Gameplay_Manager : MonoBehaviour
     void auxilarModule1()
     {
         Button1inCool = true;
-        if(!Button2inCool && !playerProprieties.x2Mode)
+        if(!Button2inCool && (modeSelected1 != "x2Button" && modeSelected2 != "x2Button"))
         {
+            Debug.Log(modeSelected1);
+            Debug.Log(modeSelected2);
             modeButton2.GetComponent<Image>().color = lockedColor;
             modeButton2.GetComponent<Button>().enabled = false;
         }
@@ -428,8 +430,10 @@ public class Gameplay_Manager : MonoBehaviour
     void auxilarModule2()
     {
         Button2inCool = true;
-        if(!Button1inCool && !playerProprieties.x2Mode)
+        if(!Button1inCool && (modeSelected1 != "x2Button" && modeSelected2 != "x2Button"))
         {
+            Debug.Log(modeSelected1);
+            Debug.Log(modeSelected2);
             modeButton1.GetComponent<Image>().color = lockedColor;
             modeButton1.GetComponent<Button>().enabled = false;
         }
