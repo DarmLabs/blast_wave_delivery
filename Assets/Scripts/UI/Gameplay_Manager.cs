@@ -51,6 +51,7 @@ public class Gameplay_Manager : MonoBehaviour
     public Text [] safeCoinsTexts;
     public Text button1Text;
     public Text button2Text;
+    public Text Pizzas;
     float minutes; //Display de minutos en el texto
     float seconds; //Display de segundos en el texto
     [Space (10)]
@@ -59,11 +60,11 @@ public class Gameplay_Manager : MonoBehaviour
     public AudioController audioController;
     //Save
     GameObject SaveScript;
-    globalVariables saveScript;
     #endregion
     #region Callbacks
     void Start()
-    {        
+    {
+        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/player.save");
         AudioController = GameObject.Find("AudioController");
         if(AudioController != null)
         {
@@ -73,29 +74,20 @@ public class Gameplay_Manager : MonoBehaviour
         }
         ClosePauseScreen();
         Time.timeScale = 0;
-        SaveScript = GameObject.Find("SaveManager");
-        if(SaveScript != null)
+        if(!SaveData.current.firstTimePassed)
         {
-            saveScript = SaveScript.GetComponent<globalVariables>();
-            if(!saveScript.firstTimePassed)
-            {
-                saveScript.tutoActive = true;
-                saveScript.firstTimePassed = true;
-            }
-            if(saveScript.tutoActive)
-            {
-                panel.SetActive(false);
-                TutoPanel.SetActive(true);
-            }
-            else
-            {
-                panel.SetActive(true);
-                TutoPanel.SetActive(false);
-            }
+            SaveData.current.tutoActive = true;
+            SaveData.current.firstTimePassed = true;
+        }
+        if(SaveData.current.tutoActive)
+        {
+            panel.SetActive(false);
+            TutoPanel.SetActive(true);        
         }
         else
         {
             panel.SetActive(true);
+            TutoPanel.SetActive(false);
         }
         TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
         playerProprieties = Moto.GetComponent<playerProprieties>();
@@ -142,6 +134,10 @@ public class Gameplay_Manager : MonoBehaviour
         {
             safeCoinsText.text = playerProprieties.generalCoin.ToString("f0");
         }
+    }
+    void DisplayPizzas()
+    {
+        Pizzas.text = playerProprieties.pizzas.ToString();
     }
     public void PrintDescription()
     {
@@ -220,12 +216,9 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void Restart()
     {
-        if(saveScript != null)
-        {
-            saveScript.monedas = saveScript.monedas + playerProprieties.currentCoin;
-            saveScript.SavePlayer();
-            saveScript.LoadPlayer();
-        }
+        SaveData.current.monedas = SaveData.current.monedas + playerProprieties.currentCoin;
+        OnSaveGame();
+        OnLoadGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GameOver()
@@ -253,12 +246,7 @@ public class Gameplay_Manager : MonoBehaviour
         TutoPanel.SetActive(false);
         panel.SetActive(true);
         modesSelector.SetActive(true);
-        if(saveScript != null)
-        {
-            saveScript.tutoActive = false;
-            saveScript.SavePlayer();
-            saveScript.LoadPlayer();
-        }
+        SaveData.current.tutoActive = false;
     }
     public void StartGame()
     {
@@ -326,12 +314,9 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ExitToMainMenu()
     {
-        if(saveScript != null)
-        {
-            saveScript.monedas = saveScript.monedas + playerProprieties.currentCoin;
-            saveScript.SavePlayer();
-            saveScript.LoadPlayer();
-        }
+        SaveData.current.monedas = SaveData.current.monedas + playerProprieties.currentCoin;
+        OnSaveGame();
+        OnLoadGame();
         SceneManager.LoadScene("Main_Menu");
     }
     #endregion
@@ -502,6 +487,15 @@ public class Gameplay_Manager : MonoBehaviour
     {
         panel.SetActive(true);
         MainButtons.SetActive(false);
+    }
+    //Save Auxiliares
+    void OnLoadGame()
+    {
+        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/player.save");
+    }
+    void OnSaveGame()
+    {
+        SerializationManager.Save(SaveData.current);
     }
     #endregion
 }

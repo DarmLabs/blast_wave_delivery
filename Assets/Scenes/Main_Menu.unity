@@ -4051,52 +4051,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370151757}
   m_CullTransparentMesh: 1
---- !u!1 &1373913781
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1373913782}
-  - component: {fileID: 1373913783}
-  m_Layer: 0
-  m_Name: SaveManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1373913782
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373913781}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 377.3412, y: 219.98297, z: -8.764884}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1373913783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373913781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d637ed707906620439d31badd53f72a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutoActive: 0
-  monedas: 0
-  firstTimePassed: 0
 --- !u!1 &1377978456
 GameObject:
   m_ObjectHideFlags: 0
@@ -5618,6 +5572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c119cca06a2b38a43af6a3bd850f33db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  universalCoins: {fileID: 1370151759}
   firstScreen: {fileID: 567105949}
   shopScreen: {fileID: 81334544}
   motoSection: {fileID: 1568384671}

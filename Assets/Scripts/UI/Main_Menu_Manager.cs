@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Main_Menu_Manager : MonoBehaviour
 {
+    public Text universalCoins;
     public GameObject firstScreen;
     public GameObject shopScreen;
     public GameObject motoSection;
@@ -26,10 +28,23 @@ public class Main_Menu_Manager : MonoBehaviour
     bool sfx;
     void Start()
     {
+        OnLoadGame();   
         Time.timeScale = 1;
         selectMode();
+        DisplayUniversalCoins();
     }
-
+    void DisplayUniversalCoins()
+    {
+        universalCoins.text = SaveData.current.monedas.ToString();
+    }
+    void OnLoadGame()
+    {
+        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/player.save");
+    }
+    void OnSaveGame()
+    {
+        SerializationManager.Save(SaveData.current);
+    }
     public void setOffFirstScreen()
     {
         firstScreen.SetActive(false);

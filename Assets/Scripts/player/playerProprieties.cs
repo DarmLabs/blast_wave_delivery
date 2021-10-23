@@ -10,6 +10,7 @@ public class playerProprieties : MonoBehaviour
     //int maxFuel = 300; //Cantidad de combustible maximo que la moto puede tener
     public int currentCoin;
     public int generalCoin;
+    public int pizzas;
     float fuelConsumption;
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
     public int generalLife = 3;
@@ -113,6 +114,7 @@ public class playerProprieties : MonoBehaviour
         {
             spawnManager.GetComponent<spawnManager>().CajaExistente = false;
             CajaRecolectada = true;
+            pizzas = pizzas +1;
             Destroy(other.gameObject);
         }
     }
