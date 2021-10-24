@@ -28,5 +28,22 @@ public class SaveData
     public bool tutoActive;
     public int monedas;
     public bool firstTimePassed;
-
+    //Tienda variables
+        //Potenciadores
+    public bool laser;
+    public bool stopTime;
+    public bool magnetic;
+    public bool x2;
+        //Objetos
+    public int extraVida;
+    public int deposit;
+    public int inmune;
+    public int cool;
+    public int check;
+    public bool slot;
+        //Cosmeticos
+    public bool skinInferno;
+    public bool skinRadiactive;
+    public bool skinLight;
+    public bool skinRetro;
 }
