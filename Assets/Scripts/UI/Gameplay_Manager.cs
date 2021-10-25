@@ -72,6 +72,7 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject[] modeButtons;
     public GameObject[] objButtons;
     public Text[] objTexts;
+    public Text[] objTextsUI;
     #endregion
     #region Callbacks
     void Start()
@@ -105,7 +106,7 @@ public class Gameplay_Manager : MonoBehaviour
         playerProprieties = Moto.GetComponent<playerProprieties>();
         previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
         modeStatusChecker();
-        objAmountChecker();
+        objSelectorAmountChecker();
     }
     void Update()
     {
@@ -224,7 +225,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     #endregion
     #region UIelements
-    public void objAmountChecker()
+    public void objSelectorAmountChecker()
     {
         objTexts[0].text = SaveData.current.extraVida.ToString();
         objTexts[1].text = SaveData.current.inmune.ToString();
@@ -281,6 +282,14 @@ public class Gameplay_Manager : MonoBehaviour
             objButtons[4].GetComponent<Image>().color = lockedColor;
             objButtons[4].GetComponent<Button>().enabled = true;
         }
+    }
+    public void objUIAmountChecker()
+    {
+        objTextsUI[0].text = SaveData.current.extraVida.ToString();
+        objTextsUI[1].text = SaveData.current.inmune.ToString();
+        objTextsUI[2].text = SaveData.current.cool.ToString();
+        objTextsUI[3].text = SaveData.current.deposit.ToString();
+        objTextsUI[4].text = SaveData.current.check.ToString();
     }
     public void modeStatusChecker()
     {
@@ -509,6 +518,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void LifeChange()
     {   
+        ExtraLifeChecker();
         LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.SetActive(true);
         previousLife.SetActive(false);
         previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
@@ -613,6 +623,8 @@ public class Gameplay_Manager : MonoBehaviour
     public void RefreshCooldown()
     {
         refreshCooldown = true;
+        SaveData.current.cool -=1;
+        RefreshCooldownChecker();
     }
     #endregion
     #region AuxilarMethods
@@ -698,7 +710,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ExtraLifeChecker()
     {
-        if(playerProprieties.generalLife != 3)
+        if(playerProprieties.generalLife != 2 && SaveData.current.extraVida != 0)
         {
             objToBlock[0].GetComponent<Button>().interactable = true;
             objToBlock[0].GetComponent<Image>().color = unactiveColor;
@@ -711,7 +723,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void RefreshCooldownChecker()
     {
-        if(Button1inCool || Button2inCool)
+        if(Button1inCool || Button2inCool && SaveData.current.cool != 0)
         {
             objToBlock[1].GetComponent<Button>().interactable = true;
             objToBlock[1].GetComponent<Image>().color = unactiveColor;
@@ -724,7 +736,42 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ExtraCheckChecker()
     {
-        //Checkear si si debe apagar o prender el recurso
+        if(SaveData.current.check != 0)
+        {
+            objToBlock[2].GetComponent<Button>().interactable = true;
+            objToBlock[2].GetComponent<Image>().color = unactiveColor;
+        }
+        else
+        {
+            objToBlock[2].GetComponent<Button>().interactable = false;
+            objToBlock[2].GetComponent<Image>().color = lockedColor;
+        }
+    }
+    public void DepositChecker()
+    {
+        if(SaveData.current.deposit != 0)
+        {
+            objToBlock[3].GetComponent<Button>().interactable = true;
+            objToBlock[3].GetComponent<Image>().color = unactiveColor;
+        }
+        else
+        {
+            objToBlock[3].GetComponent<Button>().interactable = false;
+            objToBlock[3].GetComponent<Image>().color = lockedColor;
+        }
+    }
+    public void InmuneChecker()
+    {
+        if(!playerProprieties.inmune && SaveData.current.inmune != 0)
+        {
+            objToBlock[4].GetComponent<Button>().interactable = true;
+            objToBlock[4].GetComponent<Image>().color = unactiveColor;
+        }
+        else
+        {
+            objToBlock[4].GetComponent<Button>().interactable = false;
+            objToBlock[4].GetComponent<Image>().color = lockedColor;
+        }
     }
     //UI Auxiliares
     void overUsedPaneloff()

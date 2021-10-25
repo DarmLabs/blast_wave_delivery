@@ -15,7 +15,7 @@ public class playerProprieties : MonoBehaviour
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
     public int generalLife = 3;
     public bool CajaRecolectada = false;
-    bool inmune;
+    public bool inmune;
     bool destructiveMode;
     bool inmuneObj;
     public bool x2Mode;
@@ -31,6 +31,7 @@ public class playerProprieties : MonoBehaviour
         gameplay_Manager = UI_Manager.GetComponent<Gameplay_Manager>();
         MotoAnimator = GetComponentInChildren<Animator>();
         modeStandard();
+        gameplay_Manager.ExtraLifeChecker();
     }
     void Update()
     {
@@ -42,14 +43,6 @@ public class playerProprieties : MonoBehaviour
         else
         {
             gameplay_Manager.GameOver();
-        }
-        if(inmune && !destructiveMode && !laser.activeSelf && !inmuneObj)
-        {
-            MotoAnimator.SetBool("inmune", true);
-        }
-        else
-        {
-            MotoAnimator.SetBool("inmune", false);
         }
     }
     void OnTriggerEnter(Collider other) //Trigger para la deteccion de recolectables
@@ -78,9 +71,14 @@ public class playerProprieties : MonoBehaviour
                     currentCoin = currentCoin + 10;
                 }
             }
-            if(!inmune)
+            if(!inmune && !destructiveMode && !laser.activeSelf && !inmuneObj)
             {
+                MotoAnimator.SetBool("inmune", true);
                 vehicleLifeCondition();
+            }
+            else
+            {
+                MotoAnimator.SetBool("inmune", false);
             }
         }
         if(other.gameObject.tag == "Coin")
@@ -122,6 +120,7 @@ public class playerProprieties : MonoBehaviour
     {
         generalLife = generalLife -1;
         inmune = true;
+        gameplay_Manager.InmuneChecker();
         StartCoroutine(inmuneTime(2));
         if(generalLife == -1)
         {
@@ -134,11 +133,13 @@ public class playerProprieties : MonoBehaviour
     {
         yield return new WaitForSeconds(secs);
         inmune = false;
+        gameplay_Manager.InmuneChecker();
     }
     public void modeFast()
     {
         destructiveMode = true;
         inmune = true;
+        gameplay_Manager.InmuneChecker();
         currentFuel = currentFuel -10;
         gameObject.GetComponent<playerMovement>().speedMultiplier = 5;
         gameObject.GetComponent<playerMovement>().HMultiplier = 0.2f;
@@ -150,6 +151,7 @@ public class playerProprieties : MonoBehaviour
     {
         destructiveMode = true;
         inmune = true;
+        gameplay_Manager.InmuneChecker();
         currentFuel = currentFuel -10;
         gameObject.GetComponent<playerMovement>().HMultiplier = 0.8f;
         gameplay_Manager.TankButton();
@@ -173,6 +175,7 @@ public class playerProprieties : MonoBehaviour
     {
         laser.SetActive(true);
         inmune = true;
+        gameplay_Manager.InmuneChecker();
         gameplay_Manager.LaserButton();
         StartCoroutine(clearModes(5));
     }
@@ -193,6 +196,7 @@ public class playerProprieties : MonoBehaviour
         cam.fieldOfView = 75;
         destructiveMode = false;
         inmune =false;
+        gameplay_Manager.InmuneChecker();
         x2Mode = false;
         laser.SetActive(false);
         magneticMode = false;
@@ -208,14 +212,20 @@ public class playerProprieties : MonoBehaviour
     public void ExtraLife()
     {
         generalLife =+ 1;
+        SaveData.current.extraVida -=1;
+        gameplay_Manager.ExtraLifeChecker();
     }
     public void Desposit()
     {
         currentFuel = 300;
+        SaveData.current.deposit -= 1;
+        gameplay_Manager.DepositChecker();
     }
     public void Inmune()
     {
         inmune = true;
         inmuneObj = true;
+        SaveData.current.inmune -= 1;
+        gameplay_Manager.InmuneChecker();
     }
 }
