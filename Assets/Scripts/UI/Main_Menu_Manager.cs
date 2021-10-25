@@ -143,17 +143,17 @@ public class Main_Menu_Manager : MonoBehaviour
     public void ShopSections()
     {
         buttonPressed = EventSystem.current.currentSelectedGameObject.name;
-        if(buttonPressed == "Moto")
+        if(buttonPressed == "Potenciadores")
         {
             motoSection.transform.SetSiblingIndex(2);
             pjSection.transform.SetSiblingIndex(1);
             musicSection.transform.SetSiblingIndex(0);
         }
-        if(buttonPressed == "Cosmetics")
+        if(buttonPressed == "Objetos")
         {
             pjSection.transform.SetSiblingIndex(2);
         }
-        if(buttonPressed == "Musica")
+        if(buttonPressed == "Cosmetics")
         {
             musicSection.transform.SetSiblingIndex(2);
             pjSection.transform.SetSiblingIndex(1);
@@ -438,6 +438,8 @@ public class Main_Menu_Manager : MonoBehaviour
             #endregion
         }
         CancelBuy();
+        OnSaveGame();
+        OnLoadGame();
     }
     public void CoinPanel()
     {

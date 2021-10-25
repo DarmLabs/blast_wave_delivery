@@ -1567,10 +1567,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 475139155}
   - {fileID: 2143726636}
   - {fileID: 1278266774}
   - {fileID: 1568384672}
+  - {fileID: 475139155}
   - {fileID: 2012654695}
   - {fileID: 1700652795}
   - {fileID: 1248543619}
@@ -1594,6 +1594,7 @@ GameObject:
   - component: {fileID: 87848962}
   - component: {fileID: 87848965}
   - component: {fileID: 87848964}
+  - component: {fileID: 87848963}
   m_Layer: 5
   m_Name: x2
   m_TagString: Untagged
@@ -1626,6 +1627,18 @@ RectTransform:
   m_AnchoredPosition: {x: 560, y: 107.64996}
   m_SizeDelta: {x: 476.249, y: 455.911}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &87848963
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87848961}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &87848964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4927,7 +4940,7 @@ RectTransform:
   - {fileID: 486234373}
   - {fileID: 494146372}
   m_Father: {fileID: 81334545}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12915,7 +12928,7 @@ RectTransform:
   - {fileID: 1697572409}
   - {fileID: 1527983336}
   m_Father: {fileID: 81334545}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13270,6 +13283,7 @@ GameObject:
   - component: {fileID: 1319864492}
   - component: {fileID: 1319864494}
   - component: {fileID: 1319864493}
+  - component: {fileID: 1319864495}
   m_Layer: 5
   m_Name: DesCont
   m_TagString: Untagged
@@ -13320,7 +13334,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 2012694960268989109, guid: 6c41b50bdc3240f4e99fbddc3104a5b5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -13336,6 +13350,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319864491}
   m_CullTransparentMesh: 1
+--- !u!225 &1319864495
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319864491}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1320056635
 GameObject:
   m_ObjectHideFlags: 0
@@ -14214,6 +14240,7 @@ GameObject:
   - component: {fileID: 1403709806}
   - component: {fileID: 1403709809}
   - component: {fileID: 1403709808}
+  - component: {fileID: 1403709807}
   m_Layer: 5
   m_Name: StopTime
   m_TagString: Untagged
@@ -14246,6 +14273,18 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: 107.64996}
   m_SizeDelta: {x: 476.249, y: 455.911}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1403709807
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403709805}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &1403709808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15424,7 +15463,7 @@ RectTransform:
   - {fileID: 87848962}
   - {fileID: 1319864492}
   m_Father: {fileID: 81334545}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17200,7 +17239,7 @@ GameObject:
   - component: {fileID: 1700652797}
   - component: {fileID: 1700652796}
   m_Layer: 5
-  m_Name: Cosmetics
+  m_Name: Objetos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17522,7 +17561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   universalCoins:
   - {fileID: 1370151759}
-  - {fileID: 0}
+  - {fileID: 526291114}
   firstScreen: {fileID: 567105949}
   shopScreen: {fileID: 81334544}
   motoSection: {fileID: 1568384671}
@@ -17846,6 +17885,7 @@ GameObject:
   - component: {fileID: 1794002863}
   - component: {fileID: 1794002866}
   - component: {fileID: 1794002865}
+  - component: {fileID: 1794002864}
   m_Layer: 5
   m_Name: Magnetic
   m_TagString: Untagged
@@ -17878,6 +17918,18 @@ RectTransform:
   m_AnchoredPosition: {x: 200, y: 107.64996}
   m_SizeDelta: {x: 476.249, y: 455.911}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1794002864
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794002862}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &1794002865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18082,6 +18134,7 @@ GameObject:
   - component: {fileID: 1800027817}
   - component: {fileID: 1800027820}
   - component: {fileID: 1800027819}
+  - component: {fileID: 1800027818}
   m_Layer: 5
   m_Name: Laser
   m_TagString: Untagged
@@ -18114,6 +18167,18 @@ RectTransform:
   m_AnchoredPosition: {x: -560, y: 107.65}
   m_SizeDelta: {x: 476.249, y: 455.911}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1800027818
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800027816}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &1800027819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20240,7 +20305,7 @@ GameObject:
   - component: {fileID: 2012654697}
   - component: {fileID: 2012654696}
   m_Layer: 5
-  m_Name: Musica
+  m_Name: Cosmetics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21597,7 +21662,7 @@ RectTransform:
   - {fileID: 224475324}
   - {fileID: 2137273287}
   m_Father: {fileID: 81334545}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

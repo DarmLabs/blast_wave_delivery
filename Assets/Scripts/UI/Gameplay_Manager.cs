@@ -25,6 +25,9 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject objSelector;
     public string modeSelected1;
     public string modeSelected2;    
+    public string objSelected1;
+    public string objSelected2;
+    public string objSelected3;
     GameObject selectedButton;
     public GameObject startButton;
     public string _name;
@@ -387,7 +390,55 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ObjSelector()
     {
-        
+        selectedButton = EventSystem.current.currentSelectedGameObject;
+        if(objSelected1 == "" && selectedButton.name != objSelected2 && selectedButton.name != objSelected3)
+        {
+            objSelected1 = selectedButton.name;
+            _name = objSelected1;
+            PrintDescriptionObj();
+            selectedButton.GetComponent<Image>().color = unactiveColor;
+            return;
+        }
+        else if(objSelected1 == selectedButton.name)
+        {
+            objSelected1 = "";
+            selectedButton.GetComponent<Image>().color = lockedColor;
+            descriptionObj.GetComponent<Text>().text = "";
+            return;
+        }
+        if(objSelected2 == "" && selectedButton.name != objSelected1 && selectedButton.name != objSelected3)
+        {
+            objSelected2 = selectedButton.name;
+            _name = objSelected2;
+            PrintDescriptionObj();
+            selectedButton.GetComponent<Image>().color = unactiveColor;
+            return;
+        }
+        else if(objSelected2 == selectedButton.name)
+        {
+            objSelected2 = "";
+            selectedButton.GetComponent<Image>().color = lockedColor;
+            descriptionObj.GetComponent<Text>().text = "";
+            return;
+        }
+        if(SaveData.current.slot)
+        {
+            if(objSelected3 == "" && selectedButton.name != objSelected1 && selectedButton.name != objSelected2)
+            {
+                objSelected3 = selectedButton.name;
+                _name = objSelected3;
+                PrintDescriptionObj();
+                selectedButton.GetComponent<Image>().color = unactiveColor;
+                return;
+            }
+            else if(objSelected3 == selectedButton.name)
+            {
+                objSelected3 = "";
+                selectedButton.GetComponent<Image>().color = lockedColor;
+                descriptionObj.GetComponent<Text>().text = "";
+                return;
+            }
+        } 
     }
     public void ModeSelector()
     {
