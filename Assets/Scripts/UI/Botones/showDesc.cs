@@ -15,10 +15,10 @@ public class showDesc : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         gameplay_Manager._name = eventData.pointerEnter.gameObject.name;
-        gameplay_Manager.PrintDescription();
+        gameplay_Manager.PrintDescriptionModes();
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        gameplay_Manager.description.GetComponent<Text>().text = "";
+        gameplay_Manager.descriptionPot.GetComponent<Text>().text = "";
     }
 }

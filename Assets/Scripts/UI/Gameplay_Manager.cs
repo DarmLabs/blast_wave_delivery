@@ -22,13 +22,13 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject panel;
     public GameObject GOresumeButton;
     public GameObject modesSelector;
+    public GameObject objSelector;
     public string modeSelected1;
     public string modeSelected2;    
     GameObject selectedButton;
     public GameObject startButton;
-    public GameObject description;
     public string _name;
-    Color32 activeColor = new Color32(148, 214, 255, 255);
+    Color32 notBuyedColor = new Color32(46, 46, 46, 255);
     Color32 unactiveColor = new Color32(255, 255, 255, 255);
     Color32 lockedColor = new Color32(106, 106, 106, 255);
     [Space(10)]
@@ -52,19 +52,23 @@ public class Gameplay_Manager : MonoBehaviour
     public Text button1Text;
     public Text button2Text;
     public Text Pizzas;
+    public Text descriptionPot;
+    public Text descriptionObj;
     float minutes; //Display de minutos en el texto
     float seconds; //Display de segundos en el texto
     [Space (10)]
     //Audio
     GameObject AudioController;
     public AudioController audioController;
-    //Save
-    GameObject SaveScript;
+    //For Save Checkers
+    public GameObject[] modeButtons;
+    public GameObject[] objButtons;
+    public Text[] objTexts;
     #endregion
     #region Callbacks
     void Start()
     {
-        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/player.save");
+        OnLoadGame();
         AudioController = GameObject.Find("AudioController");
         if(AudioController != null)
         {
@@ -92,6 +96,8 @@ public class Gameplay_Manager : MonoBehaviour
         TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
         playerProprieties = Moto.GetComponent<playerProprieties>();
         previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
+        modeStatusChecker();
+        objAmountChecker();
     }
     void Update()
     {
@@ -139,12 +145,20 @@ public class Gameplay_Manager : MonoBehaviour
     {
         Pizzas.text = playerProprieties.pizzas.ToString();
     }
-    public void PrintDescription()
+    public void PrintDescriptionModes()
     {
         TextAsset file = Resources.Load<TextAsset>("ModesDesc/"+_name);
         if(file != null)
         {
-            description.GetComponent<Text>().text = file.text;
+            descriptionPot.GetComponent<Text>().text = file.text;
+        }
+    }
+    public void PrintDescriptionObj()
+    {
+        TextAsset file = Resources.Load<TextAsset>("DescObjetos/"+_name);
+        if(file != null)
+        {
+            descriptionObj.GetComponent<Text>().text = file.text;
         }
     }
     public void ShowTuto()
@@ -202,6 +216,107 @@ public class Gameplay_Manager : MonoBehaviour
     }
     #endregion
     #region UIelements
+    public void objAmountChecker()
+    {
+        objTexts[0].text = SaveData.current.extraVida.ToString();
+        objTexts[1].text = SaveData.current.inmune.ToString();
+        objTexts[2].text = SaveData.current.cool.ToString();
+        objTexts[3].text = SaveData.current.deposit.ToString();
+        objTexts[4].text = SaveData.current.check.ToString();
+        if(SaveData.current.extraVida == 0)
+        {
+            objButtons[0].GetComponent<Image>().color = notBuyedColor;
+            objButtons[0].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            objButtons[0].GetComponent<Image>().color = lockedColor;
+            objButtons[0].GetComponent<Button>().enabled = true;
+        }
+        if(SaveData.current.inmune == 0)
+        {
+            objButtons[1].GetComponent<Image>().color = notBuyedColor;
+            objButtons[1].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            objButtons[1].GetComponent<Image>().color = lockedColor;
+            objButtons[1].GetComponent<Button>().enabled = true;
+        }
+        if(SaveData.current.cool == 0)
+        {
+            objButtons[2].GetComponent<Image>().color = notBuyedColor;
+            objButtons[2].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            objButtons[2].GetComponent<Image>().color = lockedColor;
+            objButtons[2].GetComponent<Button>().enabled = true;
+        }
+        if(SaveData.current.deposit == 0)
+        {
+            objButtons[3].GetComponent<Image>().color = notBuyedColor;
+            objButtons[3].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            objButtons[3].GetComponent<Image>().color = lockedColor;
+            objButtons[3].GetComponent<Button>().enabled = true;
+        }
+        if(SaveData.current.check == 0)
+        {
+            objButtons[4].GetComponent<Image>().color = notBuyedColor;
+            objButtons[4].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            objButtons[4].GetComponent<Image>().color = lockedColor;
+            objButtons[4].GetComponent<Button>().enabled = true;
+        }
+    }
+    public void modeStatusChecker()
+    {
+        if(!SaveData.current.laser)
+        {
+            modeButtons[0].GetComponent<Image>().color = notBuyedColor;
+            modeButtons[0].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            modeButtons[0].GetComponent<Image>().color = lockedColor;
+            modeButtons[0].GetComponent<Button>().enabled = true;
+        }
+        if(!SaveData.current.stopTime)
+        {
+            modeButtons[1].GetComponent<Image>().color = notBuyedColor;
+            modeButtons[1].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            modeButtons[1].GetComponent<Image>().color = lockedColor;
+            modeButtons[1].GetComponent<Button>().enabled = true;
+        }
+        if(!SaveData.current.magnetic)
+        {
+            modeButtons[2].GetComponent<Image>().color = notBuyedColor;
+            modeButtons[2].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            modeButtons[2].GetComponent<Image>().color = lockedColor;
+            modeButtons[2].GetComponent<Button>().enabled = true;
+        }
+        if(!SaveData.current.x2)
+        {
+            modeButtons[3].GetComponent<Image>().color = notBuyedColor;
+            modeButtons[3].GetComponent<Button>().enabled = false;
+        }
+        else
+        {
+            modeButtons[3].GetComponent<Image>().color = lockedColor;
+            modeButtons[3].GetComponent<Button>().enabled = true;
+        }
+    }
     public void OpenPauseScreen()
     {
         overUsedPanelon();
@@ -248,6 +363,11 @@ public class Gameplay_Manager : MonoBehaviour
         modesSelector.SetActive(true);
         SaveData.current.tutoActive = false;
     }
+    public void NextSelector()
+    {
+        objSelector.SetActive(false);
+        modesSelector.SetActive(true);
+    }
     public void StartGame()
     {
         overUsedPaneloff();
@@ -265,6 +385,10 @@ public class Gameplay_Manager : MonoBehaviour
         modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 175);
         Time.timeScale = 1;
     }
+    public void ObjSelector()
+    {
+        
+    }
     public void ModeSelector()
     {
         selectedButton = EventSystem.current.currentSelectedGameObject;
@@ -272,7 +396,7 @@ public class Gameplay_Manager : MonoBehaviour
         {
             modeSelected1 = selectedButton.name;
             _name = modeSelected1;
-            PrintDescription();
+            PrintDescriptionModes();
             selectedButton.GetComponent<Image>().color = unactiveColor;
             if(modeSelected1 != "" && modeSelected2 != "")
             {
@@ -285,7 +409,7 @@ public class Gameplay_Manager : MonoBehaviour
         {
             modeSelected2 = selectedButton.name;
             _name = modeSelected2;
-            PrintDescription();
+            PrintDescriptionModes();
             selectedButton.GetComponent<Image>().color = unactiveColor;
             if(modeSelected1 != "" && modeSelected2 != "")
             {
@@ -300,7 +424,7 @@ public class Gameplay_Manager : MonoBehaviour
             startButton.GetComponent<Button>().enabled = false;
             startButton.GetComponent<Image>().color = lockedColor;
             selectedButton.GetComponent<Image>().color = lockedColor;
-            description.GetComponent<Text>().text = "";
+            descriptionPot.GetComponent<Text>().text = "";
         }
         if(selectedButton.name == modeSelected2)
         {
@@ -308,7 +432,7 @@ public class Gameplay_Manager : MonoBehaviour
             startButton.GetComponent<Button>().enabled = false;
             startButton.GetComponent<Image>().color = lockedColor;
             selectedButton.GetComponent<Image>().color = lockedColor;
-            description.GetComponent<Text>().text = "";
+            descriptionPot.GetComponent<Text>().text = "";
         }
     }
     public void LifeChange()
@@ -419,8 +543,6 @@ public class Gameplay_Manager : MonoBehaviour
         Button1inCool = true;
         if(!Button2inCool && (modeSelected1 != "x2Button" && modeSelected2 != "x2Button"))
         {
-            Debug.Log(modeSelected1);
-            Debug.Log(modeSelected2);
             modeButton2.GetComponent<Image>().color = lockedColor;
             modeButton2.GetComponent<Button>().enabled = false;
         }
@@ -432,8 +554,6 @@ public class Gameplay_Manager : MonoBehaviour
         Button2inCool = true;
         if(!Button1inCool && (modeSelected1 != "x2Button" && modeSelected2 != "x2Button"))
         {
-            Debug.Log(modeSelected1);
-            Debug.Log(modeSelected2);
             modeButton1.GetComponent<Image>().color = lockedColor;
             modeButton1.GetComponent<Button>().enabled = false;
         }
