@@ -626,6 +626,12 @@ public class Gameplay_Manager : MonoBehaviour
         SaveData.current.cool -=1;
         RefreshCooldownChecker();
     }
+    public void ExtraCheck()
+    {
+        //Bandera 
+        SaveData.current.check -=1;
+        ExtraCheckChecker();
+    }
     #endregion
     #region AuxilarMethods
     void auxilarModule1()
