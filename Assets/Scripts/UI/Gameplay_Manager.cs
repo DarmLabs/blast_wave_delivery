@@ -15,8 +15,12 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject tunnelEffect;
     GameObject modeButton1;
     GameObject modeButton2;
+    GameObject objButton1;
+    GameObject objButton2;
+    GameObject objButton3;
     public bool Button1inCool = false;
     public bool Button2inCool = false;
+    bool refreshCooldown;
     [Space (10)]
     //Panel
     public GameObject panel;
@@ -28,6 +32,7 @@ public class Gameplay_Manager : MonoBehaviour
     public string objSelected1;
     public string objSelected2;
     public string objSelected3;
+    public GameObject[] objToBlock;
     GameObject selectedButton;
     public GameObject startButton;
     public string _name;
@@ -386,6 +391,22 @@ public class Gameplay_Manager : MonoBehaviour
         modeButton2.GetComponent<RectTransform>().anchorMax = new Vector2(1, 0);
         modeButton2.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
         modeButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-200, 175);
+
+        if(objSelected1 != "")
+        {
+            objButton1 = GameObject.Find(objSelected1);
+            objButton1.GetComponent<RectTransform>().anchoredPosition = new Vector2(535, 200);
+        }
+        if(objSelected2 != "")
+        {
+            objButton2 = GameObject.Find(objSelected2);
+            objButton2.GetComponent<RectTransform>().anchoredPosition = new Vector2(-535, 200);
+        }
+        if(objSelected3 != "")
+        {
+            objButton3 = GameObject.Find(objSelected3);
+            objButton3.GetComponent<RectTransform>().anchoredPosition = new Vector2(335, 200);
+        }
         Time.timeScale = 1;
     }
     public void ObjSelector()
@@ -588,10 +609,17 @@ public class Gameplay_Manager : MonoBehaviour
         }
     }
     #endregion
+    #region Objetos
+    public void RefreshCooldown()
+    {
+        refreshCooldown = true;
+    }
+    #endregion
     #region AuxilarMethods
     void auxilarModule1()
     {
         Button1inCool = true;
+        RefreshCooldownChecker();
         if(!Button2inCool && (modeSelected1 != "x2Button" && modeSelected2 != "x2Button"))
         {
             modeButton2.GetComponent<Image>().color = lockedColor;
@@ -603,6 +631,7 @@ public class Gameplay_Manager : MonoBehaviour
     void auxilarModule2()
     {
         Button2inCool = true;
+        RefreshCooldownChecker();
         if(!Button1inCool && (modeSelected1 != "x2Button" && modeSelected2 != "x2Button"))
         {
             modeButton1.GetComponent<Image>().color = lockedColor;
@@ -638,6 +667,11 @@ public class Gameplay_Manager : MonoBehaviour
         {
             secs -= secsTick;
             button1Text.text = secs.ToString();
+            if(refreshCooldown)
+            {
+                secs = 0;
+                refreshCooldown = false;
+            }
             yield return new WaitForSeconds(secsTick);
         }
         button1Text.text = "";
@@ -651,11 +685,46 @@ public class Gameplay_Manager : MonoBehaviour
         {
             secs -= secsTick;
             button2Text.text = secs.ToString();
+            if(refreshCooldown)
+            {
+                secs = 0;
+                refreshCooldown = false;
+            }
             yield return new WaitForSeconds(secsTick);
         }
         button2Text.text = "";
         modeButton2.GetComponent<Button>().interactable = true;
         Button2inCool = false;
+    }
+    public void ExtraLifeChecker()
+    {
+        if(playerProprieties.generalLife != 3)
+        {
+            objToBlock[0].GetComponent<Button>().interactable = true;
+            objToBlock[0].GetComponent<Image>().color = unactiveColor;
+        }
+        else
+        {
+            objToBlock[0].GetComponent<Button>().interactable = false;
+            objToBlock[0].GetComponent<Image>().color = lockedColor;
+        }
+    }
+    public void RefreshCooldownChecker()
+    {
+        if(Button1inCool || Button2inCool)
+        {
+            objToBlock[1].GetComponent<Button>().interactable = true;
+            objToBlock[1].GetComponent<Image>().color = unactiveColor;
+        }
+        else
+        {
+            objToBlock[1].GetComponent<Button>().interactable = false;
+            objToBlock[1].GetComponent<Image>().color = lockedColor;
+        }
+    }
+    public void ExtraCheckChecker()
+    {
+        //Checkear si si debe apagar o prender el recurso
     }
     //UI Auxiliares
     void overUsedPaneloff()

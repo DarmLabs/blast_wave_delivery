@@ -17,6 +17,7 @@ public class playerProprieties : MonoBehaviour
     public bool CajaRecolectada = false;
     bool inmune;
     bool destructiveMode;
+    bool inmuneObj;
     public bool x2Mode;
     public bool magneticMode;
     public GameObject laser;
@@ -42,7 +43,7 @@ public class playerProprieties : MonoBehaviour
         {
             gameplay_Manager.GameOver();
         }
-        if(inmune && !destructiveMode && !laser.activeSelf)
+        if(inmune && !destructiveMode && !laser.activeSelf && !inmuneObj)
         {
             MotoAnimator.SetBool("inmune", true);
         }
@@ -202,5 +203,19 @@ public class playerProprieties : MonoBehaviour
         gameplay_Manager.clearMode();
         modeStandard();
         Time.timeScale = 1;
+    }
+    //Obj Affections
+    public void ExtraLife()
+    {
+        generalLife =+ 1;
+    }
+    public void Desposit()
+    {
+        currentFuel = 300;
+    }
+    public void Inmune()
+    {
+        inmune = true;
+        inmuneObj = true;
     }
 }
