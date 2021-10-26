@@ -18,7 +18,7 @@ public class playerProprieties : MonoBehaviour
     public bool inmune;
     bool destructiveMode;
     bool inmuneObj;
-    public bool x2Mode;
+    bool x2Mode;
     public bool magneticMode;
     public GameObject laser;
     public Camera cam;
@@ -26,12 +26,17 @@ public class playerProprieties : MonoBehaviour
     Gameplay_Manager gameplay_Manager;
     Animator MotoAnimator;
     public GameObject spawnManager;
+    GameObject MotoModel;
+    GameObject PjModel;
     void Start()
     {
         gameplay_Manager = UI_Manager.GetComponent<Gameplay_Manager>();
         MotoAnimator = GetComponentInChildren<Animator>();
+        MotoModel = transform.GetChild(1).gameObject;
+        PjModel = MotoModel.transform.GetChild(0).gameObject;
         modeStandard();
         gameplay_Manager.ExtraLifeChecker();
+        SkinChecker();
     }
     void Update()
     {
@@ -43,6 +48,32 @@ public class playerProprieties : MonoBehaviour
         else
         {
             gameplay_Manager.GameOver();
+        }
+    }
+    void SkinChecker()
+    {
+        switch(SaveData.current.actualSkin)
+        {
+            case "INICIAL":
+                MotoModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Moto_Mat_1");
+                PjModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Traje_Mat_1");
+                break;
+            case "INFERNO":
+                MotoModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Moto_Mat_2");
+                PjModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Traje_Mat_2");
+                break;
+            case "RADIACTIVO":
+                MotoModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Moto_Mat_3");
+                PjModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Traje_Mat_3");
+                break;
+            case "LIGHT":
+                MotoModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Moto_Mat_4");
+                PjModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Traje_Mat_4");
+                break;
+            case "RETRO":
+                MotoModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Moto_Mat_5");
+                PjModel.GetComponent<Renderer>().material = Resources.Load<Material>("Skins/Traje_Mat_5");
+                break;
         }
     }
     void OnTriggerEnter(Collider other) //Trigger para la deteccion de recolectables
