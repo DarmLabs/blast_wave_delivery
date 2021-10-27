@@ -53,6 +53,10 @@ public class Main_Menu_Manager : MonoBehaviour
         Time.timeScale = 1;
         selectMode();
         SkinSelector();
+        if(SaveData.current.actualSkin == "")
+        {
+            SkinSelected();
+        }
         BlockerChekcerPot();
         BlockerCheckerObjs();
         BlockerCheckerCosmetics();
@@ -609,7 +613,6 @@ public class Main_Menu_Manager : MonoBehaviour
             selectedSkin--;
         }
         SkinSelector();
-        StatusChecker();
     }
     public void SkinSelector()
     {
@@ -684,7 +687,10 @@ public class Main_Menu_Manager : MonoBehaviour
     void BlockerOff()
     {
         skinBlocker.SetActive(false);
-        selectSkinButton.SetActive(true);
+        if(SaveData.current.actualSkin != nameSkin.text)
+        {
+            selectSkinButton.SetActive(true);
+        }
     }
     void StatusChecker()
     {
@@ -696,7 +702,6 @@ public class Main_Menu_Manager : MonoBehaviour
         else
         {
             skinStatus.text = "";
-            selectSkinButton.SetActive(true);
         }
     }
     public void SkinSelected()
