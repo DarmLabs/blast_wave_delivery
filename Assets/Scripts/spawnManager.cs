@@ -13,6 +13,7 @@ public class spawnManager : MonoBehaviour
     public Transform[] spawnsParaCaja; 
     public static bool CajaExistente = false;    
     public static bool CajaRecolectada = false; 
+    public static bool ExtraCheckDeshabilitado = false;
     public int indiceReferencia = 0;  
     //Camión
     public GameObject Camion;
@@ -32,6 +33,7 @@ public class spawnManager : MonoBehaviour
     bool spawnFactive = false;
     void Start()
     {
+        ExtraCheckDeshabilitado = false;
         CajaExistente = false;
         CajaRecolectada = false;
         playerProprieties = Moto.GetComponent<playerProprieties>();
@@ -68,6 +70,7 @@ public class spawnManager : MonoBehaviour
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[indiceReferencia].position,transform.rotation);
             camionInstanciado = Instantiate(Camion,spawnsCamion[indiceReferencia].position,transform.rotation);
             Destroy(camionInstanciado,20f);
+            ExtraCheckDeshabilitado = true;
             Debug.Log("INSTANCIO UNA PIZZA");
             Debug.Log("indiceReferencia   "+indiceReferencia);            
             CajaExistente = true;
