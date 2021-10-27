@@ -107,6 +107,7 @@ public class Gameplay_Manager : MonoBehaviour
         previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
         modeStatusChecker();
         objSelectorAmountChecker();
+        objUIAmountChecker();
     }
     void Update()
     {
@@ -624,13 +625,15 @@ public class Gameplay_Manager : MonoBehaviour
     public void RefreshCooldown()
     {
         refreshCooldown = true;
-        SaveData.current.cool -=1;
+        SaveData.current.cool--;
+        objUIAmountChecker();
         RefreshCooldownChecker();
     }
     public void ExtraCheck()
     {
         //Bandera 
-        SaveData.current.check -=1;
+        SaveData.current.check--;
+        objUIAmountChecker();
         ExtraCheckChecker();
     }
     #endregion

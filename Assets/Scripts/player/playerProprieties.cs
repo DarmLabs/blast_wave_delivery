@@ -239,21 +239,25 @@ public class playerProprieties : MonoBehaviour
     //Obj Affections
     public void ExtraLife()
     {
-        generalLife =+ 1;
-        SaveData.current.extraVida -=1;
+        generalLife++;
+        SaveData.current.extraVida--;
+        gameplay_Manager.objUIAmountChecker();
         gameplay_Manager.ExtraLifeChecker();
+        gameplay_Manager.LifeChange();
     }
     public void Desposit()
     {
         currentFuel = 300;
-        SaveData.current.deposit -= 1;
+        SaveData.current.deposit--;
+        gameplay_Manager.objUIAmountChecker();
         gameplay_Manager.DepositChecker();
     }
     public void Inmune()
     {
         inmune = true;
         inmuneObj = true;
-        SaveData.current.inmune -= 1;
+        SaveData.current.inmune--;
+        gameplay_Manager.objUIAmountChecker();
         gameplay_Manager.InmuneChecker();
     }
 }

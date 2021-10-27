@@ -53,7 +53,9 @@ public class Main_Menu_Manager : MonoBehaviour
         Time.timeScale = 1;
         selectMode();
         SkinSelector();
-        SkinSelected();
+        BlockerChekcerPot();
+        BlockerCheckerObjs();
+        BlockerCheckerCosmetics();
     }
     public void SumMonedas()
     {
@@ -231,6 +233,41 @@ public class Main_Menu_Manager : MonoBehaviour
                 break;
         }
     }
+    public void BlockerChekcerPot()
+    {
+        if(SaveData.current.laser)
+        {
+            blockers[0].SetActive(true);
+        }
+        else
+        {
+            blockers[0].SetActive(false);
+        }
+        if(SaveData.current.stopTime)
+        {
+            blockers[1].SetActive(true);
+        }
+        else
+        {
+            blockers[1].SetActive(false);
+        }
+        if(SaveData.current.magnetic)
+        {
+            blockers[2].SetActive(true);
+        }
+        else
+        {
+            blockers[2].SetActive(false);
+        }
+        if(SaveData.current.x2)
+        {
+            blockers[3].SetActive(true);
+        }
+        else
+        {
+            blockers[3].SetActive(false);
+        }
+    }
     public void Objetos()
     {
         buttonPressed = EventSystem.current.currentSelectedGameObject.name;
@@ -318,30 +355,73 @@ public class Main_Menu_Manager : MonoBehaviour
         {
             blockers[8].SetActive(false);
         }
+        if(SaveData.current.slot)
+        {
+            blockers[9].SetActive(true);
+        }
+        else
+        {
+            blockers[9].SetActive(false);
+        }
     }
     public void Cosmeticos()
     {
         buttonPressed = EventSystem.current.currentSelectedGameObject.name;
         switch(buttonPressed)
         {
-            case "Skin1":
+            case "BuyInferno":
                 itemName = "SKIN INFERNO";
                 value = 1250;
                 break;
-            case "Skin2":
+            case "BuyRadiactivo":
                 itemName = "SKIN RADIACTIVA";
                 value = 1000;
                 break;
-            case "Skin3":
+            case "BuyLight":
                 itemName = "SKIN LIGHT";
                 value = 1000;
                 break;
-            case "Skin4":
+            case "BuyRetro":
                 itemName = "SKIN RETRO";
                 value = 1250;
                 break;
         }        
         CoinChecker();
+    }
+    public void BlockerCheckerCosmetics()
+    {
+        if(SaveData.current.skinInferno)
+        {
+            blockers[10].SetActive(true);
+        }
+        else
+        {
+            blockers[10].SetActive(false);
+        }
+        if(SaveData.current.skinRadiactive)
+        {
+            blockers[11].SetActive(true);
+        }
+        else
+        {
+            blockers[11].SetActive(false);
+        }
+        if(SaveData.current.skinLight)
+        {
+            blockers[12].SetActive(true);
+        }
+        else
+        {
+            blockers[12].SetActive(false);
+        }
+        if(SaveData.current.skinRetro)
+        {
+            blockers[13].SetActive(true);
+        }
+        else
+        {
+            blockers[13].SetActive(false);
+        }
     }
     public void ConfirmationScreen()
     {
@@ -426,25 +506,28 @@ public class Main_Menu_Manager : MonoBehaviour
                 break;
             #endregion
             #region Cosmeticos
-            case "Skin1":
+            case "BuyInferno":
                 SaveData.current.skinInferno = true;
                 blockers[10].SetActive(true);
                 break;
-            case "Skin2":
+            case "BuyRadiactivo":
                 SaveData.current.skinRadiactive = true;
                 blockers[11].SetActive(true);
                 break;
-            case "Skin3":
+            case "BuyLight":
                 SaveData.current.skinLight = true;
                 blockers[12].SetActive(true);
                 break;
-            case "Skin4":
+            case "BuyRetro":
                 SaveData.current.skinRetro = true;
                 blockers[13].SetActive(true);
                 break;
             #endregion
         }
         CancelBuy();
+        BlockerChekcerPot();
+        BlockerCheckerObjs();
+        BlockerCheckerCosmetics();
         OnSaveGame();
         OnLoadGame();
     }
@@ -526,6 +609,7 @@ public class Main_Menu_Manager : MonoBehaviour
             selectedSkin--;
         }
         SkinSelector();
+        StatusChecker();
     }
     public void SkinSelector()
     {
