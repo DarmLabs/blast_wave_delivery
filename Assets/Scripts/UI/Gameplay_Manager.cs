@@ -49,6 +49,7 @@ public class Gameplay_Manager : MonoBehaviour
     //Link moto
     public GameObject Moto;
     playerProprieties playerProprieties;
+    public static bool banderObjCheck = false;
     [Space (10)]
     //Displays
     public Text fpsDisplay;
@@ -77,6 +78,7 @@ public class Gameplay_Manager : MonoBehaviour
     #region Callbacks
     void Start()
     {
+        banderObjCheck = false;
         OnLoadGame();
         AudioController = GameObject.Find("AudioController");
         if(AudioController != null)
@@ -636,6 +638,7 @@ public class Gameplay_Manager : MonoBehaviour
     public void ExtraCheck()
     {
         //Bandera 
+        banderObjCheck = true;
         SaveData.current.check -= 1;
         objUIAmountChecker();
         ExtraCheckChecker();
