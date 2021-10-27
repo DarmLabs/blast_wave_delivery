@@ -139,6 +139,7 @@ public class playerProprieties : MonoBehaviour
         {
             spawnManager.CajaExistente = false;
             spawnManager.CajaRecolectada = true;
+            spawnManager.ExtraCheckDeshabilitado = false;
             pizzas = pizzas +1;
             Destroy(other.gameObject);
         }

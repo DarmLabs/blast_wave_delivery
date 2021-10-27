@@ -11,6 +11,7 @@ public class obstacleBoundarie : MonoBehaviour
     {
         spawnManager.CajaExistente = false;
         spawnManager.CajaRecolectada = false;
+        spawnManager.ExtraCheckDeshabilitado = false;
     }
   }
 
