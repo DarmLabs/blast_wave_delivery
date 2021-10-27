@@ -7,5 +7,11 @@ public class obstacleBoundarie : MonoBehaviour
   void OnTriggerEnter(Collider other)
   {
     Destroy(other.gameObject);
+    if (other.gameObject.tag == "Caja")
+    {
+        spawnManager.CajaExistente = false;
+    }
   }
+
+  
 }

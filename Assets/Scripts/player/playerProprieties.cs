@@ -25,7 +25,7 @@ public class playerProprieties : MonoBehaviour
     public GameObject UI_Manager;
     Gameplay_Manager gameplay_Manager;
     Animator MotoAnimator;
-    public GameObject spawnManager;
+    //public GameObject spawnManager;
     GameObject MotoModel;
     GameObject PjModel;
     void Start()
@@ -141,7 +141,7 @@ public class playerProprieties : MonoBehaviour
         }
         if(other.gameObject.tag == "Caja")
         {
-            spawnManager.GetComponent<spawnManager>().CajaExistente = false;
+            spawnManager.CajaExistente = false;
             CajaRecolectada = true;
             pizzas = pizzas +1;
             Destroy(other.gameObject);

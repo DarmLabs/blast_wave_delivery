@@ -11,7 +11,7 @@ public class spawnManager : MonoBehaviour
         //La verdadera pizza
     public GameObject cajaPizzaPrefab;     
     public Transform[] spawnsParaCaja; 
-    public bool CajaExistente = false;    
+    public static bool CajaExistente = false;    
     public bool CajaRecolectada = false; 
     public int indiceReferencia = 0;  
     //Camión

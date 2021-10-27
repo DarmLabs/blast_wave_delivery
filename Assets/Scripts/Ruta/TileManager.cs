@@ -49,18 +49,29 @@ public class TileManager : MonoBehaviour
     private void SpawnTile(int prefabIndex = -1)
     {
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
-
         //ACA SE ACTIVA EL CHECKPOINT  
-        if (playerProprieties.currentCoin >= 25 && contadorHastaCheck >= 10 
-        &&  playerProprieties.CajaRecolectada && !checkActivo)
+        if (playerProprieties.CajaRecolectada && contadorHastaCheck >= 10 && tileCounter >= 25)
         {
+            go.transform.GetChild(1).gameObject.SetActive(true);
+
+            playerProprieties.CajaRecolectada=false;
+            contadorHastaCheck = 0;
+            tileCounter = 0;
+            checkActivo = true;
+        }
+
+        /*if (playerProprieties.currentCoin >= 25 && contadorHastaCheck >= 10 &&  playerProprieties.CajaRecolectada && !checkActivo)
+        {
+           
+           
+           
            go.transform.GetChild(1).gameObject.SetActive(true);
            checkpointCounter+=1;
            contadorHastaCheck=0;
            playerProprieties.CajaRecolectada=false;
            checkActivo = true;
            Debug.Log("Checkpoint Activo:"+contadorHastaCheck+"tiles:"+tileCounter);
-        }
+        }*/
 
         
         go.transform.SetParent(transform);
