@@ -11,14 +11,15 @@ public class spawnManager : MonoBehaviour
         //La verdadera pizza
     public GameObject cajaPizzaPrefab;     
     public Transform[] spawnsParaCaja; 
-    public bool CajaExistente = false;    
-    public bool CajaRecolectada = false; 
+    public static bool CajaExistente = false;    
+    public static bool CajaRecolectada = false; 
     public int indiceReferencia = 0;  
     //Camión
     public GameObject Camion;
     public Transform[] spawnsCamion;    
         //Pizzas
     public GameObject [] spawnsP;
+    public GameObject camionInstanciado;
     public int SpawnerP;
     int cantPizzas;
     int loop;
@@ -32,6 +33,7 @@ public class spawnManager : MonoBehaviour
     void Start()
     {
         CajaExistente = false;
+        CajaRecolectada = false;
         playerProprieties = Moto.GetComponent<playerProprieties>();
         //for Coins
         spawnsP = GameObject.FindGameObjectsWithTag("coinSpawner");
@@ -60,11 +62,12 @@ public class spawnManager : MonoBehaviour
     
     void spawnCajaPizza()
     {
-        if (playerProprieties.currentCoin >= 25 && CajaExistente == false && TileManager.checkActivo == false)
+        if (playerProprieties.currentCoin >= 25 && CajaExistente == false && CajaRecolectada == false && TileManager.checkActivo == false)
         {
             indiceReferencia = Random.Range(0,5);
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[indiceReferencia].position,transform.rotation);
-            Instantiate(Camion,spawnsCamion[indiceReferencia].position,transform.rotation);
+            camionInstanciado = Instantiate(Camion,spawnsCamion[indiceReferencia].position,transform.rotation);
+            Destroy(camionInstanciado,20f);
             Debug.Log("INSTANCIO UNA PIZZA");
             Debug.Log("indiceReferencia   "+indiceReferencia);            
             CajaExistente = true;
