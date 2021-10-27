@@ -14,7 +14,7 @@ public class playerProprieties : MonoBehaviour
     float fuelConsumption;
     public float currentTime = 90; //Tiempo en el momento (Usar esto para manejar propiedades con tiempo)
     public int generalLife = 3;
-    public bool CajaRecolectada = false;
+    //public bool CajaRecolectada = false;
     public bool inmune;
     bool destructiveMode;
     bool inmuneObj;
@@ -138,7 +138,7 @@ public class playerProprieties : MonoBehaviour
         if(other.gameObject.tag == "Caja")
         {
             spawnManager.CajaExistente = false;
-            CajaRecolectada = true;
+            spawnManager.CajaRecolectada = true;
             pizzas = pizzas +1;
             Destroy(other.gameObject);
         }

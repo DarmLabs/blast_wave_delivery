@@ -50,11 +50,11 @@ public class TileManager : MonoBehaviour
     {
         go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
         //ACA SE ACTIVA EL CHECKPOINT  
-        if (playerProprieties.CajaRecolectada && contadorHastaCheck >= 10 && tileCounter >= 25)
+        if (spawnManager.CajaRecolectada && contadorHastaCheck >= 10 && tileCounter >= 25)
         {
             go.transform.GetChild(1).gameObject.SetActive(true);
 
-            playerProprieties.CajaRecolectada=false;
+            spawnManager.CajaRecolectada=false;
             contadorHastaCheck = 0;
             tileCounter = 0;
             checkActivo = true;

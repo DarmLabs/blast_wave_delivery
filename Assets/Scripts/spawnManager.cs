@@ -12,7 +12,7 @@ public class spawnManager : MonoBehaviour
     public GameObject cajaPizzaPrefab;     
     public Transform[] spawnsParaCaja; 
     public static bool CajaExistente = false;    
-    public bool CajaRecolectada = false; 
+    public static bool CajaRecolectada = false; 
     public int indiceReferencia = 0;  
     //Camión
     public GameObject Camion;
@@ -32,6 +32,7 @@ public class spawnManager : MonoBehaviour
     void Start()
     {
         CajaExistente = false;
+        CajaRecolectada = false;
         playerProprieties = Moto.GetComponent<playerProprieties>();
         //for Coins
         spawnsP = GameObject.FindGameObjectsWithTag("coinSpawner");
@@ -60,7 +61,7 @@ public class spawnManager : MonoBehaviour
     
     void spawnCajaPizza()
     {
-        if (playerProprieties.currentCoin >= 25 && CajaExistente == false && TileManager.checkActivo == false)
+        if (playerProprieties.currentCoin >= 25 && CajaExistente == false && CajaRecolectada == false && TileManager.checkActivo == false)
         {
             indiceReferencia = Random.Range(0,5);
             Instantiate(cajaPizzaPrefab,spawnsParaCaja[indiceReferencia].position,transform.rotation);
