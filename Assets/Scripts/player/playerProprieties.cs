@@ -107,10 +107,6 @@ public class playerProprieties : MonoBehaviour
                 MotoAnimator.SetBool("inmune", true);
                 vehicleLifeCondition();
             }
-            else
-            {
-                MotoAnimator.SetBool("inmune", false);
-            }
         }
         if(other.gameObject.tag == "Coin")
         {
@@ -164,6 +160,7 @@ public class playerProprieties : MonoBehaviour
     {
         yield return new WaitForSeconds(secs);
         inmune = false;
+        MotoAnimator.SetBool("inmune", false);
         gameplay_Manager.InmuneChecker();
     }
     public void modeFast()

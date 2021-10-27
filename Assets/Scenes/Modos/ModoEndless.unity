@@ -5721,7 +5721,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1104803807}
         m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
-        m_MethodName: ModeSelector
+        m_MethodName: ObjSelector
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10048,7 +10048,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1104803807}
         m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
-        m_MethodName: ModeSelector
+        m_MethodName: ObjSelector
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10203,7 +10203,7 @@ MonoBehaviour:
   - {fileID: 1082406333}
   button1Text: {fileID: 202565015}
   button2Text: {fileID: 698772237}
-  Pizzas: {fileID: 0}
+  Pizzas: {fileID: 1561636914}
   descriptionPot: {fileID: 1815005244}
   descriptionObj: {fileID: 1664185951}
   audioController: {fileID: 0}
@@ -10871,7 +10871,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1104803807}
         m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
-        m_MethodName: ModeSelector
+        m_MethodName: ObjSelector
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12191,7 +12191,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1104803807}
         m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
-        m_MethodName: ModeSelector
+        m_MethodName: ObjSelector
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14824,7 +14824,7 @@ GameObject:
   - component: {fileID: 1561636915}
   - component: {fileID: 1561636914}
   m_Layer: 5
-  m_Name: CoinsText
+  m_Name: PizzaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19132,7 +19132,6 @@ MonoBehaviour:
   generalLife: 2
   CajaRecolectada: 0
   inmune: 0
-  x2Mode: 0
   magneticMode: 0
   laser: {fileID: 1239231896}
   cam: {fileID: 1120091919}
@@ -19797,7 +19796,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1104803807}
         m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
-        m_MethodName: ModeSelector
+        m_MethodName: ObjSelector
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
