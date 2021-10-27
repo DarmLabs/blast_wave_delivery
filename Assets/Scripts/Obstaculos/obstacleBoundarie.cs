@@ -10,6 +10,7 @@ public class obstacleBoundarie : MonoBehaviour
     if (other.gameObject.tag == "Caja")
     {
         spawnManager.CajaExistente = false;
+        spawnManager.CajaRecolectada = false;
     }
   }
 
