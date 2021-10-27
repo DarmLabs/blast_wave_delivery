@@ -58,6 +58,7 @@ public class TileManager : MonoBehaviour
             contadorHastaCheck = 0;
             tileCounter = 0;
             checkActivo = true;
+            checkpointCounter += 1;
         }
 
         /*if (playerProprieties.currentCoin >= 25 && contadorHastaCheck >= 10 &&  playerProprieties.CajaRecolectada && !checkActivo)

@@ -7,6 +7,6 @@ public class Giro : MonoBehaviour
     
     void Update()
     {
-        transform.Rotate(0,1.8f,0);
+        transform.Rotate(0,2.8f,0);
     }
 }
