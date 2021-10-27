@@ -113,6 +113,7 @@ public class Gameplay_Manager : MonoBehaviour
         FPSCounter();
         DisplayFuel();
         DisplayCoins();
+        DisplayPizzas();
     }
     #endregion  
     #region Displays
@@ -348,7 +349,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void Restart()
     {
-        SaveData.current.monedas = SaveData.current.monedas + playerProprieties.currentCoin;
+        SaveData.current.monedas = SaveData.current.monedas + playerProprieties.generalCoin;
         OnSaveGame();
         OnLoadGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -525,7 +526,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ExitToMainMenu()
     {
-        SaveData.current.monedas = SaveData.current.monedas + playerProprieties.currentCoin;
+        SaveData.current.monedas = SaveData.current.monedas + playerProprieties.generalCoin;
         OnSaveGame();
         OnLoadGame();
         SceneManager.LoadScene("Main_Menu");
