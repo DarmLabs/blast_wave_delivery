@@ -46,4 +46,5 @@ public class SaveData
     public bool skinRadiactive;
     public bool skinLight;
     public bool skinRetro;
+    public string actualSkin;
 }

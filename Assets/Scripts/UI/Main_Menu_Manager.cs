@@ -39,11 +39,21 @@ public class Main_Menu_Manager : MonoBehaviour
     public GameObject[] blockers;
     public GameObject coinPanel;
     GameObject previousScreen;
+    //Skin Selector
+    public GameObject SkinSelectorScreen;
+    public Text nameSkin;
+    public Image imageSkin;
+    int selectedSkin;
+    public GameObject selectSkinButton;
+    public GameObject skinBlocker;
+    public Text skinStatus;
     void Start()
     {
         OnLoadGame();   
         Time.timeScale = 1;
         selectMode();
+        SkinSelector();
+        SkinSelected();
     }
     void Update()
     {
@@ -492,5 +502,126 @@ public class Main_Menu_Manager : MonoBehaviour
                 break;
             
         }
+    }
+    public void SkinActivation()
+    {
+        if(SkinSelectorScreen.activeSelf == false)
+        {
+            Main.SetActive(false);
+            SkinSelectorScreen.SetActive(true);
+        }
+        else
+        {
+            Main.SetActive(true);
+            SkinSelectorScreen.SetActive(false);
+        }
+        SkinSelector();
+    }
+    public void SkinSelectorNavigator()
+    {
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        if(buttonPressed == "RightArrow" && selectedSkin != 4)
+        {
+            selectedSkin++;
+        }
+        if(buttonPressed == "LeftArrow" && selectedSkin != 0)
+        {
+            selectedSkin--;
+        }
+        SkinSelector();
+    }
+    public void SkinSelector()
+    {
+        switch(selectedSkin)
+        {
+            case 0:
+                nameSkin.text = "INICIAL";
+                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin1");
+                BlockerOff();
+                StatusChecker();
+                break;
+            case 1:
+                nameSkin.text = "INFERNO";
+                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin2");
+                StatusChecker();
+                if(SaveData.current.skinInferno == true)
+                {
+                    BlockerOff();
+                }
+                else
+                {
+                    BlockerOn();
+                }
+                break;
+            case 2:
+                nameSkin.text = "RADIACTIVO";
+                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin3");
+                StatusChecker();
+                if(SaveData.current.skinRadiactive == true)
+                {
+                    BlockerOff();
+                }
+                else
+                {
+                    BlockerOn();
+                }
+                break;
+            case 3:
+                nameSkin.text = "LIGHT";
+                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin4");
+                StatusChecker();
+                if(SaveData.current.skinLight == true)
+                {
+                    BlockerOff();
+                }
+                else
+                {
+                    BlockerOn();
+                }
+                break;
+            case 4:
+                nameSkin.text = "RETRO";
+                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin5");
+                StatusChecker();
+                if(SaveData.current.skinRetro == true)
+                {
+                    BlockerOff();
+                }
+                else
+                {
+                    BlockerOn();
+                }
+                break;
+
+        }
+    }
+    void BlockerOn()
+    {
+        skinBlocker.SetActive(true);
+        selectSkinButton.SetActive(false);
+    }
+    void BlockerOff()
+    {
+        skinBlocker.SetActive(false);
+        selectSkinButton.SetActive(true);
+    }
+    void StatusChecker()
+    {
+        if(SaveData.current.actualSkin == nameSkin.text)
+        {
+            skinStatus.text = "SELECCIONADA";
+            selectSkinButton.SetActive(false);
+        }
+        else
+        {
+            skinStatus.text = "";
+            selectSkinButton.SetActive(true);
+        }
+    }
+    public void SkinSelected()
+    {
+        SaveData.current.actualSkin = nameSkin.text;
+        OnSaveGame();
+        StatusChecker();
     }
 }
