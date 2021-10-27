@@ -21,6 +21,7 @@ public class playerProprieties : MonoBehaviour
     bool x2Mode;
     public bool magneticMode;
     public GameObject laser;
+    public bool modeActive;
     public Camera cam;
     public GameObject UI_Manager;
     Gameplay_Manager gameplay_Manager;
@@ -35,7 +36,6 @@ public class playerProprieties : MonoBehaviour
         MotoModel = transform.GetChild(1).gameObject;
         PjModel = MotoModel.transform.GetChild(0).gameObject;
         modeStandard();
-        gameplay_Manager.ExtraLifeChecker();
         SkinChecker();
     }
     void Update()
@@ -160,6 +160,7 @@ public class playerProprieties : MonoBehaviour
     {
         yield return new WaitForSeconds(secs);
         inmune = false;
+        inmuneObj = false;
         MotoAnimator.SetBool("inmune", false);
         gameplay_Manager.InmuneChecker();
     }
@@ -228,9 +229,13 @@ public class playerProprieties : MonoBehaviour
         x2Mode = false;
         laser.SetActive(false);
         magneticMode = false;
+        modeActive = false;
+        gameplay_Manager.RefreshCooldownChecker();
     }
     IEnumerator clearModes(int secs)
     {
+        modeActive = true;
+        gameplay_Manager.RefreshCooldownChecker();
         yield return new WaitForSeconds(secs);
         gameplay_Manager.clearMode();
         modeStandard();
@@ -259,5 +264,6 @@ public class playerProprieties : MonoBehaviour
         SaveData.current.inmune--;
         gameplay_Manager.objUIAmountChecker();
         gameplay_Manager.InmuneChecker();
+        StartCoroutine(inmuneTime(5));
     }
 }

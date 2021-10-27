@@ -3474,8 +3474,6 @@ MonoBehaviour:
   - {fileID: 123800680}
   - {fileID: 590003475}
   - {fileID: 392913761}
-  CajaExistente: 0
-  CajaRecolectada: 0
   indiceReferencia: 0
   Camion: {fileID: 5267935276929142717, guid: 2188c8e9790a4d04092b43de8e8b63ad, type: 3}
   spawnsCamion:
@@ -3486,6 +3484,7 @@ MonoBehaviour:
   - {fileID: 148871142}
   - {fileID: 329980365}
   spawnsP: []
+  camionInstanciado: {fileID: 0}
   SpawnerP: 0
   pizzaPrefab: {fileID: 8234067781196875637, guid: e4ee083faa5ad2a4499c61a02446bb83, type: 3}
   spawnsF: []
@@ -17803,9 +17802,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2021161449}
-        m_TargetAssemblyTypeName: playerProprieties, Assembly-CSharp
-        m_MethodName: modeMagnetic
+      - m_Target: {fileID: 1104803807}
+        m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
+        m_MethodName: RefreshCooldown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19130,13 +19129,11 @@ MonoBehaviour:
   pizzas: 0
   currentTime: 90
   generalLife: 2
-  CajaRecolectada: 0
   inmune: 0
   magneticMode: 0
   laser: {fileID: 1239231896}
   cam: {fileID: 1120091919}
   UI_Manager: {fileID: 1104803806}
-  spawnManager: {fileID: 421441691}
 --- !u!54 &2021161461
 Rigidbody:
   m_ObjectHideFlags: 0

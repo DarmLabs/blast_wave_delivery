@@ -108,6 +108,11 @@ public class Gameplay_Manager : MonoBehaviour
         modeStatusChecker();
         objSelectorAmountChecker();
         objUIAmountChecker();
+        ExtraLifeChecker();
+        ExtraCheckChecker();
+        RefreshCooldownChecker();
+        DepositChecker();
+        InmuneChecker();
     }
     void Update()
     {
@@ -379,7 +384,6 @@ public class Gameplay_Manager : MonoBehaviour
     {
         TutoPanel.SetActive(false);
         panel.SetActive(true);
-        modesSelector.SetActive(true);
         SaveData.current.tutoActive = false;
     }
     public void NextSelector()
@@ -625,14 +629,14 @@ public class Gameplay_Manager : MonoBehaviour
     public void RefreshCooldown()
     {
         refreshCooldown = true;
-        SaveData.current.cool--;
+        SaveData.current.cool -= 1;
         objUIAmountChecker();
         RefreshCooldownChecker();
     }
     public void ExtraCheck()
     {
         //Bandera 
-        SaveData.current.check--;
+        SaveData.current.check -= 1;
         objUIAmountChecker();
         ExtraCheckChecker();
     }
@@ -692,13 +696,17 @@ public class Gameplay_Manager : MonoBehaviour
             if(refreshCooldown)
             {
                 secs = 0;
-                refreshCooldown = false;
+                if(!Button2inCool)
+                {
+                    refreshCooldown = false;
+                }
             }
             yield return new WaitForSeconds(secsTick);
         }
         button1Text.text = "";
         modeButton1.GetComponent<Button>().interactable = true;
         Button1inCool = false;
+        RefreshCooldownChecker();
     }
     IEnumerator button2Cooldown(int secsTick = 1)
     {
@@ -710,13 +718,17 @@ public class Gameplay_Manager : MonoBehaviour
             if(refreshCooldown)
             {
                 secs = 0;
-                refreshCooldown = false;
+                if(!Button1inCool)
+                {
+                    refreshCooldown = false;
+                }
             }
             yield return new WaitForSeconds(secsTick);
         }
         button2Text.text = "";
         modeButton2.GetComponent<Button>().interactable = true;
         Button2inCool = false;
+        RefreshCooldownChecker();
     }
     public void ExtraLifeChecker()
     {
@@ -733,7 +745,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void RefreshCooldownChecker()
     {
-        if(Button1inCool || Button2inCool && SaveData.current.cool != 0)
+        if((Button1inCool || Button2inCool) && SaveData.current.cool != 0 && !playerProprieties.modeActive)
         {
             objToBlock[1].GetComponent<Button>().interactable = true;
             objToBlock[1].GetComponent<Image>().color = unactiveColor;
