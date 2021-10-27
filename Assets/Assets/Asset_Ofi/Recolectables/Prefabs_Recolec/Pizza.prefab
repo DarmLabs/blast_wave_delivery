@@ -91,18 +91,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.1851044, y: 2.21364, z: 9.161924}
   m_Center: {x: 0.08669984, y: -0.02681148, z: -0.015387535}
---- !u!114 &6339128314205852120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196291216523293175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffa657c2a1045734189ea4503e9441c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1112444789235524078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +101,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9188d70dbb936dc4a98f2cc0116f585e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6339128314205852120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196291216523293175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa657c2a1045734189ea4503e9441c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3194425242788846714
@@ -239,6 +239,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1eaa18a576e43544095da3c425ed49dc, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9eeeedc20a715545abf01d6afd44532, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1eaa18a576e43544095da3c425ed49dc, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: e620eb4bca9529c4282387179be6ff95, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1eaa18a576e43544095da3c425ed49dc, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b381105e42945c46ba68ae812d65cae, type: 2}
     - target: {fileID: 919132149155446097, guid: 1eaa18a576e43544095da3c425ed49dc, type: 3}
       propertyPath: m_Name
       value: PIZZA
