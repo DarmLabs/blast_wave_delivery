@@ -55,14 +55,11 @@ public class Main_Menu_Manager : MonoBehaviour
         SkinSelector();
         SkinSelected();
     }
-    void Update()
+    public void SumMonedas()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            SaveData.current.monedas += 1000;
-            OnSaveGame();
-            OnLoadGame();
-        }
+        SaveData.current.monedas += 1000;
+        OnSaveGame();
+        OnLoadGame();
     }
     void DisplayUniversalCoins()
     {
