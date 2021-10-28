@@ -710,4 +710,8 @@ public class Main_Menu_Manager : MonoBehaviour
         OnSaveGame();
         StatusChecker();
     }
+    public void RewardedAd()
+    {
+        
+    }
 }

@@ -27,6 +27,7 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject GOresumeButton;
     public GameObject modesSelector;
     public GameObject objSelector;
+    public GameObject confirmScreen;
     public string modeSelected1;
     public string modeSelected2;    
     public string objSelected1;
@@ -367,11 +368,6 @@ public class Gameplay_Manager : MonoBehaviour
         overUsedPanelon();
         panel.transform.GetChild(1).gameObject.SetActive(true);
         Time.timeScale = 0;
-        if(playerProprieties.generalCoin <= 50)
-        {
-            GOresumeButton.GetComponent<Button>().enabled = false;
-            GOresumeButton.GetComponent<Image>().color = lockedColor;
-        }
     }
     public void ResumeGameOver()
     {
@@ -388,10 +384,18 @@ public class Gameplay_Manager : MonoBehaviour
         panel.SetActive(true);
         SaveData.current.tutoActive = false;
     }
-    public void NextSelector()
+    public void ChangeSelector()
     {
-        objSelector.SetActive(false);
-        modesSelector.SetActive(true);
+        if(objSelector.activeSelf)
+        {
+            objSelector.SetActive(false);
+            modesSelector.SetActive(true);
+        }
+        else
+        {
+            objSelector.SetActive(true);
+            modesSelector.SetActive(false);
+        }
     }
     public void StartGame()
     {
@@ -538,6 +542,84 @@ public class Gameplay_Manager : MonoBehaviour
         OnLoadGame();
         SceneManager.LoadScene("Main_Menu");
     }
+    public void GameOverScreenComprobation()
+    {
+        selectedButton = EventSystem.current.currentSelectedGameObject;
+        if(playerProprieties.generalCoin > 25)
+        {
+            ConfirmationScreenActived();
+        }
+        else
+        {
+            if(selectedButton.name == "Reiniciar")
+            {
+                Restart();
+            }
+            else if(selectedButton.name == "Volver Menu")
+            {
+                ExitToMainMenu();
+            }
+        }
+    }
+    public void ConfirmationScreenActived()
+    {
+        panel.transform.GetChild(1).gameObject.SetActive(false);
+        confirmScreen.SetActive(true);
+        confirmScreen.transform.GetChild(1).GetComponent<Text>().text = "LAS MONEDAS ASEGURADAS SE GUARDARAN ¿QUIERES CONVERTIR " + playerProprieties.generalCoin + " EN " + playerProprieties.generalCoin*2 + " ?";
+        if(selectedButton.name == "Reiniciar")
+        {
+            confirmScreen.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(ConfirmationScreenRestart);
+            confirmScreen.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(ConfirmationScreenRestart);
+        }
+        else if(selectedButton.name == "Volver Menu")
+        {
+            confirmScreen.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(ConfirmationScreenMainMenu);
+            confirmScreen.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(ConfirmationScreenMainMenu);
+        }
+    }
+    public void ConfirmationScreenRestart()
+    {
+        selectedButton = EventSystem.current.currentSelectedGameObject;
+        switch(selectedButton.name)
+        {
+            case "Aceptar":
+                //Ad
+                Restart();
+                break;
+            case "Cancelar":
+                Restart();
+                break;
+        }
+    }
+    public void ConfirmationScreenMainMenu()
+    {
+        selectedButton = EventSystem.current.currentSelectedGameObject;
+        switch(selectedButton.name)
+        {
+            case "Aceptar":
+                //Ad
+                ExitToMainMenu();
+                break;
+            case "Cancelar":
+                ExitToMainMenu();
+                break;
+        }
+    }
+    public void Tutorial()
+    {
+        if(!TutoPanel.activeSelf)
+        {
+            TutoPanel.SetActive(true);
+            ShowTuto();
+            panel.SetActive(false);
+        }
+        else
+        {
+            TutoPanel.SetActive(false);
+            panel.SetActive(true);
+        }
+    }
+    
     #endregion
     #region Modos
     public void FastButton()
@@ -817,6 +899,21 @@ public class Gameplay_Manager : MonoBehaviour
     void OnSaveGame()
     {
         SerializationManager.Save(SaveData.current);
+    }
+    #endregion
+    #region Ads
+    public void RewardedAds()
+    {
+        selectedButton = EventSystem.current.currentSelectedGameObject;
+        switch(selectedButton.name)
+        {
+            case "RandomObj":
+                break;
+            case "ContinueGame":
+                break;
+            case "DuplicateReward":
+                break;
+        }
     }
     #endregion
 }
