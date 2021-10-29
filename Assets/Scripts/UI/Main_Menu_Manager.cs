@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class Main_Menu_Manager : MonoBehaviour
 {
@@ -47,8 +48,13 @@ public class Main_Menu_Manager : MonoBehaviour
     public GameObject selectSkinButton;
     public GameObject skinBlocker;
     public Text skinStatus;
+    //Ads
+    string GooglePlayID = "4426982";
+    bool testMode = true;
+    string myPlacementId = "Interstitial_Android";
     void Start()
     {
+        Advertisement.Initialize(GooglePlayID, testMode);
         OnLoadGame();   
         Time.timeScale = 1;
         selectMode();
@@ -712,6 +718,8 @@ public class Main_Menu_Manager : MonoBehaviour
     }
     public void RewardedAd()
     {
-        
+        Debug.Log(Advertisement.isInitialized);
+        Advertisement.Show();
+        Debug.Log(Advertisement.isShowing);
     }
 }

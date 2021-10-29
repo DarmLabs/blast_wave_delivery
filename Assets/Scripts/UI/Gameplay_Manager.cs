@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class Gameplay_Manager : MonoBehaviour
+using UnityEngine.Advertisements;
+public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
 {
     #region Variables    
     //UI
@@ -34,7 +35,7 @@ public class Gameplay_Manager : MonoBehaviour
     public string objSelected2;
     public string objSelected3;
     public GameObject[] objToBlock;
-    GameObject selectedButton;
+    public GameObject selectedButton;
     public GameObject startButton;
     public string _name;
     Color32 notBuyedColor = new Color32(46, 46, 46, 255);
@@ -75,10 +76,17 @@ public class Gameplay_Manager : MonoBehaviour
     public GameObject[] objButtons;
     public Text[] objTexts;
     public Text[] objTextsUI;
+    public int forRandomReward;
+    //Ads
+    string GooglePlayID = "4426982";
+    bool testMode = true;
+    string myPlacementId;
     #endregion
     #region Callbacks
     void Start()
     {
+        Advertisement.AddListener(this);
+        Advertisement.Initialize(GooglePlayID, testMode);
         banderObjCheck = false;
         OnLoadGame();
         AudioController = GameObject.Find("AudioController");
@@ -368,6 +376,7 @@ public class Gameplay_Manager : MonoBehaviour
         overUsedPanelon();
         panel.transform.GetChild(1).gameObject.SetActive(true);
         Time.timeScale = 0;
+        InterAd();
     }
     public void ResumeGameOver()
     {
@@ -902,18 +911,122 @@ public class Gameplay_Manager : MonoBehaviour
     }
     #endregion
     #region Ads
+    public void InterAd()
+    {
+        if(Advertisement.IsReady("Interstitial_Android"))
+        {
+            Advertisement.Show("Interstitial_Android");
+        }
+    }
     public void RewardedAds()
     {
         selectedButton = EventSystem.current.currentSelectedGameObject;
         switch(selectedButton.name)
         {
             case "RandomObj":
+                if(Advertisement.IsReady("Rewarded_Android"))
+                    {
+                        Advertisement.Show("Rewarded_Android");
+                    }
                 break;
             case "ContinueGame":
+                if(Advertisement.IsReady("Rewarded_Android"))
+                    {
+                        Advertisement.Show("Rewarded_Android");
+                    }
                 break;
-            case "DuplicateReward":
+            case "Aceptar":
+                if(Advertisement.IsReady("Rewarded_Android"))
+                    {
+                        Advertisement.Show("Rewarded_Android");
+                    }
                 break;
         }
     }
+    public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+    {
+        // Defina lógica condicional para cada estado de finalización de anuncio:
+        if (showResult == ShowResult.Finished)
+        {
+            switch(selectedButton.name)
+            {
+                case "RandomObj":
+
+                    Debug.Log("s1");
+                    forRandomReward = 1;//Random.Range(1, 6);
+                    switch(forRandomReward)
+                    {
+                        case 1:
+                            if(SaveData.current.extraVida != 5)
+                            {
+                                SaveData.current.extraVida += 1;
+                            }
+                            else
+                            {
+                                forRandomReward = Random.Range(2,6);
+                            }
+                            break;
+                        case 2:
+                            SaveData.current.deposit += 1;
+                            Debug.Log(forRandomReward);
+                            break;
+                        case 3:
+                            SaveData.current.inmune += 1;
+                            Debug.Log(forRandomReward);
+                            break;
+                        case 4:
+                            SaveData.current.check += 1;
+                            Debug.Log(forRandomReward);
+                            break;
+                        case 5:
+                            SaveData.current.cool += 1;
+                            Debug.Log(forRandomReward);
+                            break;
+                    }
+                    objSelectorAmountChecker();
+                    OnSaveGame();
+                    OnLoadGame();
+                    break;
+                case "ContinueGame":
+                    panel.SetActive(false);
+                    panel.transform.GetChild(1).gameObject.SetActive(false);
+                    Time.timeScale = 1;
+                    break;
+                case "Aceptar":
+                    playerProprieties.generalCoin *= 2; 
+                    break;
+            }
+            // Recompensa al usuario por ver el anuncio hasta su finalización.
+            Debug.LogWarning("recompensa por ver anuncio.");
+        }
+        else if (showResult == ShowResult.Skipped)
+        {
+            // No recompensar al usuario por omitir el anuncio.
+            Debug.LogWarning("Se omitio el anuncio.");
+        }
+        else if (showResult == ShowResult.Failed)
+        {
+            Debug.LogWarning("El anuncio no finalizó debido a un error.");
+        }
+        }
+
+        public void OnUnityAdsReady(string placementId)
+        {
+            // Si esta listo, muestre el anuncio:
+            if (placementId == myPlacementId)
+            {
+
+            }
+        }
+
+        public void OnUnityAdsDidError(string message)
+        {
+            // errores aca
+        }
+
+        public void OnUnityAdsDidStart(string placementId)
+        {
+            // Acciones opcionales a realizar cuando los usuarios finales activan un anuncio.
+        }
     #endregion
 }
