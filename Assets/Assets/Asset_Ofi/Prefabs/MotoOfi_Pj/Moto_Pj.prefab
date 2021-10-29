@@ -591,14 +591,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFuel: 300
-  currentPizzas: 0
-  generalPizzas: 0
+  currentCoin: 0
+  generalCoin: 0
+  pizzas: 0
   currentTime: 90
   generalLife: 2
-  x2Mode: 0
+  inmune: 0
   magneticMode: 0
-  laserColl: {fileID: 1232209105}
   laser: {fileID: 1009902317}
+  modeActive: 0
   cam: {fileID: 1942569512}
   UI_Manager: {fileID: 0}
 --- !u!114 &1232209103
@@ -1189,7 +1190,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83035273f2cc4b4438f574467864d1c7, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1409,8 +1410,8 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -2813337366143557646, guid: 92fa81104f7236942b86994e5aeca512, type: 3}
-  - {fileID: 2100000, guid: 344a09a0ac0f3ad4ea512e097688e228, type: 2}
-  - {fileID: 2100000, guid: 66f867235e3ee274b8a6624b759d005b, type: 2}
+  - {fileID: 2100000, guid: 22022c422fd4aa2488e2797228ab5693, type: 2}
+  - {fileID: 2100000, guid: 22022c422fd4aa2488e2797228ab5693, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
