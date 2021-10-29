@@ -10947,7 +10947,6 @@ MonoBehaviour:
   Button1inCool: 0
   Button2inCool: 0
   panel: {fileID: 1198712801}
-  GOresumeButton: {fileID: 0}
   modesSelector: {fileID: 1263238891}
   objSelector: {fileID: 790855052}
   confirmScreen: {fileID: 425882921}
@@ -10962,6 +10961,7 @@ MonoBehaviour:
   - {fileID: 1303582151}
   - {fileID: 409578998}
   - {fileID: 1660213499}
+  selectedButton: {fileID: 0}
   startButton: {fileID: 273802535}
   _name: 
   TutoPanel: {fileID: 501874780}
@@ -11016,6 +11016,9 @@ MonoBehaviour:
   - {fileID: 1668866656}
   - {fileID: 1793794378}
   - {fileID: 1607663756}
+  forRandomReward: 0
+  objList: 
+  randomObjAd: {fileID: 1795919945}
 --- !u!4 &1104803808
 Transform:
   m_ObjectHideFlags: 0
@@ -19255,7 +19258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1831535434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1104803807}
+        m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
+        m_MethodName: RewardedAds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1831535434
 MonoBehaviour:
   m_ObjectHideFlags: 0

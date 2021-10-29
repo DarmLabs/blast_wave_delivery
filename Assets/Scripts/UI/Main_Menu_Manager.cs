@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 
-public class Main_Menu_Manager : MonoBehaviour
+public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
 {
     public Text[] universalCoins;
     public GameObject firstScreen;
@@ -49,9 +49,9 @@ public class Main_Menu_Manager : MonoBehaviour
     public GameObject skinBlocker;
     public Text skinStatus;
     //Ads
+    string myPlacementId;
     string GooglePlayID = "4426982";
     bool testMode = true;
-    string myPlacementId = "Interstitial_Android";
     void Start()
     {
         Advertisement.Initialize(GooglePlayID, testMode);
@@ -66,6 +66,7 @@ public class Main_Menu_Manager : MonoBehaviour
         BlockerChekcerPot();
         BlockerCheckerObjs();
         BlockerCheckerCosmetics();
+        ShowBanner();
     }
     public void SumMonedas()
     {
@@ -716,10 +717,72 @@ public class Main_Menu_Manager : MonoBehaviour
         OnSaveGame();
         StatusChecker();
     }
+    #region Ads
     public void RewardedAd()
     {
-        Debug.Log(Advertisement.isInitialized);
-        Advertisement.Show();
-        Debug.Log(Advertisement.isShowing);
+        if(Advertisement.IsReady("Rewarded_Android"))
+        {
+            Advertisement.Show("Rewarded_Android");
+        }
     }
+    public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+    {
+        Debug.Log("entro");
+        // Defina lógica condicional para cada estado de finalización de anuncio:
+        if (showResult == ShowResult.Finished)
+        {
+            SaveData.current.monedas += 300;
+            OnSaveGame();
+            OnLoadGame();
+            
+            // Recompensa al usuario por ver el anuncio hasta su finalización.
+            Debug.LogWarning("recompensa por ver anuncio.");
+        }
+        else if (showResult == ShowResult.Skipped)
+        {
+            // No recompensar al usuario por omitir el anuncio.
+            Debug.LogWarning("Se omitio el anuncio.");
+        }
+        else if (showResult == ShowResult.Failed)
+        {
+            Debug.LogWarning("El anuncio no finalizó debido a un error.");
+        }
+    }
+    public void OnUnityAdsReady(string placementId)
+    {
+        // Si esta listo, muestre el anuncio:
+        if (placementId == myPlacementId)
+        {
+
+        }
+    }
+    public void OnUnityAdsDidError(string message)
+    {
+        // errores aca
+        Debug.Log("error");
+    }
+    public void OnUnityAdsDidStart(string placementId)
+    {
+        // Acciones opcionales a realizar cuando los usuarios finales activan un anuncio.
+    }
+    public void ShowBanner()
+        {
+            if(Advertisement.IsReady("Banner_Android"))
+            {
+                Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+                Advertisement.Show("Banner_Android");
+                Debug.Log("banner listo");
+            }
+            else
+            {
+                StartCoroutine(RepeatShowBanner());
+            }
+        }
+        public void HideBanner(){}
+        IEnumerator RepeatShowBanner()
+        {
+            yield return new WaitForSeconds(1);
+            ShowBanner();
+        }
+    #endregion
 }

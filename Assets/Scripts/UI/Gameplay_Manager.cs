@@ -25,7 +25,6 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     [Space (10)]
     //Panel
     public GameObject panel;
-    public GameObject GOresumeButton;
     public GameObject modesSelector;
     public GameObject objSelector;
     public GameObject confirmScreen;
@@ -36,6 +35,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     public string objSelected3;
     public GameObject[] objToBlock;
     public GameObject selectedButton;
+    string exitIdentificator;
     public GameObject startButton;
     public string _name;
     Color32 notBuyedColor = new Color32(46, 46, 46, 255);
@@ -51,6 +51,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     //Link moto
     public GameObject Moto;
     playerProprieties playerProprieties;
+    playerMovement playerMovement;
     public static bool banderObjCheck = false;
     [Space (10)]
     //Displays
@@ -77,7 +78,9 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     public Text[] objTexts;
     public Text[] objTextsUI;
     public int forRandomReward;
+    public List<int> objList = new List<int>();
     //Ads
+    public GameObject randomObjAd;
     string GooglePlayID = "4426982";
     bool testMode = true;
     string myPlacementId;
@@ -115,6 +118,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
         }
         TutoScreen = TutoPanel.transform.GetChild(0).gameObject;
         playerProprieties = Moto.GetComponent<playerProprieties>();
+        playerMovement = Moto.GetComponent<playerMovement>();
         previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
         modeStatusChecker();
         objSelectorAmountChecker();
@@ -124,6 +128,8 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
         RefreshCooldownChecker();
         DepositChecker();
         InmuneChecker();
+        objAmountCheckerForAd();
+        ShowBanner();
     }
     void Update()
     {
@@ -541,8 +547,13 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     {   
         ExtraLifeChecker();
         LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject.SetActive(true);
-        previousLife.SetActive(false);
+        if(previousLife != null)
+        {
+            previousLife.SetActive(false);
+        }
         previousLife = LifeCont.transform.GetChild(playerProprieties.generalLife).gameObject;
+        
+        
     }
     public void ExitToMainMenu()
     {
@@ -577,41 +588,13 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
         confirmScreen.transform.GetChild(1).GetComponent<Text>().text = "LAS MONEDAS ASEGURADAS SE GUARDARAN ¿QUIERES CONVERTIR " + playerProprieties.generalCoin + " EN " + playerProprieties.generalCoin*2 + " ?";
         if(selectedButton.name == "Reiniciar")
         {
-            confirmScreen.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(ConfirmationScreenRestart);
-            confirmScreen.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(ConfirmationScreenRestart);
+            confirmScreen.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(Restart);
+            exitIdentificator = selectedButton.name;
         }
         else if(selectedButton.name == "Volver Menu")
         {
-            confirmScreen.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(ConfirmationScreenMainMenu);
-            confirmScreen.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(ConfirmationScreenMainMenu);
-        }
-    }
-    public void ConfirmationScreenRestart()
-    {
-        selectedButton = EventSystem.current.currentSelectedGameObject;
-        switch(selectedButton.name)
-        {
-            case "Aceptar":
-                //Ad
-                Restart();
-                break;
-            case "Cancelar":
-                Restart();
-                break;
-        }
-    }
-    public void ConfirmationScreenMainMenu()
-    {
-        selectedButton = EventSystem.current.currentSelectedGameObject;
-        switch(selectedButton.name)
-        {
-            case "Aceptar":
-                //Ad
-                ExitToMainMenu();
-                break;
-            case "Cancelar":
-                ExitToMainMenu();
-                break;
+            confirmScreen.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(ExitToMainMenu);
+            exitIdentificator = selectedButton.name;
         }
     }
     public void Tutorial()
@@ -889,6 +872,34 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
             objToBlock[4].GetComponent<Image>().color = lockedColor;
         }
     }
+    public void objAmountCheckerForAd()
+    {
+        if(SaveData.current.extraVida != 5)
+        {
+            objList.Add(1);
+        }
+        if(SaveData.current.deposit != 5)
+        {
+            objList.Add(2);
+        }
+        if(SaveData.current.inmune != 5)
+        {
+            objList.Add(3);
+        }
+        if(SaveData.current.check != 5)
+        {
+            objList.Add(4);
+        }
+        if(SaveData.current.cool != 5)
+        {
+            objList.Add(5);
+        }
+        if(objList.Count == 5)
+        {
+            randomObjAd.GetComponent<Image>().color = lockedColor;
+            randomObjAd.GetComponent<Button>().interactable = false;
+        }
+    }
     //UI Auxiliares
     void overUsedPaneloff()
     {
@@ -921,86 +932,88 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     public void RewardedAds()
     {
         selectedButton = EventSystem.current.currentSelectedGameObject;
-        switch(selectedButton.name)
+        if(Advertisement.IsReady("Rewarded_Android"))
         {
-            case "RandomObj":
-                if(Advertisement.IsReady("Rewarded_Android"))
-                    {
-                        Advertisement.Show("Rewarded_Android");
-                    }
-                break;
-            case "ContinueGame":
-                if(Advertisement.IsReady("Rewarded_Android"))
-                    {
-                        Advertisement.Show("Rewarded_Android");
-                    }
-                break;
-            case "Aceptar":
-                if(Advertisement.IsReady("Rewarded_Android"))
-                    {
-                        Advertisement.Show("Rewarded_Android");
-                    }
-                break;
+            Advertisement.Show("Rewarded_Android");
         }
     }
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
         // Defina lógica condicional para cada estado de finalización de anuncio:
-        if (showResult == ShowResult.Finished)
+        if (showResult == ShowResult.Finished && selectedButton != null)
         {
             switch(selectedButton.name)
             {
                 case "RandomObj":
-
-                    Debug.Log("s1");
-                    forRandomReward = 1;//Random.Range(1, 6);
+                    forRandomReward = Random.Range(0, objList.Count+1);
                     switch(forRandomReward)
                     {
+                        case 0:
+                            SaveData.current.extraVida +=1;
+                            break;
                         case 1:
-                            if(SaveData.current.extraVida != 5)
-                            {
-                                SaveData.current.extraVida += 1;
-                            }
-                            else
-                            {
-                                forRandomReward = Random.Range(2,6);
-                            }
+                            SaveData.current.deposit += 1;
                             break;
                         case 2:
-                            SaveData.current.deposit += 1;
-                            Debug.Log(forRandomReward);
+                            SaveData.current.inmune += 1;
                             break;
                         case 3:
-                            SaveData.current.inmune += 1;
-                            Debug.Log(forRandomReward);
+                            SaveData.current.check += 1;
                             break;
                         case 4:
-                            SaveData.current.check += 1;
-                            Debug.Log(forRandomReward);
-                            break;
-                        case 5:
                             SaveData.current.cool += 1;
-                            Debug.Log(forRandomReward);
                             break;
                     }
+                    selectedButton.GetComponent<Image>().color = lockedColor;
+                    selectedButton.GetComponent<Button>().interactable = false;
                     objSelectorAmountChecker();
                     OnSaveGame();
                     OnLoadGame();
                     break;
                 case "ContinueGame":
-                    panel.SetActive(false);
+                    overUsedPaneloff();
                     panel.transform.GetChild(1).gameObject.SetActive(false);
+                    if(playerProprieties.currentFuel == 0)
+                    {
+                        playerProprieties.currentFuel = 150;
+                    }
+                    playerMovement.goingLeft = false;
+                    playerMovement.goingRight = false;
+                    selectedButton.GetComponent<Image>().color = lockedColor;
+                    selectedButton.GetComponent<Button>().interactable = false;
                     Time.timeScale = 1;
                     break;
                 case "Aceptar":
                     playerProprieties.generalCoin *= 2; 
+                    if(exitIdentificator == "Restart")
+                    {
+                        Restart();
+                    }
+                    else
+                    {
+                        ExitToMainMenu();
+                    }
                     break;
             }
+            selectedButton = null;
             // Recompensa al usuario por ver el anuncio hasta su finalización.
             Debug.LogWarning("recompensa por ver anuncio.");
         }
         else if (showResult == ShowResult.Skipped)
         {
+            switch(selectedButton.name)
+            {
+                case "Aceptar":
+                    if(exitIdentificator == "Restart")
+                    {
+                        Restart();
+                    }
+                    else
+                    {
+                        ExitToMainMenu();
+                    }
+                    break;
+            }
             // No recompensar al usuario por omitir el anuncio.
             Debug.LogWarning("Se omitio el anuncio.");
         }
@@ -1009,7 +1022,6 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
             Debug.LogWarning("El anuncio no finalizó debido a un error.");
         }
         }
-
         public void OnUnityAdsReady(string placementId)
         {
             // Si esta listo, muestre el anuncio:
@@ -1018,7 +1030,6 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
 
             }
         }
-
         public void OnUnityAdsDidError(string message)
         {
             // errores aca
@@ -1027,6 +1038,25 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
         public void OnUnityAdsDidStart(string placementId)
         {
             // Acciones opcionales a realizar cuando los usuarios finales activan un anuncio.
+        }
+        public void ShowBanner()
+        {
+            if(Advertisement.IsReady("Banner_Android"))
+            {
+                Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+                Advertisement.Show("Banner_Android");
+                Debug.Log("banner listo");
+            }
+            else
+            {
+                StartCoroutine(RepeatShowBanner());
+            }
+        }
+        public void HideBanner(){}
+        IEnumerator RepeatShowBanner()
+        {
+            yield return new WaitForSeconds(1);
+            ShowBanner();
         }
     #endregion
 }

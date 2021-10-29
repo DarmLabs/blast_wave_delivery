@@ -154,6 +154,7 @@ public class playerProprieties : MonoBehaviour
         {
             gameplay_Manager.GameOver();
             generalLife = 0;
+            gameplay_Manager.previousLife = null;
         }
         gameplay_Manager.LifeChange();
     }
