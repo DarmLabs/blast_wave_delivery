@@ -54,7 +54,7 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     bool testMode = true;
     void Start()
     {
-        Advertisement.Initialize(GooglePlayID, testMode);
+        Advertisement.Initialize(GooglePlayID);
         OnLoadGame();   
         Time.timeScale = 1;
         selectMode();
@@ -66,7 +66,6 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
         BlockerChekcerPot();
         BlockerCheckerObjs();
         BlockerCheckerCosmetics();
-        ShowBanner();
     }
     public void SumMonedas()
     {
@@ -94,6 +93,7 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     public void setOffFirstScreen()
     {
         firstScreen.SetActive(false);
+        ShowBanner();
     }
     public void ModesButton()
     {
@@ -750,11 +750,7 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     }
     public void OnUnityAdsReady(string placementId)
     {
-        // Si esta listo, muestre el anuncio:
-        if (placementId == myPlacementId)
-        {
-
-        }
+        Debug.Log("ready");
     }
     public void OnUnityAdsDidError(string message)
     {
@@ -764,6 +760,7 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     public void OnUnityAdsDidStart(string placementId)
     {
         // Acciones opcionales a realizar cuando los usuarios finales activan un anuncio.
+        Debug.Log("start");
     }
     public void ShowBanner()
         {
