@@ -49,11 +49,12 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     public GameObject skinBlocker;
     public Text skinStatus;
     //Ads
-    string myPlacementId;
+    string myPlacementId = "Rewarded_Android";
     string GooglePlayID = "4426982";
     bool testMode = true;
     void Start()
     {
+        Advertisement.AddListener(this);
         Advertisement.Initialize(GooglePlayID);
         OnLoadGame();   
         Time.timeScale = 1;
@@ -720,9 +721,9 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     #region Ads
     public void RewardedAd()
     {
-        if(Advertisement.IsReady("Rewarded_Android"))
+        if(Advertisement.IsReady(myPlacementId))
         {
-            Advertisement.Show("Rewarded_Android");
+            Advertisement.Show(myPlacementId);
         }
     }
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
