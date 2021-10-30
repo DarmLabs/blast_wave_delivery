@@ -5,15 +5,40 @@ using GoogleMobileAds.Api;
 public class AdMob : MonoBehaviour
 {
     private BannerView bannerView;
+    private RewardedAd rewardedAd;
+    private InterstitialAd interstitialAd;
 
     public void Start()
     {
+        DontDestroyOnLoad(this);
         if(!SaveData.current.deactivatedAds)
         {
             this.RequestBanner();
         }
     }
+    public void RequestIntersticial()
+    {
 
+        #if UNITY_ANDROID
+            string adUnitId = "ca-app-pub-5347418143306773/8881235522";
+        #endif
+
+        this.interstitialAd = new InterstitialAd(adUnitId);
+
+        // Called when an ad request has successfully loaded.
+        this.interstitialAd.OnAdLoaded += this.HandleOnAdLoaded;
+        // Called when an ad request failed to load.
+        this.interstitialAd.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
+        // Called when an ad is clicked.
+        this.interstitialAd.OnAdOpening += this.HandleOnAdOpened;
+        // Called when the user returned from the app after an ad click.
+        this.interstitialAd.OnAdClosed += this.HandleOnAdClosed;
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build(); 
+
+        // Load the banner with the request.
+        this.interstitialAd.LoadAd(request);
+    }
     private void RequestBanner()
     {
 
@@ -21,7 +46,7 @@ public class AdMob : MonoBehaviour
             string adUnitId = "ca-app-pub-5347418143306773/8106375754";
         #endif
 
-        this.bannerView = new BannerView(adUnitId, AdSize.SmartBanner, AdPosition.Bottom);
+        this.bannerView = new BannerView(adUnitId, AdSize.IABBanner, AdPosition.Top);
 
         // Called when an ad request has successfully loaded.
         this.bannerView.OnAdLoaded += this.HandleOnAdLoaded;

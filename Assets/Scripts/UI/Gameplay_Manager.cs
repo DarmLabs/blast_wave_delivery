@@ -80,6 +80,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     public int forRandomReward;
     public List<int> objList = new List<int>();
     //Ads
+    public GameObject adMob;
     public GameObject [] adsButtons;
     public GameObject randomObjAd;
     string GooglePlayID = "4426982";
@@ -101,8 +102,6 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
                 item.SetActive(false);
             }
         }
-        Advertisement.AddListener(this);
-        Advertisement.Initialize(GooglePlayID, testMode);
         banderObjCheck = false;
         OnLoadGame();
         AudioController = GameObject.Find("AudioController");
@@ -394,7 +393,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
         overUsedPanelon();
         panel.transform.GetChild(1).gameObject.SetActive(true);
         Time.timeScale = 0;
-        InterAd();
+        adMob.GetComponent<AdMob>().RequestIntersticial();
     }
     public void ResumeGameOver()
     {
@@ -906,7 +905,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
         {
             objList.Add(5);
         }
-        if(objList.Count == 5)
+        if(objList.Count == 0)
         {
             randomObjAd.GetComponent<Image>().color = lockedColor;
             randomObjAd.GetComponent<Button>().interactable = false;
