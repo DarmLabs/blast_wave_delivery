@@ -49,13 +49,15 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     public GameObject skinBlocker;
     public Text skinStatus;
     //Ads
+    public GameObject adMob;
+    public GameObject adButton;
+    public GameObject confirmationVIP;
+    public Text confirmationVIPtext;
     string myPlacementId = "Rewarded_Android";
     string GooglePlayID = "4426982";
     bool testMode = true;
     void Start()
     {
-        Advertisement.AddListener(this);
-        Advertisement.Initialize(GooglePlayID);
         OnLoadGame();   
         Time.timeScale = 1;
         selectMode();
@@ -81,20 +83,29 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
             item.text = SaveData.current.monedas.ToString();
         }
     }
-    void OnLoadGame()
+    public void OnLoadGame()
     {
         SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/player.save");
+        if(!SaveData.current.deactivatedAds)
+        {
+            Advertisement.AddListener(this);
+            Advertisement.Initialize(GooglePlayID);
+        }
+        else
+        {
+            adButton.SetActive(false);
+            adMob.GetComponent<AdMob>().HideBanner();
+        }
         DisplayUniversalCoins();
         DisplayObjetos();
     }
-    void OnSaveGame()
+    public void OnSaveGame()
     {
         SerializationManager.Save(SaveData.current);
     }
     public void setOffFirstScreen()
     {
         firstScreen.SetActive(false);
-        ShowBanner();
     }
     public void ModesButton()
     {
@@ -443,6 +454,20 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
         confirmationScreen.transform.GetChild(3).gameObject.SetActive(true);
         confirmationText.text = "¿Estas seguro que quieres comprar " + itemName + " por " + value + " monedas?";
     }
+    public void ConfirmationVIP()
+    {
+        if(!confirmationVIP.activeSelf)
+        {
+            Main.SetActive(false);
+            confirmationVIP.SetActive(true);
+            confirmationVIPtext.text = "¿Quieres comprar el Estatus VIP por USD 9.99? El estatus vip quita los anuncios del juego y se desbloquean todas las skins";
+        }
+        else
+        {
+            Main.SetActive(true);
+            confirmationVIP.SetActive(false);
+        }
+    }
     public void CoinChecker()
     {
         buyButtonObj.SetActive(false);
@@ -733,6 +758,8 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
         if (showResult == ShowResult.Finished)
         {
             SaveData.current.monedas += 300;
+            adButton.GetComponent<Image>().color = new Color32(106, 106, 106, 255);
+            adButton.GetComponent<Button>().interactable = false;
             OnSaveGame();
             OnLoadGame();
             
@@ -751,7 +778,6 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     }
     public void OnUnityAdsReady(string placementId)
     {
-        Debug.Log("ready");
     }
     public void OnUnityAdsDidError(string message)
     {

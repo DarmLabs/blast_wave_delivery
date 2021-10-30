@@ -47,4 +47,6 @@ public class SaveData
     public bool skinLight;
     public bool skinRetro;
     public string actualSkin;
+        //Ads
+    public bool deactivatedAds;
 }

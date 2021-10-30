@@ -11018,6 +11018,9 @@ MonoBehaviour:
   - {fileID: 1607663756}
   forRandomReward: 0
   objList: 
+  adsButtons:
+  - {fileID: 1019689409}
+  - {fileID: 1795919945}
   randomObjAd: {fileID: 1795919945}
 --- !u!4 &1104803808
 Transform:

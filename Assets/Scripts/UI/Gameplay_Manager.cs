@@ -80,6 +80,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     public int forRandomReward;
     public List<int> objList = new List<int>();
     //Ads
+    public GameObject [] adsButtons;
     public GameObject randomObjAd;
     string GooglePlayID = "4426982";
     bool testMode = true;
@@ -88,6 +89,18 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     #region Callbacks
     void Start()
     {
+        if(!SaveData.current.deactivatedAds)
+        {
+            Advertisement.AddListener(this);
+            Advertisement.Initialize(GooglePlayID, testMode);
+        }
+        else
+        {
+            foreach (var item in adsButtons)
+            {
+                item.SetActive(false);
+            }
+        }
         Advertisement.AddListener(this);
         Advertisement.Initialize(GooglePlayID, testMode);
         banderObjCheck = false;
@@ -129,7 +142,6 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
         DepositChecker();
         InmuneChecker();
         objAmountCheckerForAd();
-        ShowBanner();
     }
     void Update()
     {
@@ -565,7 +577,7 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     public void GameOverScreenComprobation()
     {
         selectedButton = EventSystem.current.currentSelectedGameObject;
-        if(playerProprieties.generalCoin > 25)
+        if(playerProprieties.generalCoin > 25 && !SaveData.current.deactivatedAds)
         {
             ConfirmationScreenActived();
         }
