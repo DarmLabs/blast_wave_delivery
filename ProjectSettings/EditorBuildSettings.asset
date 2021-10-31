@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Modos/ModoEndless.unity
     guid: 274e9474cbf54ea488f23e8c7191eaf9
-  m_configObjects: {}
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 1593fce7831dcc94fa221698b9e71de5, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b3c7342e9a06f194faf1739902451d2d, type: 2}
