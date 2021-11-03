@@ -10,6 +10,7 @@ public class playerMovement : MonoBehaviour
     public bool goingRight = false;
     public bool goingLeft = false;
     public float speedz = 40;
+    public float velocidadEscalado = 2;
     Animator MotoAnimator;
     public float speedMultiplier;
     public float HMultiplier;
@@ -22,7 +23,7 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0,0, speedz * (Time.deltaTime * speedMultiplier));
+        transform.Translate(0,0, (speedz+(velocidadEscalado*TileManager.escalado)) * (Time.deltaTime * speedMultiplier));
         if(goingRight)
         {
             InputRight();
