@@ -17,7 +17,8 @@ public class TileManager : MonoBehaviour
     private int contadorHastaCheck = 0;
     private int checkpointCounter = 0;
     public static bool checkActivo = false;
-    public static int escalado = 0;
+    public static int escalado = 10;
+    public static bool escalo = false;
 
     public GameObject Moto;
     playerProprieties playerProprieties;
@@ -25,6 +26,7 @@ public class TileManager : MonoBehaviour
   
     void Start()
     {
+        escalo = false;
         escalado = 0;
         visualSet1=false;
         visualSet2=false; visualSet3=false;
@@ -56,12 +58,14 @@ public class TileManager : MonoBehaviour
         {
             go.transform.GetChild(0).gameObject.SetActive(true);
             escalado +=1;
+            escalo = true;
             Gameplay_Manager.banderObjCheck = false;
         }
         if (spawnManager.CajaRecolectada && contadorHastaCheck >= 10 && tileCounter >= 25)
         {
             go.transform.GetChild(0).gameObject.SetActive(true);
             escalado +=1;
+            escalo = true;
             spawnManager.CajaRecolectada=false;
             contadorHastaCheck = 0;
             tileCounter = 0;

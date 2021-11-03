@@ -23,7 +23,14 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0,0, (speedz+(velocidadEscalado*TileManager.escalado)) * (Time.deltaTime * speedMultiplier));
+        if(TileManager.escalo)
+        {
+            speedz = speedz + (velocidadEscalado*TileManager.escalado);
+            TileManager.escalo = false;
+            Debug.Log("ESCALOOOO");
+        }
+        
+        transform.Translate(0,0, speedz * (Time.deltaTime * speedMultiplier));
         if(goingRight)
         {
             InputRight();
