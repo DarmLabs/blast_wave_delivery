@@ -30,6 +30,7 @@ public class Main_Menu_Manager : MonoBehaviour
     //Tienda
     public Text descriptionPot;
     public GameObject buyButtonPot;
+    public Text titleObj;
     public Text descriptionObj;
     public GameObject buyButtonObj;    
     public Text confirmationText;
@@ -43,23 +44,22 @@ public class Main_Menu_Manager : MonoBehaviour
     //Skin Selector
     public GameObject SkinSelectorScreen;
     public Text nameSkin;
-    public Image imageSkin;
     int selectedSkin;
-    public GameObject selectSkinButton;
-    public GameObject skinBlocker;
-    public Text skinStatus;
+    public GameObject isSelected;
+    RectTransform isSelectedTransf;
     #endregion
     #region Callbacks
     void Start()
     {
+        isSelectedTransf = isSelected.GetComponent<RectTransform>();
         OnLoadGame();   
         Time.timeScale = 1;
         selectMode();
-        SkinSelector();
         if(SaveData.current.actualSkin == "")
         {
-            SkinSelected();
+            SaveData.current.actualSkin = "INICIAL";
         }
+        nameSkin.text = SaveData.current.actualSkin;
         BlockerChekcerPot();
         BlockerCheckerObjs();
         BlockerCheckerCosmetics();
@@ -282,32 +282,26 @@ public class Main_Menu_Manager : MonoBehaviour
     public void Objetos()
     {
         buttonPressed = EventSystem.current.currentSelectedGameObject.name;
-        TextAsset file = Resources.Load<TextAsset>("DescObjetos/"+buttonPressed);
-        if(file != null)
-        {
-            descriptionObj.GetComponent<Text>().text = file.text;
-        }
-        buyButtonObj.SetActive(true);
         switch(buttonPressed)
         {
             case "Vida":
-                itemName = "1 VIDA EXTRA";
+                itemName = "VIDA EXTRA";
                 value = 250;
                 break;
             case "Inmune":
-                itemName = "1 INMUNIDAD";
+                itemName = "INMUNIDAD";
                 value = 300;
                 break;
             case "Cool":
-                itemName = "1 RECARGA DE COOLDOWN";
+                itemName = "RECARGA DE COOLDOWN";
                 value = 300;
                 break;
             case "Deposit":
-                itemName = "1 DEPOSITO SECRETO";
+                itemName = "DEPOSITO SECRETO";
                 value = 250;
                 break;
             case "Check+":
-                itemName = "1 ENTREGA RAPIDA";
+                itemName = "ENTREGA RAPIDA";
                 value = 325;
                 break;
             case "Slot":
@@ -315,6 +309,13 @@ public class Main_Menu_Manager : MonoBehaviour
                 value = 600;
                 break;
         }
+        titleObj.text = itemName;
+        TextAsset file = Resources.Load<TextAsset>("DescObjetos/"+buttonPressed);
+        if(file != null)
+        {
+            descriptionObj.GetComponent<Text>().text = file.text;
+        }
+        buyButtonObj.SetActive(true);
     }
     public void DisplayObjetos()
     {
@@ -380,19 +381,19 @@ public class Main_Menu_Manager : MonoBehaviour
         buttonPressed = EventSystem.current.currentSelectedGameObject.name;
         switch(buttonPressed)
         {
-            case "BuyInferno":
+            case "blockerInferno":
                 itemName = "SKIN INFERNO";
                 value = 1250;
                 break;
-            case "BuyRadiactivo":
+            case "blockerRadioactive":
                 itemName = "SKIN RADIACTIVA";
                 value = 1000;
                 break;
-            case "BuyLight":
+            case "blockerLight":
                 itemName = "SKIN LIGHT";
                 value = 1000;
                 break;
-            case "BuyRetro":
+            case "blockerRetro":
                 itemName = "SKIN RETRO";
                 value = 1250;
                 break;
@@ -403,40 +404,48 @@ public class Main_Menu_Manager : MonoBehaviour
     {
         if(SaveData.current.skinInferno)
         {
-            blockers[10].SetActive(true);
+            blockers[10].SetActive(false);
         }
         else
         {
-            blockers[10].SetActive(false);
+            blockers[10].SetActive(true);
         }
         if(SaveData.current.skinRadiactive)
         {
-            blockers[11].SetActive(true);
+            blockers[11].SetActive(false);
         }
         else
         {
-            blockers[11].SetActive(false);
+            blockers[11].SetActive(true);
         }
         if(SaveData.current.skinLight)
         {
-            blockers[12].SetActive(true);
+            blockers[12].SetActive(false);
         }
         else
         {
-            blockers[12].SetActive(false);
+            blockers[12].SetActive(true);
         }
         if(SaveData.current.skinRetro)
         {
-            blockers[13].SetActive(true);
+            blockers[13].SetActive(false);
         }
         else
         {
-            blockers[13].SetActive(false);
+            blockers[13].SetActive(true);
         }
     }
     public void ConfirmationScreen()
     {
-        shopScreen.SetActive(false);
+        if(shopScreen.activeSelf)
+        {
+            shopScreen.SetActive(false);
+            previousScreen = shopScreen;
+        }
+        else
+        {
+            SkinSelectorScreen.SetActive(false);
+        }
         confirmationScreen.SetActive(true);
         confirmationScreen.transform.GetChild(2).gameObject.SetActive(true);
         confirmationScreen.transform.GetChild(3).gameObject.SetActive(true);
@@ -444,10 +453,14 @@ public class Main_Menu_Manager : MonoBehaviour
     }
     public void CoinChecker()
     {
-        buyButtonObj.SetActive(false);
-        descriptionObj.text = "";
-        buyButtonPot.SetActive(false);
-        descriptionPot.text = "";
+        if(shopScreen.activeSelf)
+        {
+            buyButtonObj.SetActive(false);
+            titleObj.text = "";
+            descriptionObj.text = "";
+            buyButtonPot.SetActive(false);
+            descriptionPot.text = "";
+        }
         confirmationScreen.transform.GetChild(2).gameObject.SetActive(false);
         confirmationScreen.transform.GetChild(3).gameObject.SetActive(false);
         confirmationScreen.transform.GetChild(4).gameObject.SetActive(false);
@@ -462,14 +475,29 @@ public class Main_Menu_Manager : MonoBehaviour
     }
     public void NoCoin()
     {
-        shopScreen.SetActive(false);
+        if(shopScreen.activeSelf)
+        {
+            shopScreen.SetActive(false);
+            previousScreen = shopScreen;
+        }
+        else
+        {
+            SkinSelectorScreen.SetActive(false);
+        }
         confirmationScreen.SetActive(true);
         confirmationScreen.transform.GetChild(4).gameObject.SetActive(true);
         confirmationText.text = "No tienes las monedas suficientes para comprar " + itemName;
     }
     public void CancelBuy()
     {
-        shopScreen.SetActive(true);
+        if(previousScreen == shopScreen)
+        {
+            shopScreen.SetActive(true);
+        }
+        else
+        {
+            SkinSelectorScreen.SetActive(true);
+        }
         confirmationScreen.SetActive(false);
     }
     public void ConfirmBuy()
@@ -517,19 +545,19 @@ public class Main_Menu_Manager : MonoBehaviour
                 break;
             #endregion
             #region Cosmeticos
-            case "BuyInferno":
+            case "blockerInferno":
                 SaveData.current.skinInferno = true;
                 blockers[10].SetActive(true);
                 break;
-            case "BuyRadiactivo":
+            case "blockerRadioactive":
                 SaveData.current.skinRadiactive = true;
                 blockers[11].SetActive(true);
                 break;
-            case "BuyLight":
+            case "blockerLight":
                 SaveData.current.skinLight = true;
                 blockers[12].SetActive(true);
                 break;
-            case "BuyRetro":
+            case "blockerRetro":
                 SaveData.current.skinRetro = true;
                 blockers[13].SetActive(true);
                 break;
@@ -623,99 +651,52 @@ public class Main_Menu_Manager : MonoBehaviour
     }
     public void SkinSelector()
     {
-        switch(selectedSkin)
+        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
+        switch(buttonPressed)
         {
-            case 0:
+            case "skinInicial":
                 nameSkin.text = "INICIAL";
-                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin1");
-                BlockerOff();
-                StatusChecker();
                 break;
-            case 1:
+            case "skinInferno":
                 nameSkin.text = "INFERNO";
-                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin2");
-                StatusChecker();
-                if(SaveData.current.skinInferno == true)
-                {
-                    BlockerOff();
-                }
-                else
-                {
-                    BlockerOn();
-                }
                 break;
-            case 2:
+            case "skinRadioactive":
                 nameSkin.text = "RADIACTIVO";
-                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin3");
-                StatusChecker();
-                if(SaveData.current.skinRadiactive == true)
-                {
-                    BlockerOff();
-                }
-                else
-                {
-                    BlockerOn();
-                }
                 break;
-            case 3:
+            case "skinLight":
                 nameSkin.text = "LIGHT";
-                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin4");
-                StatusChecker();
-                if(SaveData.current.skinLight == true)
-                {
-                    BlockerOff();
-                }
-                else
-                {
-                    BlockerOn();
-                }
                 break;
-            case 4:
+            case "skinRetro":
                 nameSkin.text = "RETRO";
-                imageSkin.sprite = Resources.Load<Sprite>("ImgSkins/Skin5");
-                StatusChecker();
-                if(SaveData.current.skinRetro == true)
-                {
-                    BlockerOff();
-                }
-                else
-                {
-                    BlockerOn();
-                }
                 break;
-
         }
-    }
-    void BlockerOn()
-    {
-        skinBlocker.SetActive(true);
-        selectSkinButton.SetActive(false);
-    }
-    void BlockerOff()
-    {
-        skinBlocker.SetActive(false);
-        if(SaveData.current.actualSkin != nameSkin.text)
-        {
-            selectSkinButton.SetActive(true);
-        }
-    }
-    void StatusChecker()
-    {
-        if(SaveData.current.actualSkin == nameSkin.text)
-        {
-            skinStatus.text = "SELECCIONADA";
-            selectSkinButton.SetActive(false);
-        }
-        else
-        {
-            skinStatus.text = "";
-        }
+        SkinSelected();
     }
     public void SkinSelected()
     {
-        SaveData.current.actualSkin = nameSkin.text;
+        if(nameSkin.text != "")
+        {
+            SaveData.current.actualSkin = nameSkin.text;
+        }
+        switch(SaveData.current.actualSkin)
+        {
+            case "INICIAL":
+                isSelectedTransf.anchoredPosition = new Vector2(27 ,isSelectedTransf.anchoredPosition.y);
+                break;
+            case "INFERNO":
+                isSelectedTransf.anchoredPosition = new Vector2(-248 ,isSelectedTransf.anchoredPosition.y);
+                break;
+            case "RADIACTIVO":
+                isSelectedTransf.anchoredPosition = new Vector2(-523 ,isSelectedTransf.anchoredPosition.y);
+                break;
+            case "LIGHT":
+                isSelectedTransf.anchoredPosition = new Vector2(302 ,isSelectedTransf.anchoredPosition.y);
+                break;
+            case "RETRO":
+                isSelectedTransf.anchoredPosition = new Vector2(577 ,isSelectedTransf.anchoredPosition.y);
+                break;
+        }
         OnSaveGame();
-        StatusChecker();
     }
     public void RewardedAd()
     {
