@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Main_Menu_Manager : MonoBehaviour
 {
+    #region Variables
     public Text[] universalCoins;
     public GameObject firstScreen;
     public GameObject shopScreen;
@@ -47,6 +48,8 @@ public class Main_Menu_Manager : MonoBehaviour
     public GameObject selectSkinButton;
     public GameObject skinBlocker;
     public Text skinStatus;
+    #endregion
+    #region Callbacks
     void Start()
     {
         OnLoadGame();   
@@ -61,12 +64,14 @@ public class Main_Menu_Manager : MonoBehaviour
         BlockerCheckerObjs();
         BlockerCheckerCosmetics();
     }
+    #endregion
     public void SumMonedas()
     {
         SaveData.current.monedas += 1000;
         OnSaveGame();
         OnLoadGame();
     }
+    #region Displays
     void DisplayUniversalCoins()
     {
         foreach (var item in universalCoins)
@@ -74,6 +79,8 @@ public class Main_Menu_Manager : MonoBehaviour
             item.text = SaveData.current.monedas.ToString();
         }
     }
+    #endregion
+    #region Guardado
     void OnLoadGame()
     {
         SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/player.save");
@@ -84,6 +91,8 @@ public class Main_Menu_Manager : MonoBehaviour
     {
         SerializationManager.Save(SaveData.current);
     }
+    #endregion
+    #region UIElements
     public void setOffFirstScreen()
     {
         firstScreen.SetActive(false);
@@ -137,8 +146,7 @@ public class Main_Menu_Manager : MonoBehaviour
     }
     public void LoadMode()
     {
-        buttonPressed = EventSystem.current.currentSelectedGameObject.name;
-        SceneManager.LoadScene(buttonPressed);
+        SceneManager.LoadScene("ModoEndless");
     }
     public void ShopButton()
     {
@@ -205,9 +213,8 @@ public class Main_Menu_Manager : MonoBehaviour
             slider.GetComponent<Animator>().Play("Desliz 0");
         }
     }
-
-    //Tienda
-
+    #endregion
+    #region Tienda
     public void Potenciadores()
     {
         buttonPressed = EventSystem.current.currentSelectedGameObject.name;
@@ -715,3 +722,4 @@ public class Main_Menu_Manager : MonoBehaviour
         
     }
 }
+#endregion

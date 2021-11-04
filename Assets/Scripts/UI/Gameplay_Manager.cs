@@ -229,6 +229,10 @@ public class Gameplay_Manager : MonoBehaviour
         }
         if(TutoScreenIndex == 11)
         {
+            TutoScreens[10].SetActive(true);
+        }
+        if(TutoScreenIndex == 12)
+        {
             TutoScreenIndex = 1;
             TutoScreens[0].SetActive(true);
         }
