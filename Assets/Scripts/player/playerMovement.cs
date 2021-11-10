@@ -17,6 +17,10 @@ public class playerMovement : MonoBehaviour
     
     void Start()
     {
+        TileManager.escalo = false;
+        TileManager.escalado=10;
+        speedz = 40;
+
         rb = GetComponent<Rigidbody>();
         MotoAnimator = GetComponentInChildren<Animator>();
     }
