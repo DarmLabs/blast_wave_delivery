@@ -171,7 +171,7 @@ public class playerProprieties : MonoBehaviour
         inmune = true;
         gameplay_Manager.InmuneChecker();
         currentFuel = currentFuel -10;
-        gameObject.GetComponent<playerMovement>().speedMultiplier = 5;
+        playerMovement.speedMultiplier = 5;
         gameObject.GetComponent<playerMovement>().HMultiplier = 0.2f;
         cam.fieldOfView = 90;
         gameplay_Manager.FastButton();
@@ -220,7 +220,7 @@ public class playerProprieties : MonoBehaviour
     }
     public void modeStandard()
     {
-        gameObject.GetComponent<playerMovement>().speedMultiplier = 1;
+        playerMovement.speedMultiplier = 1;
         gameObject.GetComponent<playerMovement>().HMultiplier = 1;
         fuelConsumption = 2;
         cam.fieldOfView = 75;

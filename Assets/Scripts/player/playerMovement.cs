@@ -9,10 +9,10 @@ public class playerMovement : MonoBehaviour
     public float speedx = 60;
     public bool goingRight = false;
     public bool goingLeft = false;
-    public float speedz = 40;
+    public static float speedz = 40;
     public float velocidadEscalado = 2;
     Animator MotoAnimator;
-    public float speedMultiplier;
+    public static float speedMultiplier;
     public float HMultiplier;
     
     void Start()

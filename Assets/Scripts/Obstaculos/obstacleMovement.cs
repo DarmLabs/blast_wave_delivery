@@ -14,5 +14,9 @@ public class obstacleMovement : MonoBehaviour
     void Update()
     {
         rigidbody.velocity = new Vector3 (0, 0, -(speed+(velocidadEscaladoObs2*TileManager.escalado)));
+        if (this.gameObject.tag == "Camion")
+        {
+            rigidbody.velocity = new Vector3 (0, 0, -(speed+(velocidadEscaladoObs2*TileManager.escalado)+playerMovement.speedz));    
+        }
     }
 }

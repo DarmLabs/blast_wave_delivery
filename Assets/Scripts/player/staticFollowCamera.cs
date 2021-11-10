@@ -7,6 +7,6 @@ public class staticFollowCamera : MonoBehaviour
     public GameObject Moto;
     void Update()
     {
-        transform.Translate(Moto.transform.position.x ,0, Moto.GetComponent<playerMovement>().speedz * (Time.deltaTime * Moto.GetComponent<playerMovement>().speedMultiplier));
+        transform.Translate(Moto.transform.position.x ,0, playerMovement.speedz * (Time.deltaTime * playerMovement.speedMultiplier));
     }
 }
