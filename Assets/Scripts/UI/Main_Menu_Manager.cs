@@ -58,6 +58,7 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     bool testMode = true;
     void Start()
     {
+        DontDestroyOnLoad(this);
         OnLoadGame();   
         Time.timeScale = 1;
         selectMode();
@@ -753,8 +754,9 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
     }
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
-        Debug.Log("entro");
-        // Defina lógica condicional para cada estado de finalización de anuncio:
+        if(SceneManager.GetActiveScene().name == "Main_Menu")
+        {
+            // Defina lógica condicional para cada estado de finalización de anuncio:
         if (showResult == ShowResult.Finished)
         {
             SaveData.current.monedas += 300;
@@ -774,6 +776,7 @@ public class Main_Menu_Manager : MonoBehaviour, IUnityAdsListener
         else if (showResult == ShowResult.Failed)
         {
             Debug.LogWarning("El anuncio no finalizó debido a un error.");
+        }
         }
     }
     public void OnUnityAdsReady(string placementId)

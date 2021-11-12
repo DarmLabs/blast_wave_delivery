@@ -90,10 +90,12 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     #region Callbacks
     void Start()
     {
+        Debug.Log(SaveData.current.deactivatedAds);
         if(!SaveData.current.deactivatedAds)
         {
             Advertisement.AddListener(this);
-            Advertisement.Initialize(GooglePlayID, testMode);
+            Advertisement.Initialize(GooglePlayID);
+            Debug.Log(Advertisement.isInitialized);
         }
         else
         {
@@ -950,7 +952,9 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
     }
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
-        // Defina lógica condicional para cada estado de finalización de anuncio:
+        if(SceneManager.GetActiveScene().name == "ModoEndless")
+        {
+            // Defina lógica condicional para cada estado de finalización de anuncio:
         if (showResult == ShowResult.Finished && selectedButton != null)
         {
             switch(selectedButton.name)
@@ -1010,9 +1014,13 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
             // Recompensa al usuario por ver el anuncio hasta su finalización.
             Debug.LogWarning("recompensa por ver anuncio.");
         }
+        
+        }
         else if (showResult == ShowResult.Skipped)
         {
-            switch(selectedButton.name)
+            if(SceneManager.GetActiveScene().name == "ModoEndless")
+            {
+                switch(selectedButton.name)
             {
                 case "Aceptar":
                     if(exitIdentificator == "Restart")
@@ -1025,6 +1033,8 @@ public class Gameplay_Manager : MonoBehaviour, IUnityAdsListener
                     }
                     break;
             }
+            }
+            
             // No recompensar al usuario por omitir el anuncio.
             Debug.LogWarning("Se omitio el anuncio.");
         }

@@ -23,7 +23,7 @@ public class AdMob : MonoBehaviour
             string adUnitId = "ca-app-pub-5347418143306773/8881235522";
         #endif
 
-        this.interstitialAd = new InterstitialAd(adUnitId);
+        this.interstitialAd = new InterstitialAd("ca-app-pub-5347418143306773/8881235522");
 
         // Called when an ad request has successfully loaded.
         this.interstitialAd.OnAdLoaded += this.HandleOnAdLoaded;
@@ -46,7 +46,8 @@ public class AdMob : MonoBehaviour
             string adUnitId = "ca-app-pub-5347418143306773/8106375754";
         #endif
 
-        this.bannerView = new BannerView(adUnitId, AdSize.IABBanner, AdPosition.Top);
+        this.bannerView = new BannerView("ca-app-pub-5347418143306773/8106375754", AdSize.IABBanner, AdPosition.Top);
+
 
         // Called when an ad request has successfully loaded.
         this.bannerView.OnAdLoaded += this.HandleOnAdLoaded;
