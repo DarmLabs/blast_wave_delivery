@@ -464,7 +464,7 @@ public class Main_Menu_Manager : MonoBehaviour
         confirmationScreen.transform.GetChild(2).gameObject.SetActive(false);
         confirmationScreen.transform.GetChild(3).gameObject.SetActive(false);
         confirmationScreen.transform.GetChild(4).gameObject.SetActive(false);
-        if(SaveData.current.monedas > value)
+        if(SaveData.current.monedas >= value)
         {
             ConfirmationScreen();
         }
