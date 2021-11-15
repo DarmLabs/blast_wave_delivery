@@ -15,6 +15,7 @@ public class AudioController : MonoBehaviour
     public GameObject sfxSlider;
     public AudioMixer sfxMixer;
     float sfxValue = 1;
+    public int sfxIndex;
 
     void Awake()
     {
@@ -81,8 +82,8 @@ public class AudioController : MonoBehaviour
             allMusicSources[1].GetComponent<AudioSource>().Play();
         }
     }
-    public void PlayCoinSFX()
+    public void PlaySFX()
     {
-        allSFXSources[0].GetComponent<AudioSource>().Play();
+        allSFXSources[sfxIndex].GetComponent<AudioSource>().Play();
     }
 }

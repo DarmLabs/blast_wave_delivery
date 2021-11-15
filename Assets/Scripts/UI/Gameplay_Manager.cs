@@ -350,6 +350,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void OpenPauseScreen()
     {
+        ButtonSfx();
         overUsedPanelon();
         panel.transform.GetChild(0).gameObject.SetActive(true);
         Time.timeScale = 0;
@@ -362,6 +363,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void Restart()
     {
+        ButtonSfx();
         SaveData.current.monedas = SaveData.current.monedas + playerProprieties.generalCoin;
         OnSaveGame();
         OnLoadGame();
@@ -384,12 +386,14 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void SkipTutorial()
     {
+        ButtonSfx();
         TutoPanel.SetActive(false);
         panel.SetActive(true);
         SaveData.current.tutoActive = false;
     }
     public void ChangeSelector()
     {
+        ButtonSfx();
         if(objSelector.activeSelf)
         {
             objSelector.SetActive(false);
@@ -403,6 +407,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void StartGame()
     {
+        ButtonSfx();
         overUsedPaneloff();
         modesSelector.SetActive(false);
         modeButton1 = GameObject.Find(modeSelected1);
@@ -541,6 +546,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void ExitToMainMenu()
     {
+        ButtonSfx();
         SaveData.current.monedas = SaveData.current.monedas + playerProprieties.generalCoin;
         OnSaveGame();
         OnLoadGame();
@@ -611,6 +617,7 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void Tutorial()
     {
+        ButtonSfx();
         if(!TutoPanel.activeSelf)
         {
             TutoPanel.SetActive(true);
@@ -631,6 +638,8 @@ public class Gameplay_Manager : MonoBehaviour
         if(audioController != null)
         {
             audioController.musicMixer.SetFloat("MusicPitch", 1.5f);
+            audioController.sfxIndex = 4;
+            audioController.PlaySFX();
         }
         tunnelEffect.GetComponent<Animator>().SetInteger("fastStatus", 1);
         if(modeButton1.name == "FastButton")
@@ -648,6 +657,8 @@ public class Gameplay_Manager : MonoBehaviour
         if(audioController != null)
         {
             audioController.musicMixer.SetFloat("MusicPitch", 0.5f);
+            audioController.sfxIndex = 5;
+            audioController.PlaySFX();
         }
         tunnelEffect.GetComponent<Animator>().SetInteger("tankStatus", 1);
         if(modeButton1.name == "TankButton")
@@ -662,6 +673,11 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void x2Button()
     {
+        if(audioController != null)
+        {
+            audioController.sfxIndex = 9;
+            audioController.PlaySFX();
+        }
         if(modeButton1.name == "x2Button")
         {
             auxilarModule1();
@@ -677,6 +693,8 @@ public class Gameplay_Manager : MonoBehaviour
         if(audioController != null)
         {
             audioController.musicMixer.SetFloat("MusicPitch", 0.5f);
+            audioController.sfxIndex = 8;
+            audioController.PlaySFX();
         }
         if(modeButton1.name == "StopTimeButton")
         {
@@ -690,6 +708,11 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void MagneticButton()
     {
+        if(audioController != null)
+        {
+            audioController.sfxIndex = 7;
+            audioController.PlaySFX();
+        }
         if(modeButton1.name == "MagneticButton")
         {
             auxilarModule1();
@@ -702,6 +725,11 @@ public class Gameplay_Manager : MonoBehaviour
     }
     public void LaserButton()
     {
+        if(audioController != null)
+        {
+            audioController.sfxIndex = 6;
+            audioController.PlaySFX();
+        }
         if(modeButton1.name == "LaserButton")
         {
             auxilarModule1();
@@ -894,6 +922,14 @@ public class Gameplay_Manager : MonoBehaviour
     {
         panel.SetActive(true);
         MainButtons.SetActive(false);
+    }
+    void ButtonSfx()
+    {
+        if(audioController != null)
+            {
+                audioController.sfxIndex = 2;
+                audioController.PlaySFX();
+            }
     }
     //Save Auxiliares
     void OnLoadGame()

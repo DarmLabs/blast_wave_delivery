@@ -80,6 +80,11 @@ public class playerProprieties : MonoBehaviour
     {
         if(other.gameObject.tag == "Fuel") //Detecto si es fuel
         {
+            if(gameplay_Manager.audioController != null)
+            {
+                gameplay_Manager.audioController.sfxIndex = 1;
+                gameplay_Manager.audioController.PlaySFX();
+            }
             currentFuel = 300;
             Destroy(other.gameObject); //Destruyo el recolectable
         }
@@ -90,6 +95,11 @@ public class playerProprieties : MonoBehaviour
         }
         if(other.gameObject.tag == "obs")
         {
+            if(gameplay_Manager.audioController != null)
+            {
+                gameplay_Manager.audioController.sfxIndex = 10;
+                gameplay_Manager.audioController.PlaySFX();
+            }
             Destroy(other.gameObject);
             if(destructiveMode)
             {
@@ -112,7 +122,8 @@ public class playerProprieties : MonoBehaviour
         {
             if(gameplay_Manager.audioController != null)
             {
-                gameplay_Manager.audioController.PlayCoinSFX();
+                gameplay_Manager.audioController.sfxIndex = 0;
+                gameplay_Manager.audioController.PlaySFX();
             }
             if(x2Mode)
             {
@@ -126,6 +137,11 @@ public class playerProprieties : MonoBehaviour
         }
         if(other.gameObject.tag == "Checkpoint")
         {
+            if(gameplay_Manager.audioController != null)
+            {
+                gameplay_Manager.audioController.sfxIndex = 11;
+                gameplay_Manager.audioController.PlaySFX();
+            }
             generalCoin = generalCoin + currentCoin;
             currentCoin = 0;
             if(generalLife != 2)
