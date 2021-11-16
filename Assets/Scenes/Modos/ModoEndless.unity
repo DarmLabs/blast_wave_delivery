@@ -3036,7 +3036,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1104803807}
         m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
-        m_MethodName: GameOverScreenComprobation
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6037,7 +6037,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1104803807}
         m_TargetAssemblyTypeName: Gameplay_Manager, Assembly-CSharp
-        m_MethodName: GameOverScreenComprobation
+        m_MethodName: ExitToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10371,7 +10371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1019689410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18955,7 +18955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1795919946
 RectTransform:
   m_ObjectHideFlags: 0
